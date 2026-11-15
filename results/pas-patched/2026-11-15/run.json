@@ -1,0 +1,22 @@
+{
+ "kit": "pas-patched",
+ "date": "2026-11-15",
+ "generatedAt": "2026-11-15T23:39:39.727Z",
+ "clear": {
+  "repository": "https://github.com/metacareforyou/metacare-clear",
+  "branch": "develop",
+  "commit": "163b7f3",
+  "pullRequests": [],
+  "note": "PAS on develop 163b7f3, against the PAS kit with MetaCare's fork branch fix/v221-suppress-docreason-210-conflict (f91de1a), image metacare-inferno-pas:pas01-suppress (84dbe4ed8abe), session 3C4bBxxz26y. Not a run of the unmodified kit."
+ },
+ "kitPatch": {
+  "repository": "https://github.com/metacareforyou/davinci-pas-test-kit",
+  "branch": "fix/v221-suppress-docreason-210-conflict",
+  "commit": "f91de1a",
+  "image": "metacare-inferno-pas:pas01-suppress (84dbe4ed8abe)",
+  "defect": "PAS-01",
+  "what": "The unmodified kit at the pinned commit, plus one validator suppression for PAS-01."
+ },
+ "importedAt": "2026-11-15T23:41:12.538Z",
+ "synthetic": true
+}

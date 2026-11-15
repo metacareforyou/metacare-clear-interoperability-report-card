@@ -69,9 +69,11 @@ A DTR 2.2.0 QuestionnaireResponse in a PAS 2.2.1 request is validated against DT
 ### Proposed fix
 
 - **HL7:** publish PAS with a CDex dependency that does not pull DTR 2.1.0 and CRD 2.1.0, or align the CDex and DTR dependencies on CRD 2.2.1. We will raise this in HL7 Jira.
-- **Kit, until then:** the kit already suppresses validator errors that come from IG defects. Suppress this one, anchored narrowly: the binding error against `DocReason|2.1.0` when the coding is a CRD 2.2.1 DocReason code from `coverage-information-codes`. Any other coding still fails.
+- **Kit, as the interim fix until HL7 resolves the dependency:** the kit already suppresses validator errors that come from IG defects. Suppress this one, anchored narrowly: the binding error against `DocReason|2.1.0` when the coding is a CRD 2.2.1 DocReason code from `coverage-information-codes`. Any other coding still fails.
 
-  A branch with this suppression and a spec (`spec/davinci_pas_test_kit/cross_suite/docreason_package_conflict_suppression_spec.rb`) is at https://github.com/metacareforyou/davinci-pas-test-kit/tree/fix/v221-suppress-docreason-210-conflict. The spec checks that the exact message above is suppressed, and that a different code, a different code system, or a `DocReason|2.2.1` error is not. The kit's spec suite passes (818 examples, 0 failures). Whether the suppression reaches errors reported inside Bundle validation can only be shown by a kit run.
+  A branch with this suppression and a spec (`spec/davinci_pas_test_kit/cross_suite/docreason_package_conflict_suppression_spec.rb`) is at https://github.com/metacareforyou/davinci-pas-test-kit/tree/fix/v221-suppress-docreason-210-conflict. The spec checks that the exact message above is suppressed, and that a different code, a different code system, or a `DocReason|2.2.1` error is not. The kit's spec suite passes (818 examples, 0 failures).
+
+  We ran the same client against an image of the kit with only this change. The ten request validation failures (3.1.03, 3.2.03, 3.3.2.01, 3.4.3.01, 3.4.3.03, 3.4.3.05, 3.4.3.07, 3.5.03, 3.7.03 and 4.1.03) passed, and no other test changed result: 81 pass, 0 fail, 8 skip. So this binding conflict is the only cause of those failures, and the suppression reaches errors reported inside Bundle validation.
 
 - **Validator, longer term:** resolve an unversioned extension URL to the definition from the package the profile in use depends on (here DTR 2.2.0), not to whichever version a transitive dependency loaded.
 
@@ -83,6 +85,6 @@ Found while testing a provider system with synthetic data only.
 - Clear cannot fix this. Clear sends the coding DTR 2.2.0 requires (`coverage-information-codes` `withpa`).
 - Evidence: PAS sessions 7jUEvG6rySX (that coding only) and bThRsP1UxVK (both codings), 2026-11-15. The dependency chain was checked against the manifests in `~/.fhir/packages`.
 - Not effective: `fix/v221-validator-loads-dtr-220` (loads DTR 2.2.0 in addition). A PAS run on develop against an image of it (`metacare-inferno-pas:pas01-fix`, session fE1qMUtMCPW) gave the same ten failures. Keep the branch only as the record of what was tried.
-- The suppression branch has an image, `metacare-inferno-pas:pas01-suppress`, so one PAS run can prove or disprove it. Until that run passes, the fix is not proven.
+- Proven end to end: PAS on develop at 163b7f3 against `metacare-inferno-pas:pas01-suppress` (image 84dbe4ed8abe, branch at f91de1a), session 3C4bBxxz26y, 2026-11-15: 81 pass, 0 fail, 8 skip. Compared test by test with the official run (develop at 5dc674c, unmodified kit, 71 pass, 10 fail), exactly the ten PAS-01 tests changed, from fail to pass. The two runs tested different Clear commits (163b7f3 adds the CRD merge, PR #81), and no other PAS result changed. The patched run is in the report card as an evidence run, never as the official PAS result.
 - Targets: file the kit issue on GitHub with the kit maintainers' consent to suppress, and the dependency issue in HL7 Jira (Da Vinci PAS, mentioning CDex). The `inferno-issue` skill files only the GitHub part.
 - The first draft blamed the kit's validator package list alone. That was wrong; the package chain above is the cause.

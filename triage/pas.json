@@ -29,11 +29,11 @@
   },
   {
    "match": "_response_must_support_|response_must_support",
-   "reason": "The elements are in payer responses, which come from the kit's own simulated payer, not from Clear."
+   "reason": "Response must support checks that the kit's simulated payer responses do not exercise. The elements come from the kit's own responses, not from Clear. Under investigation."
   },
   {
    "match": "grandparent_excluded",
-   "reason": "No update that referenced an earlier update was sent in this run."
+   "reason": "No update that referenced an earlier update was sent in this run. Under investigation."
   },
   {
    "match": "registration",

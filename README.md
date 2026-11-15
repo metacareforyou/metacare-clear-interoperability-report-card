@@ -33,6 +33,8 @@ Totals count every test in the suite, including tests for options a run did not 
 
 ## Summary
 
+Runs of the unmodified kits at their pinned commits. These are the results.
+
 | Guide | Suite | Run date | Clear tested | Tests | Pass | Fail | Error | Skip | Not run | Attested by script |
 |---|---|---|---|---|---|---|---|---|---|---|
 | CRD 2.2.1 | `crd_client_v221` | 2026-11-15 22:17 UTC | `met-1694-crd-fhir-access` at `3f3727b`, [#81](https://github.com/metacareforyou/metacare-clear/pull/81) | 1417 | 615 | 3 | 0 | 4 | 795 | 7 |
@@ -40,6 +42,14 @@ Totals count every test in the suite, including tests for options a run did not 
 | DTR 2.2.0 (UDAP B2B client credentials) | `dtr_full_ehr_v220` | 2026-11-15 22:44 UTC | `met-1704-udap-client` at `355fcda`, [#84](https://github.com/metacareforyou/metacare-clear/pull/84) | 30 | 19 | 7 | 0 | 0 | 4 | 2 |
 | PAS 2.2.1 (SMART Backend Services) | `davinci_pas_client_suite_v221` | 2026-11-15 20:37 UTC | `develop` at `5dc674c`, [#78](https://github.com/metacareforyou/metacare-clear/pull/78), [#79](https://github.com/metacareforyou/metacare-clear/pull/79), [#83](https://github.com/metacareforyou/metacare-clear/pull/83), [#80](https://github.com/metacareforyou/metacare-clear/pull/80) | 270 | 71 | 10 | 0 | 8 | 181 | 9 |
 | PAS 2.2.1 (UDAP B2B client credentials) | `davinci_pas_client_suite_v221` | 2026-11-15 22:57 UTC | `met-1704-udap-client` at `355fcda`, [#84](https://github.com/metacareforyou/metacare-clear/pull/84) | 270 | 71 | 11 | 0 | 8 | 180 | 9 |
+
+### Evidence runs with a patched kit
+
+Each of these ran a kit with one MetaCare fix for a drafted defect. They show whether that defect is the only cause of the official failures. They are not results of the official kit.
+
+| Guide | Suite | Run date | Clear tested | Tests | Pass | Fail | Error | Skip | Not run | Attested by script |
+|---|---|---|---|---|---|---|---|---|---|---|
+| PAS 2.2.1 (SMART Backend Services), patched kit | `davinci_pas_client_suite_v221` | 2026-11-15 23:39 UTC | `develop` at `163b7f3` | 270 | 81 | 0 | 0 | 8 | 181 | 9 |
 
 ## Results by guide
 
@@ -169,8 +179,8 @@ Not run, skipped or omitted:
 |---|---|---|---|
 | UDAP B2B option. This run used SMART Backend Services. Clear's UDAP client is in progress. | not run | 90 | 1, 6, 7.1, 7.2, 7.3.1, 7.3.2, 7.3.3, 7.4.1, 7.4.2, 7.4.3, 7.5, 7.6 and 9 more |
 | No authentication option. Not in scope: Clear always authenticates to a payer. | not run | 85 | 10, 11.1, 11.2, 11.3.1, 11.3.2, 11.3.3, 11.4.1, 11.4.2, 11.4.3, 11.5, 11.6, 11.7 and 7 more |
-| The elements are in payer responses, which come from the kit's own simulated payer, not from Clear. | skip | 7 | 4.2.2, 4.2.4 |
-| No update that referenced an earlier update was sent in this run. | skip | 1 | 3.4.2 |
+| Response must support checks that the kit's simulated payer responses do not exercise. The elements come from the kit's own responses, not from Clear. Under investigation. | skip | 7 | 4.2.2, 4.2.4 |
+| No update that referenced an earlier update was sent in this run. Under investigation. | skip | 1 | 3.4.2 |
 | Registration tests for the UDAP and no authentication options, which this run did not use. | not run | 2 | 1 |
 | Manual attestation group. A person completes it in the Inferno interface; the run script does not. | not run | 4 | 16 |
 
@@ -193,6 +203,41 @@ Earlier runs:
 
 - 2026-11-15 11:58 UTC: 59 pass, 16 fail, Clear `inferno-rerun-1115` at `1b2402a`, [#78](https://github.com/metacareforyou/metacare-clear/pull/78), [#79](https://github.com/metacareforyou/metacare-clear/pull/79) ([results](results/pas/2026-11-15/results.json))
 
+### PAS 2.2.1 (SMART Backend Services), patched kit
+
+Kit [inferno-framework/davinci-pas-test-kit](https://github.com/inferno-framework/davinci-pas-test-kit) v0.16.0 `1db14e7`, suite `davinci_pas_client_suite_v221`, guide hl7.fhir.us.davinci-pas#2.2.1.
+
+> **Patched kit: not a result of the official kit.** The unmodified kit at the pinned commit, plus one validator suppression for PAS-01. Patch: [fix/v221-suppress-docreason-210-conflict](https://github.com/metacareforyou/davinci-pas-test-kit/tree/fix/v221-suppress-docreason-210-conflict) at `f91de1a` (image metacare-inferno-pas:pas01-suppress (84dbe4ed8abe)), the fix proposed in [PAS-01](defects/PAS-01.md). This run is evidence about that defect only. The official result for this guide and option is the row without "patched kit".
+
+Latest run: 2026-11-15 23:39 UTC, Clear `develop` at `163b7f3`. [Results](results/pas-patched/2026-11-15/results.json), [summary](results/pas-patched/2026-11-15/summary.json).
+PAS on develop 163b7f3, against the PAS kit with MetaCare's fork branch fix/v221-suppress-docreason-210-conflict (f91de1a), image metacare-inferno-pas:pas01-suppress (84dbe4ed8abe), session 3C4bBxxz26y. Not a run of the unmodified kit.
+
+Not run, skipped or omitted:
+
+| Reason | Result | Count | Groups |
+|---|---|---|---|
+| UDAP B2B option. This run used SMART Backend Services. Clear's UDAP client is in progress. | not run | 90 | 1, 6, 7.1, 7.2, 7.3.1, 7.3.2, 7.3.3, 7.4.1, 7.4.2, 7.4.3, 7.5, 7.6 and 9 more |
+| No authentication option. Not in scope: Clear always authenticates to a payer. | not run | 85 | 10, 11.1, 11.2, 11.3.1, 11.3.2, 11.3.3, 11.4.1, 11.4.2, 11.4.3, 11.5, 11.6, 11.7 and 7 more |
+| Response must support checks that the kit's simulated payer responses do not exercise. The elements come from the kit's own responses, not from Clear. Under investigation. | skip | 7 | 4.2.2, 4.2.4 |
+| No update that referenced an earlier update was sent in this run. Under investigation. | skip | 1 | 3.4.2 |
+| Registration tests for the UDAP and no authentication options, which this run did not use. | not run | 2 | 1 |
+| Manual attestation group. A person completes it in the Inferno interface; the run script does not. | not run | 4 | 16 |
+
+Released by script: 9 attestation(s) and 12 wait(s) in which Clear was told to send its requests.
+The attestations below were released from Clear's recorded state. They are not observed conformance, and a person must confirm them in the Inferno interface before results are submitted.
+
+| Test | Title | Result |
+|---|---|---|
+| 3.1.02 | PAS client displays the request as "approved" | pass |
+| 3.2.02 | PAS client displays the request as "denied" | pass |
+| 3.3.1.02 | PAS client displays the request as "pended" | pass |
+| 3.3.1.04 | PAS client displays the final decision as "approved" | pass |
+| 3.4.1.05 | PAS client handled the $submit responses without erroring | pass |
+| 3.5.02 | PAS client makes the details of the payer-authorized items available | pass |
+| 3.6.02 | PAS client handles the operation failure appropriately | pass |
+| 3.7.02 | PAS client handles the processing errors appropriately | pass |
+| 4.1.02 | PAS client handled the $submit and $inquire responses without erroring | pass |
+
 ### PAS 2.2.1 (UDAP B2B client credentials)
 
 Kit [inferno-framework/davinci-pas-test-kit](https://github.com/inferno-framework/davinci-pas-test-kit) v0.16.0 `1db14e7`, suite `davinci_pas_client_suite_v221`, guide hl7.fhir.us.davinci-pas#2.2.1.
@@ -213,8 +258,8 @@ Not run, skipped or omitted:
 |---|---|---|---|
 | SMART Backend Services option. This run used UDAP B2B client credentials; the SMART option has its own section. | not run | 89 | 1, 2, 3.1, 3.2, 3.3.1, 3.3.2, 3.3.3, 3.4.1, 3.4.2, 3.4.3, 3.5, 3.6 and 9 more |
 | No authentication option. Not in scope: Clear always authenticates to a payer. | not run | 85 | 10, 11.1, 11.2, 11.3.1, 11.3.2, 11.3.3, 11.4.1, 11.4.2, 11.4.3, 11.5, 11.6, 11.7 and 7 more |
-| The elements are in payer responses, which come from the kit's own simulated payer, not from Clear. | skip | 7 | 8.2.2, 8.2.4 |
-| No update that referenced an earlier update was sent in this run. | skip | 1 | 7.4.2 |
+| Response must support checks that the kit's simulated payer responses do not exercise. The elements come from the kit's own responses, not from Clear. Under investigation. | skip | 7 | 8.2.2, 8.2.4 |
+| No update that referenced an earlier update was sent in this run. Under investigation. | skip | 1 | 7.4.2 |
 | Registration tests for the other authentication option, which this run did not use. | not run | 2 | 1 |
 | Manual attestation group. A person completes it in the Inferno interface; the run script does not. | not run | 4 | 16 |
 
