@@ -214,7 +214,7 @@ function defectTable(defects) {
   for (const d of defects) {
     const fix = d.fork_branch && d.fork_branch !== 'none' ? `[${d.fork_branch.split('/tree/')[1] || 'branch'}](${d.fork_branch})` : 'proposed in the draft';
     const status = d.filed_url ? `[${d.status}](${d.filed_url})` : d.status;
-    out.push(`| [${d.id}](${d.file}) | ${d.target} | ${d.title} | ${status} | ${fix} |`);
+    out.push(`| [${d.id}](${d.file}) | ${d.target}${d.also_report ? `; also ${d.also_report}` : ''} | ${d.title} | ${status} | ${fix} |`);
   }
   return out;
 }
