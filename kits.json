@@ -38,6 +38,24 @@
    "suite": "davinci_pas_client_suite_v221",
    "ig": "hl7.fhir.us.davinci-pas#2.2.1"
   },
+  "pas-patched": {
+   "label": "PAS 2.2.1 (SMART Backend Services), patched kit",
+   "repository": "https://github.com/inferno-framework/davinci-pas-test-kit",
+   "tag": "v0.16.0",
+   "commit": "1db14e7899d0519138ed9ac72de8ad2c996c10ac",
+   "inferno_core": "1.4.6",
+   "suite": "davinci_pas_client_suite_v221",
+   "ig": "hl7.fhir.us.davinci-pas#2.2.1",
+   "base": "pas",
+   "patch": {
+    "repository": "https://github.com/metacareforyou/davinci-pas-test-kit",
+    "branch": "fix/v221-suppress-docreason-210-conflict",
+    "commit": "f91de1a",
+    "image": "metacare-inferno-pas:pas01-suppress (84dbe4ed8abe)",
+    "defect": "PAS-01",
+    "what": "The unmodified kit at the pinned commit, plus one validator suppression for PAS-01."
+   }
+  },
   "pas-udap": {
    "label": "PAS 2.2.1 (UDAP B2B client credentials)",
    "repository": "https://github.com/inferno-framework/davinci-pas-test-kit",

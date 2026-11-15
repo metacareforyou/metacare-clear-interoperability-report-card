@@ -66,6 +66,7 @@ function importRun(args) {
       pullRequests: args.pr.filter(Boolean),
       note: args.note || null
     },
+    kitPatch: kit.patch || null,
     importedAt: new Date().toISOString(),
     synthetic: true
   };
