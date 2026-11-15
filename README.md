@@ -161,7 +161,7 @@ Failures and errors:
 
 | Cause | Who fixes it | Result | Tests |
 |---|---|---|---|
-| Request Bundle validation. The kit's validator binds DTR intendedUse to CRD DocReason 2.1.0 but resolves its code system under CRD 2.2.1, so no intendedUse coding can pass (sessions 7jUEvG6rySX and bThRsP1UxVK on 2026-11-15). | [PAS-01](defects/PAS-01.md) | fail | 3.1.03, 3.2.03, 3.3.2.01, 3.4.3.01, 3.4.3.03, 3.4.3.05, 3.4.3.07, 3.5.03, 3.7.03, 4.1.03 |
+| Request Bundle validation. PAS 2.2.1 depends on CDex 2.1.0, which pulls in DTR 2.1.0 and CRD 2.1.0 beside CRD 2.2.1. The validator binds DTR intendedUse to CRD 2.1.0 DocReason but looks codes up under CRD 2.2.1, so no coding can pass. Clear cannot fix this. | [PAS-01](defects/PAS-01.md) | fail | 3.1.03, 3.2.03, 3.3.2.01, 3.4.3.01, 3.4.3.03, 3.4.3.05, 3.4.3.07, 3.5.03, 3.7.03, 4.1.03 |
 
 Not run, skipped or omitted:
 
@@ -205,7 +205,7 @@ Failures and errors:
 | Cause | Who fixes it | Result | Tests |
 |---|---|---|---|
 | The UDAP kit verifies the client assertion's signature with JWT.decode when the test runs, which also checks exp then, so a five minute assertion that was valid when it arrived fails as expired. | [UDAP-01](defects/UDAP-01.md) | fail | 15.01 |
-| Request Bundle validation. The kit's validator binds DTR intendedUse to CRD DocReason 2.1.0 but resolves its code system under CRD 2.2.1, so no intendedUse coding can pass (sessions 7jUEvG6rySX and bThRsP1UxVK on 2026-11-15). | [PAS-01](defects/PAS-01.md) | fail | 7.1.03, 7.2.03, 7.3.2.01, 7.4.3.01, 7.4.3.03, 7.4.3.05, 7.4.3.07, 7.5.03, 7.7.03, 8.1.03 |
+| Request Bundle validation. PAS 2.2.1 depends on CDex 2.1.0, which pulls in DTR 2.1.0 and CRD 2.1.0 beside CRD 2.2.1. The validator binds DTR intendedUse to CRD 2.1.0 DocReason but looks codes up under CRD 2.2.1, so no coding can pass. Clear cannot fix this. | [PAS-01](defects/PAS-01.md) | fail | 7.1.03, 7.2.03, 7.3.2.01, 7.4.3.01, 7.4.3.03, 7.4.3.05, 7.4.3.07, 7.5.03, 7.7.03, 8.1.03 |
 
 Not run, skipped or omitted:
 
@@ -245,7 +245,7 @@ The attestations below were released from Clear's recorded state. They are not o
 | [DTR-04](defects/DTR-04.md) | inferno-framework/davinci-dtr-test-kit | The adaptive workflow sends questionnaireAdaptive as valueBoolean, which dtr-questionnaire-adapt 2.2.0 does not allow | drafted, not filed | [fix/adaptive-extension-value-url](https://github.com/metacareforyou/davinci-dtr-test-kit/tree/fix/adaptive-extension-value-url) |
 | [DTR-05](defects/DTR-05.md) | inferno-framework/davinci-dtr-test-kit | Rendering-xhtml must support elements can never be observed, because templates lose primitive extensions | drafted, not filed | proposed in the draft |
 | [HL7-CRD-01](defects/HL7-CRD-01.md) | HL7 Jira, Da Vinci CRD (hl7.fhir.us.davinci-crd 2.2.1), with a note to inferno-framework/davinci-crd-test-kit | CRD 2.2.1 invariant crd-ci-q4 is empty, so fails, for auth-needed with doc-purpose withpa | drafted, not filed | proposed in the draft |
-| [PAS-01](defects/PAS-01.md) | inferno-framework/davinci-pas-test-kit | PAS v2.2.1 request validation binds DTR intendedUse to CRD DocReason 2.1.0 but resolves its codes under CRD 2.2.1, so no coding passes | drafted, not filed | [fix/v221-validator-loads-dtr-220](https://github.com/metacareforyou/davinci-pas-test-kit/tree/fix/v221-validator-loads-dtr-220) |
+| [PAS-01](defects/PAS-01.md) | inferno-framework/davinci-pas-test-kit; also HL7 Jira (Da Vinci PAS and CDex package dependencies) | PAS 2.2.1 request validation cannot pass DTR intendedUse, because CDex 2.1.0 pulls DTR 2.1.0 and CRD 2.1.0 in beside CRD 2.2.1 | drafted, not filed | [fix/v221-suppress-docreason-210-conflict](https://github.com/metacareforyou/davinci-pas-test-kit/tree/fix/v221-suppress-docreason-210-conflict) |
 | [UDAP-01](defects/UDAP-01.md) | inferno-framework/udap-security-test-kit | UDAP client token request verification fails a valid five minute client assertion as expired, because it checks exp when the test runs | drafted, not filed | [fix/token-assertion-exp-at-request-time](https://github.com/metacareforyou/udap-security-test-kit/tree/fix/token-assertion-exp-at-request-time) |
 | [USCORE-01](defects/USCORE-01.md) | inferno-framework/us-core-test-kit | Provenance revinclude search raises NameError on a 400, because the block names the patient id _patient_id | drafted, not filed | [fix/provenance-revinclude-patient-id](https://github.com/metacareforyou/us-core-test-kit/tree/fix/provenance-revinclude-patient-id) |
 

@@ -13,7 +13,7 @@
   },
   {
    "match": "request_bundle_validation|request_validation_|inquire_request_bundle_validation",
-   "cause": "Request Bundle validation. The kit's validator binds DTR intendedUse to CRD DocReason 2.1.0 but resolves its code system under CRD 2.2.1, so no intendedUse coding can pass (sessions 7jUEvG6rySX and bThRsP1UxVK on 2026-11-15).",
+   "cause": "Request Bundle validation. PAS 2.2.1 depends on CDex 2.1.0, which pulls in DTR 2.1.0 and CRD 2.1.0 beside CRD 2.2.1. The validator binds DTR intendedUse to CRD 2.1.0 DocReason but looks codes up under CRD 2.2.1, so no coding can pass. Clear cannot fix this.",
    "defect": "PAS-01"
   },
   {
