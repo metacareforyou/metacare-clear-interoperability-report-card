@@ -1,0 +1,290 @@
+{
+ "ticket": "MET-1688",
+ "kit": "crd",
+ "suite": "crd_client_v221",
+ "kitTag": "v0.15.0",
+ "kitCommit": "86be7f4bf6817960aa204f8ce134cea466bd73d2",
+ "ig": "hl7.fhir.us.davinci-crd#2.2.1",
+ "infernoCore": "1.6.0",
+ "generatedAt": "2026-11-15T22:17:12.972Z",
+ "synthetic": true,
+ "session": "[redacted]",
+ "totals": {
+  "tests": 1417,
+  "pass": 615,
+  "fail": 3,
+  "skip": 4,
+  "omit": 0,
+  "error": 0,
+  "notRun": 795,
+  "requiredFailing": 2
+ },
+ "scriptReleases": [
+  {
+   "test": "crd_client_v221-crd_v221_client_hook_invocation-crd_v221_client_registration-crd_v221_client_service_registration_attestation",
+   "how": "attested by script true",
+   "detail": "both CRD routes recorded on the kit discovery endpoints with CDS client metacare-clear-conformance-3ee6220d"
+  },
+  {
+   "test": "crd_client_v221-crd_v221_client_hook_invocation-crd_v221_client_hooks-crd_v221_client_order_sign-crd_v221_order_sign_interaction-crd_v221_order_sign_request",
+   "how": "released at 2026-11-15T22:01:37.353Z",
+   "detail": "Clear sent order-sign on both routes: {\"clear-0842f16075cdddb1205aa361\":{\"http\":200,\"state\":\"completed\",\"error\":null,\"hook\":\"order-sign\",\"outcome\":\"not-required\",\"requirement\":\"not-required\",\"cards\":2,\"coverage\":1,\"dataAccess\":true,\"omittedPrefetch\":[],\"sentAt\":\"2026-11-15T22:00:36.317Z\",\"doneAt\":\"2026-11-15T22:01:27.653Z\"},\"clear-7dca7c108d3b0e5e3f8f5a14\":{\"http\":200,\"state\":\"completed\",\"error\":null,\"hook\":\"order-sign\",\"outcome\":\"not-required\",\"requirement\":\"not-required\",\"cards\":2,\"coverage\":1,\"dataAccess\":true,\"omittedPrefetch\":[],\"sentAt\":\"2026-11-15T22:01:27.653Z\",\"doneAt\":\"2026-11-15T22:01:36.115Z\"}}"
+  },
+  {
+   "test": "crd_client_v221-crd_v221_client_hook_invocation-crd_v221_client_hooks-crd_v221_client_order_sign-crd_v221_order_sign_responses-crd_v221_card_display_attest_test",
+   "how": "attested by script true",
+   "detail": "from Clear's recorded state: {\"clear-0842f16075cdddb1205aa361\":{\"http\":200,\"state\":\"completed\",\"error\":null,\"hook\":\"order-sign\",\"outcome\":\"not-required\",\"requirement\":\"not-required\",\"cards\":2,\"coverage\":1,\"dataAccess\":true,\"omittedPrefetch\":[],\"sentAt\":\"2026-11-15T22:00:36.317Z\",\"doneAt\":\"2026-11-15T22:01:27.653Z\"},\"clear-7dca7c108d3b0e5e3f8f5a14\":{\"http\":200,\"state\":\"completed\",\"error\":null,\"hook\":\"order-sign\",\"outcome\":\"not-required\",\"requirement\":\"not-required\",\"cards\":2,\"coverage\":1,\"dataAccess\":true,\"omittedPrefetch\":[],\"sentAt\":\"2026-11-15T22:01:27.653Z\",\"doneAt\":\"2026-11-15T22:01:36.115Z\"}}"
+  },
+  {
+   "test": "crd_client_v221-crd_v221_client_hook_invocation-crd_v221_client_hooks-crd_v221_client_order_select-crd_v221_order_select_interaction-crd_v221_order_select_request",
+   "how": "released at 2026-11-15T22:10:28.827Z",
+   "detail": "Clear sent order-select on both routes: {\"clear-0842f16075cdddb1205aa361\":{\"http\":200,\"state\":\"completed\",\"error\":null,\"hook\":\"order-select\",\"outcome\":\"not-required\",\"requirement\":\"not-required\",\"cards\":2,\"coverage\":1,\"dataAccess\":true,\"omittedPrefetch\":[],\"sentAt\":\"2026-11-15T22:10:20.504Z\",\"doneAt\":\"2026-11-15T22:10:26.965Z\"},\"clear-7dca7c108d3b0e5e3f8f5a14\":{\"http\":200,\"state\":\"completed\",\"error\":null,\"hook\":\"order-select\",\"outcome\":\"not-required\",\"requirement\":\"not-required\",\"cards\":2,\"coverage\":1,\"dataAccess\":true,\"omittedPrefetch\":[],\"sentAt\":\"2026-11-15T22:10:26.965Z\",\"doneAt\":\"2026-11-15T22:10:28.672Z\"}}"
+  },
+  {
+   "test": "crd_client_v221-crd_v221_client_hook_invocation-crd_v221_client_hooks-crd_v221_client_order_select-crd_v221_order_select_responses-crd_v221_card_display_attest_test",
+   "how": "attested by script true",
+   "detail": "from Clear's recorded state: {\"clear-0842f16075cdddb1205aa361\":{\"http\":200,\"state\":\"completed\",\"error\":null,\"hook\":\"order-select\",\"outcome\":\"not-required\",\"requirement\":\"not-required\",\"cards\":2,\"coverage\":1,\"dataAccess\":true,\"omittedPrefetch\":[],\"sentAt\":\"2026-11-15T22:10:20.504Z\",\"doneAt\":\"2026-11-15T22:10:26.965Z\"},\"clear-7dca7c108d3b0e5e3f8f5a14\":{\"http\":200,\"state\":\"completed\",\"error\":null,\"hook\":\"order-select\",\"outcome\":\"not-required\",\"requirement\":\"not-required\",\"cards\":2,\"coverage\":1,\"dataAccess\":true,\"omittedPrefetch\":[],\"sentAt\":\"2026-11-15T22:10:26.965Z\",\"doneAt\":\"2026-11-15T22:10:28.672Z\"}}"
+  },
+  {
+   "test": "crd_client_v221-crd_v221_client_hook_invocation-crd_v221_client_hooks-crd_v221_client_order_dispatch-crd_v221_order_dispatch_interaction-crd_v221_order_dispatch_request",
+   "how": "released at 2026-11-15T22:10:38.902Z",
+   "detail": "Clear sent order-dispatch on both routes: {\"clear-0842f16075cdddb1205aa361\":{\"http\":200,\"state\":\"completed\",\"error\":null,\"hook\":\"order-dispatch\",\"outcome\":\"not-required\",\"requirement\":\"not-required\",\"cards\":2,\"coverage\":1,\"dataAccess\":true,\"omittedPrefetch\":[],\"sentAt\":\"2026-11-15T22:10:36.645Z\",\"doneAt\":\"2026-11-15T22:10:38.038Z\"},\"clear-7dca7c108d3b0e5e3f8f5a14\":{\"http\":200,\"state\":\"completed\",\"error\":null,\"hook\":\"order-dispatch\",\"outcome\":\"not-required\",\"requirement\":\"not-required\",\"cards\":2,\"coverage\":1,\"dataAccess\":true,\"omittedPrefetch\":[],\"sentAt\":\"2026-11-15T22:10:38.038Z\",\"doneAt\":\"2026-11-15T22:10:38.859Z\"}}"
+  },
+  {
+   "test": "crd_client_v221-crd_v221_client_hook_invocation-crd_v221_client_hooks-crd_v221_client_order_dispatch-crd_v221_order_dispatch_responses-crd_v221_card_display_attest_test",
+   "how": "attested by script true",
+   "detail": "from Clear's recorded state: {\"clear-0842f16075cdddb1205aa361\":{\"http\":200,\"state\":\"completed\",\"error\":null,\"hook\":\"order-dispatch\",\"outcome\":\"not-required\",\"requirement\":\"not-required\",\"cards\":2,\"coverage\":1,\"dataAccess\":true,\"omittedPrefetch\":[],\"sentAt\":\"2026-11-15T22:10:36.645Z\",\"doneAt\":\"2026-11-15T22:10:38.038Z\"},\"clear-7dca7c108d3b0e5e3f8f5a14\":{\"http\":200,\"state\":\"completed\",\"error\":null,\"hook\":\"order-dispatch\",\"outcome\":\"not-required\",\"requirement\":\"not-required\",\"cards\":2,\"coverage\":1,\"dataAccess\":true,\"omittedPrefetch\":[],\"sentAt\":\"2026-11-15T22:10:38.038Z\",\"doneAt\":\"2026-11-15T22:10:38.859Z\"}}"
+  },
+  {
+   "test": "crd_client_v221-crd_v221_client_hook_invocation-crd_v221_client_hooks-crd_v221_client_appointment_book-crd_v221_appointment_book_interaction-crd_v221_appointment_book_request",
+   "how": "released at 2026-11-15T22:11:00.590Z",
+   "detail": "Clear sent appointment-book on both routes: {\"clear-0842f16075cdddb1205aa361\":{\"http\":200,\"state\":\"completed\",\"error\":null,\"hook\":\"appointment-book\",\"outcome\":\"not-required\",\"requirement\":\"not-required\",\"cards\":2,\"coverage\":1,\"dataAccess\":true,\"omittedPrefetch\":[],\"sentAt\":\"2026-11-15T22:10:54.446Z\",\"doneAt\":\"2026-11-15T22:10:58.465Z\"},\"clear-7dca7c108d3b0e5e3f8f5a14\":{\"http\":200,\"state\":\"completed\",\"error\":null,\"hook\":\"appointment-book\",\"outcome\":\"not-required\",\"requirement\":\"not-required\",\"cards\":2,\"coverage\":1,\"dataAccess\":true,\"omittedPrefetch\":[],\"sentAt\":\"2026-11-15T22:10:58.465Z\",\"doneAt\":\"2026-11-15T22:11:00.408Z\"}}"
+  },
+  {
+   "test": "crd_client_v221-crd_v221_client_hook_invocation-crd_v221_client_hooks-crd_v221_client_appointment_book-crd_v221_appointment_book_responses-crd_v221_card_display_attest_test",
+   "how": "attested by script true",
+   "detail": "from Clear's recorded state: {\"clear-0842f16075cdddb1205aa361\":{\"http\":200,\"state\":\"completed\",\"error\":null,\"hook\":\"appointment-book\",\"outcome\":\"not-required\",\"requirement\":\"not-required\",\"cards\":2,\"coverage\":1,\"dataAccess\":true,\"omittedPrefetch\":[],\"sentAt\":\"2026-11-15T22:10:54.446Z\",\"doneAt\":\"2026-11-15T22:10:58.465Z\"},\"clear-7dca7c108d3b0e5e3f8f5a14\":{\"http\":200,\"state\":\"completed\",\"error\":null,\"hook\":\"appointment-book\",\"outcome\":\"not-required\",\"requirement\":\"not-required\",\"cards\":2,\"coverage\":1,\"dataAccess\":true,\"omittedPrefetch\":[],\"sentAt\":\"2026-11-15T22:10:58.465Z\",\"doneAt\":\"2026-11-15T22:11:00.408Z\"}}"
+  },
+  {
+   "test": "crd_client_v221-crd_v221_client_hook_invocation-crd_v221_client_hooks-crd_v221_client_encounter_start-crd_v221_encounter_start_interaction-crd_v221_encounter_start_request",
+   "how": "released at 2026-11-15T22:11:15.824Z",
+   "detail": "Clear sent encounter-start on both routes: {\"clear-0842f16075cdddb1205aa361\":{\"http\":200,\"state\":\"completed\",\"error\":null,\"hook\":\"encounter-start\",\"outcome\":\"not-required\",\"requirement\":\"not-required\",\"cards\":2,\"coverage\":1,\"dataAccess\":true,\"omittedPrefetch\":[],\"sentAt\":\"2026-11-15T22:11:11.166Z\",\"doneAt\":\"2026-11-15T22:11:13.769Z\"},\"clear-7dca7c108d3b0e5e3f8f5a14\":{\"http\":200,\"state\":\"completed\",\"error\":null,\"hook\":\"encounter-start\",\"outcome\":\"not-required\",\"requirement\":\"not-required\",\"cards\":2,\"coverage\":1,\"dataAccess\":true,\"omittedPrefetch\":[],\"sentAt\":\"2026-11-15T22:11:13.769Z\",\"doneAt\":\"2026-11-15T22:11:15.506Z\"}}"
+  },
+  {
+   "test": "crd_client_v221-crd_v221_client_hook_invocation-crd_v221_client_hooks-crd_v221_client_encounter_start-crd_v221_encounter_start_responses-crd_v221_card_display_attest_test",
+   "how": "attested by script true",
+   "detail": "from Clear's recorded state: {\"clear-0842f16075cdddb1205aa361\":{\"http\":200,\"state\":\"completed\",\"error\":null,\"hook\":\"encounter-start\",\"outcome\":\"not-required\",\"requirement\":\"not-required\",\"cards\":2,\"coverage\":1,\"dataAccess\":true,\"omittedPrefetch\":[],\"sentAt\":\"2026-11-15T22:11:11.166Z\",\"doneAt\":\"2026-11-15T22:11:13.769Z\"},\"clear-7dca7c108d3b0e5e3f8f5a14\":{\"http\":200,\"state\":\"completed\",\"error\":null,\"hook\":\"encounter-start\",\"outcome\":\"not-required\",\"requirement\":\"not-required\",\"cards\":2,\"coverage\":1,\"dataAccess\":true,\"omittedPrefetch\":[],\"sentAt\":\"2026-11-15T22:11:13.769Z\",\"doneAt\":\"2026-11-15T22:11:15.506Z\"}}"
+  },
+  {
+   "test": "crd_client_v221-crd_v221_client_hook_invocation-crd_v221_client_hooks-crd_v221_client_encounter_discharge-crd_v221_encounter_discharge_interaction-crd_v221_encounter_discharge_request",
+   "how": "released at 2026-11-15T22:11:34.792Z",
+   "detail": "Clear sent encounter-discharge on both routes: {\"clear-0842f16075cdddb1205aa361\":{\"http\":200,\"state\":\"completed\",\"error\":null,\"hook\":\"encounter-discharge\",\"outcome\":\"not-required\",\"requirement\":\"not-required\",\"cards\":2,\"coverage\":1,\"dataAccess\":true,\"omittedPrefetch\":[],\"sentAt\":\"2026-11-15T22:11:29.562Z\",\"doneAt\":\"2026-11-15T22:11:32.351Z\"},\"clear-7dca7c108d3b0e5e3f8f5a14\":{\"http\":200,\"state\":\"completed\",\"error\":null,\"hook\":\"encounter-discharge\",\"outcome\":\"not-required\",\"requirement\":\"not-required\",\"cards\":2,\"coverage\":1,\"dataAccess\":true,\"omittedPrefetch\":[],\"sentAt\":\"2026-11-15T22:11:32.351Z\",\"doneAt\":\"2026-11-15T22:11:34.578Z\"}}"
+  },
+  {
+   "test": "crd_client_v221-crd_v221_client_hook_invocation-crd_v221_client_hooks-crd_v221_client_encounter_discharge-crd_v221_encounter_discharge_responses-crd_v221_card_display_attest_test",
+   "how": "attested by script true",
+   "detail": "from Clear's recorded state: {\"clear-0842f16075cdddb1205aa361\":{\"http\":200,\"state\":\"completed\",\"error\":null,\"hook\":\"encounter-discharge\",\"outcome\":\"not-required\",\"requirement\":\"not-required\",\"cards\":2,\"coverage\":1,\"dataAccess\":true,\"omittedPrefetch\":[],\"sentAt\":\"2026-11-15T22:11:29.562Z\",\"doneAt\":\"2026-11-15T22:11:32.351Z\"},\"clear-7dca7c108d3b0e5e3f8f5a14\":{\"http\":200,\"state\":\"completed\",\"error\":null,\"hook\":\"encounter-discharge\",\"outcome\":\"not-required\",\"requirement\":\"not-required\",\"cards\":2,\"coverage\":1,\"dataAccess\":true,\"omittedPrefetch\":[],\"sentAt\":\"2026-11-15T22:11:32.351Z\",\"doneAt\":\"2026-11-15T22:11:34.578Z\"}}"
+  },
+  {
+   "test": "fhir_api",
+   "how": "local lifespan override",
+   "detail": "the local crd-payer-inferno client issued this one token with a 1800 s lifespan, then went back to 300 s; tenants keep 300 s"
+  },
+  {
+   "test": "fhir_api",
+   "how": "token",
+   "detail": "fresh payer token, expires in 1800 s"
+  }
+ ],
+ "clearEvidence": {
+  "cases": {
+   "complete": "clear-7dca7c108d3b0e5e3f8f5a14",
+   "subset": "clear-0842f16075cdddb1205aa361",
+   "orders": {
+    "clear-7dca7c108d3b0e5e3f8f5a14": "DeviceRequest/clear-7dca7c108d3b0e5e3f8f5a14-ref-documentation-requir",
+    "clear-0842f16075cdddb1205aa361": "DeviceRequest/clear-0842f16075cdddb1205aa361-ref-documentation-requir"
+   }
+  },
+  "order-sign": {
+   "clear-0842f16075cdddb1205aa361": {
+    "http": 200,
+    "state": "completed",
+    "error": null,
+    "hook": "order-sign",
+    "outcome": "not-required",
+    "requirement": "not-required",
+    "cards": 2,
+    "coverage": 1,
+    "dataAccess": true,
+    "omittedPrefetch": [],
+    "sentAt": "2026-11-15T22:00:36.317Z",
+    "doneAt": "2026-11-15T22:01:27.653Z"
+   },
+   "clear-7dca7c108d3b0e5e3f8f5a14": {
+    "http": 200,
+    "state": "completed",
+    "error": null,
+    "hook": "order-sign",
+    "outcome": "not-required",
+    "requirement": "not-required",
+    "cards": 2,
+    "coverage": 1,
+    "dataAccess": true,
+    "omittedPrefetch": [],
+    "sentAt": "2026-11-15T22:01:27.653Z",
+    "doneAt": "2026-11-15T22:01:36.115Z"
+   }
+  },
+  "order-select": {
+   "clear-0842f16075cdddb1205aa361": {
+    "http": 200,
+    "state": "completed",
+    "error": null,
+    "hook": "order-select",
+    "outcome": "not-required",
+    "requirement": "not-required",
+    "cards": 2,
+    "coverage": 1,
+    "dataAccess": true,
+    "omittedPrefetch": [],
+    "sentAt": "2026-11-15T22:10:20.504Z",
+    "doneAt": "2026-11-15T22:10:26.965Z"
+   },
+   "clear-7dca7c108d3b0e5e3f8f5a14": {
+    "http": 200,
+    "state": "completed",
+    "error": null,
+    "hook": "order-select",
+    "outcome": "not-required",
+    "requirement": "not-required",
+    "cards": 2,
+    "coverage": 1,
+    "dataAccess": true,
+    "omittedPrefetch": [],
+    "sentAt": "2026-11-15T22:10:26.965Z",
+    "doneAt": "2026-11-15T22:10:28.672Z"
+   }
+  },
+  "order-dispatch": {
+   "clear-0842f16075cdddb1205aa361": {
+    "http": 200,
+    "state": "completed",
+    "error": null,
+    "hook": "order-dispatch",
+    "outcome": "not-required",
+    "requirement": "not-required",
+    "cards": 2,
+    "coverage": 1,
+    "dataAccess": true,
+    "omittedPrefetch": [],
+    "sentAt": "2026-11-15T22:10:36.645Z",
+    "doneAt": "2026-11-15T22:10:38.038Z"
+   },
+   "clear-7dca7c108d3b0e5e3f8f5a14": {
+    "http": 200,
+    "state": "completed",
+    "error": null,
+    "hook": "order-dispatch",
+    "outcome": "not-required",
+    "requirement": "not-required",
+    "cards": 2,
+    "coverage": 1,
+    "dataAccess": true,
+    "omittedPrefetch": [],
+    "sentAt": "2026-11-15T22:10:38.038Z",
+    "doneAt": "2026-11-15T22:10:38.859Z"
+   }
+  },
+  "appointment-book": {
+   "clear-0842f16075cdddb1205aa361": {
+    "http": 200,
+    "state": "completed",
+    "error": null,
+    "hook": "appointment-book",
+    "outcome": "not-required",
+    "requirement": "not-required",
+    "cards": 2,
+    "coverage": 1,
+    "dataAccess": true,
+    "omittedPrefetch": [],
+    "sentAt": "2026-11-15T22:10:54.446Z",
+    "doneAt": "2026-11-15T22:10:58.465Z"
+   },
+   "clear-7dca7c108d3b0e5e3f8f5a14": {
+    "http": 200,
+    "state": "completed",
+    "error": null,
+    "hook": "appointment-book",
+    "outcome": "not-required",
+    "requirement": "not-required",
+    "cards": 2,
+    "coverage": 1,
+    "dataAccess": true,
+    "omittedPrefetch": [],
+    "sentAt": "2026-11-15T22:10:58.465Z",
+    "doneAt": "2026-11-15T22:11:00.408Z"
+   }
+  },
+  "encounter-start": {
+   "clear-0842f16075cdddb1205aa361": {
+    "http": 200,
+    "state": "completed",
+    "error": null,
+    "hook": "encounter-start",
+    "outcome": "not-required",
+    "requirement": "not-required",
+    "cards": 2,
+    "coverage": 1,
+    "dataAccess": true,
+    "omittedPrefetch": [],
+    "sentAt": "2026-11-15T22:11:11.166Z",
+    "doneAt": "2026-11-15T22:11:13.769Z"
+   },
+   "clear-7dca7c108d3b0e5e3f8f5a14": {
+    "http": 200,
+    "state": "completed",
+    "error": null,
+    "hook": "encounter-start",
+    "outcome": "not-required",
+    "requirement": "not-required",
+    "cards": 2,
+    "coverage": 1,
+    "dataAccess": true,
+    "omittedPrefetch": [],
+    "sentAt": "2026-11-15T22:11:13.769Z",
+    "doneAt": "2026-11-15T22:11:15.506Z"
+   }
+  },
+  "encounter-discharge": {
+   "clear-0842f16075cdddb1205aa361": {
+    "http": 200,
+    "state": "completed",
+    "error": null,
+    "hook": "encounter-discharge",
+    "outcome": "not-required",
+    "requirement": "not-required",
+    "cards": 2,
+    "coverage": 1,
+    "dataAccess": true,
+    "omittedPrefetch": [],
+    "sentAt": "2026-11-15T22:11:29.562Z",
+    "doneAt": "2026-11-15T22:11:32.351Z"
+   },
+   "clear-7dca7c108d3b0e5e3f8f5a14": {
+    "http": 200,
+    "state": "completed",
+    "error": null,
+    "hook": "encounter-discharge",
+    "outcome": "not-required",
+    "requirement": "not-required",
+    "cards": 2,
+    "coverage": 1,
+    "dataAccess": true,
+    "omittedPrefetch": [],
+    "sentAt": "2026-11-15T22:11:32.351Z",
+    "doneAt": "2026-11-15T22:11:34.578Z"
+   }
+  }
+ },
+ "stopped": null
+}

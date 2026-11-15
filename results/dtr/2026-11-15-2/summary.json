@@ -1,0 +1,129 @@
+{
+ "ticket": "MET-1688",
+ "kit": "dtr",
+ "suite": "dtr_full_ehr_v220",
+ "kitTag": "v0.18.1",
+ "kitCommit": "14dde0e5adc9d355c6ebdfe156839adbac20a781",
+ "ig": "hl7.fhir.us.davinci-dtr#2.2.0",
+ "infernoCore": "1.6.0",
+ "generatedAt": "2026-11-15T22:41:33.300Z",
+ "synthetic": true,
+ "session": "[redacted]",
+ "totals": {
+  "tests": 30,
+  "pass": 21,
+  "fail": 4,
+  "skip": 0,
+  "omit": 0,
+  "error": 0,
+  "notRun": 5,
+  "requiredFailing": 4
+ },
+ "scriptReleases": [
+  {
+   "test": "dtr_full_ehr_v220-dtr_client_payer_registration-dtr_client_payer_reg_smart_config_display",
+   "how": "released",
+   "detail": "registration confirmed: client id and JWKS supplied"
+  },
+  {
+   "test": "dtr_full_ehr_v220-dtr_full_ehr_v220_questionnaire_workflows-dtr_full_ehr_v220_workflow_standard-Group01-dtr_full_ehr_v220_interaction_wait",
+   "how": "released",
+   "detail": "Clear exchanged and saved the response: {\"questionnaire\":\"urn:inferno:dtr-test-kit:dinner-order-static\",\"questions\":7,\"prepopulated\":3,\"notExecuted\":0,\"adaptiveRounds\":0,\"reviewHttp\":200,\"reviewError\":null,\"responseStatus\":\"completed\",\"answers\":6,\"origins\":[\"manual\",\"auto\"]}"
+  },
+  {
+   "test": "dtr_full_ehr_v220-dtr_full_ehr_v220_questionnaire_workflows-dtr_full_ehr_v220_workflow_standard-Group01-dtr_full_ehr_v220_ui_display_and_interaction",
+   "how": "attested by script true",
+   "detail": "from Clear's recorded state: 7 questions rendered, 3 prepopulated, response completed"
+  },
+  {
+   "test": "dtr_full_ehr_v220-dtr_full_ehr_v220_questionnaire_workflows-dtr_full_ehr_v220_workflow_adaptive-Group01-dtr_full_ehr_v220_interaction_wait",
+   "how": "released",
+   "detail": "Clear exchanged and saved the response: {\"questionnaire\":\"urn:inferno:dtr-test-kit:dinner-order-adaptive\",\"questions\":6,\"prepopulated\":0,\"notExecuted\":0,\"adaptiveRounds\":4,\"adaptiveComplete\":true,\"reviewHttp\":200,\"reviewError\":null,\"responseStatus\":\"completed\",\"answers\":6,\"origins\":[\"manual\"]}"
+  },
+  {
+   "test": "dtr_full_ehr_v220-dtr_full_ehr_v220_questionnaire_workflows-dtr_full_ehr_v220_workflow_adaptive-Group01-dtr_full_ehr_v220_ui_display_and_interaction",
+   "how": "attested by script true",
+   "detail": "from Clear's recorded state: 6 questions rendered, 0 prepopulated, response completed"
+  },
+  {
+   "test": "dtr_full_ehr_v220-dtr_full_ehr_v220_coverage-dtr_full_ehr_v220_additional_qustionnaires_for_ms-Group01-dtr_full_ehr_v220_interaction_wait",
+   "how": "released",
+   "detail": "Clear exchanged and saved both must support questionnaires: {\"standard\":{\"caseId\":\"clear-fb18c4d2eddcd428c44435e0\",\"questionnaire\":\"https://metacare.ai/fhir/clear/conformance/synthetic/Questionnaire/dtr-must-support-standard|1.0.0\",\"prepopulated\":1,\"calculated\":0,\"sandbox\":false,\"adaptiveRounds\":0,\"questions\":17,\"enabled\":16,\"notEnabled\":[\"std-notes\"],\"answers\":10,\"reviewHttp\":200,\"reviewError\":null,\"responseStatus\":\"completed\"},\"adaptive\":{\"caseId\":\"clear-9f6074809c94aecec13691d6\",\"questionnaire\":\"https://metacare.ai/fhir/clear/conformance/synthetic/Questionnaire/dtr-must-support-adaptive|1.0.0\",\"prepopulated\":0,\"calculated\":0,\"sandbox\":false,\"adaptiveRounds\":3,\"adaptiveComplete\":true,\"questions\":4,\"enabled\":4,\"notEnabled\":[],\"answers\":4,\"reviewHttp\":200,\"reviewError\":null,\"responseStatus\":\"completed\"}}"
+  },
+  {
+   "test": "dtr_full_ehr_v220-dtr_full_ehr_v220_coverage-dtr_full_ehr_v220_additional_qustionnaires_for_ms-Group01-dtr_full_ehr_v220_ui_display_and_interaction",
+   "how": "attested by script true",
+   "detail": "from Clear's recorded state: standard completed (16 of 17 questions enabled), adaptive completed after 3 rounds"
+  }
+ ],
+ "clearEvidence": {
+  "workflow_standard": {
+   "caseId": "clear-0842f16075cdddb1205aa361",
+   "questionnaire": "urn:inferno:dtr-test-kit:dinner-order-static",
+   "questions": 7,
+   "prepopulated": 3,
+   "notExecuted": 0,
+   "adaptiveRounds": 0,
+   "reviewHttp": 200,
+   "reviewError": null,
+   "responseStatus": "completed",
+   "answers": 6,
+   "origins": [
+    "manual",
+    "auto"
+   ]
+  },
+  "workflow_adaptive": {
+   "caseId": "clear-7dca7c108d3b0e5e3f8f5a14",
+   "questionnaire": "urn:inferno:dtr-test-kit:dinner-order-adaptive",
+   "questions": 6,
+   "prepopulated": 0,
+   "notExecuted": 0,
+   "adaptiveRounds": 4,
+   "adaptiveComplete": true,
+   "reviewHttp": 200,
+   "reviewError": null,
+   "responseStatus": "completed",
+   "answers": 6,
+   "origins": [
+    "manual"
+   ]
+  },
+  "additionalMustSupport": {
+   "standard": {
+    "caseId": "clear-fb18c4d2eddcd428c44435e0",
+    "questionnaire": "https://metacare.ai/fhir/clear/conformance/synthetic/Questionnaire/dtr-must-support-standard|1.0.0",
+    "prepopulated": 1,
+    "calculated": 0,
+    "sandbox": false,
+    "adaptiveRounds": 0,
+    "questions": 17,
+    "enabled": 16,
+    "notEnabled": [
+     "std-notes"
+    ],
+    "answers": 10,
+    "reviewHttp": 200,
+    "reviewError": null,
+    "responseStatus": "completed"
+   },
+   "adaptive": {
+    "caseId": "clear-9f6074809c94aecec13691d6",
+    "questionnaire": "https://metacare.ai/fhir/clear/conformance/synthetic/Questionnaire/dtr-must-support-adaptive|1.0.0",
+    "prepopulated": 0,
+    "calculated": 0,
+    "sandbox": false,
+    "adaptiveRounds": 3,
+    "adaptiveComplete": true,
+    "questions": 4,
+    "enabled": 4,
+    "notEnabled": [],
+    "answers": 4,
+    "reviewHttp": 200,
+    "reviewError": null,
+    "responseStatus": "completed"
+   }
+  }
+ },
+ "stopped": null
+}

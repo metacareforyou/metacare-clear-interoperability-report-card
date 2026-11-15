@@ -1,0 +1,32 @@
+{
+ "about": "Why each DTR test in the UDAP B2B option that did not pass did not pass. Rules are matched in order against the test id (and the message when given); the first match wins.",
+ "failures": [
+  {
+   "match": "udap_client_registration_cc_verification$|udap_client_token_request_cc_verification$|udap_client_registration_interaction$",
+   "cause": "The kit checks the UDAP registration and client assertion aud against the v2.0.1 suite endpoints, not the v2.2.0 endpoints it advertises.",
+   "defect": "DTR-02"
+  },
+  {
+   "match": "qp_response_validation$",
+   "cause": "The kit's own $questionnaire-package response fails the kit's validation: no QuestionnaireResponse entry, and for the adaptive package no Bundle type and no entry fullUrl.",
+   "defect": "DTR-03"
+  },
+  {
+   "match": "questionnaire_base_must_support$",
+   "cause": "Two elements (item text and answer option rendering-xhtml) cannot be observed by the kit. The others are not in the questionnaires used in this run; Clear supplies questionnaires that hold them.",
+   "defect": "DTR-05",
+   "clear": "MET-1703"
+  },
+  {
+   "match": "questionnaire_(adaptive|standard)_must_support$",
+   "cause": "The questionnaires used in this run do not hold every must support element. This run's branch (PR #84) does not include PR #82, which supplies questionnaires that hold them.",
+   "clear": "MET-1703"
+  }
+ ],
+ "notRun": [
+  {
+   "match": "smart",
+   "reason": "SMART Backend Services option. This run used UDAP B2B client credentials; the SMART option has its own section."
+  }
+ ]
+}

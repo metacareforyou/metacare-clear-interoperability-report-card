@@ -44,7 +44,8 @@ function importRun(args) {
 
   const summary = JSON.parse(readFileSync(join(args.from, 'summary.json'), 'utf8'));
   const results = JSON.parse(readFileSync(join(args.from, 'results.json'), 'utf8'));
-  if (summary.kit !== args.kit) fail(`summary.json is for kit ${summary.kit}, not ${args.kit}`);
+  // A security option of a kit (for example dtr-udap) names the kit it runs in kits.json as base.
+  if (summary.kit !== (kit.base || args.kit)) fail(`summary.json is for kit ${summary.kit}, not ${kit.base || args.kit}`);
   if (summary.kitCommit !== kit.commit) {
     fail(`run used kit commit ${summary.kitCommit}; kits.json pins ${kit.commit}. Update kits.json first.`);
   }
