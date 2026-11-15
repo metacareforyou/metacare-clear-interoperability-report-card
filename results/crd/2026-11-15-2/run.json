@@ -1,0 +1,16 @@
+{
+ "kit": "crd",
+ "date": "2026-11-15-2",
+ "generatedAt": "2026-11-15T21:00:46.247Z",
+ "clear": {
+  "repository": "https://github.com/metacareforyou/metacare-clear",
+  "branch": "met-1694-crd-fhir-access",
+  "commit": "be40fa2",
+  "pullRequests": [
+   81
+  ],
+  "note": "Stack: PR #81 at be40fa2 with metacare-home-recovery PRs #990 and #991 (local Keycloak, HAPI and the tenant wall), so the payer reads Clear's synthetic records through the tenant's HAPI server."
+ },
+ "importedAt": "2026-11-15T21:02:50.553Z",
+ "synthetic": true
+}

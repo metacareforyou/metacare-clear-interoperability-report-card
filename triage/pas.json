@@ -8,8 +8,8 @@
   },
   {
    "match": "request_bundle_validation|request_validation_|inquire_request_bundle_validation",
-   "cause": "Request Bundle validation errors. The validator messages are not kept in results.json; Clear is working through them.",
-   "clear": "MET-1705"
+   "cause": "Request Bundle validation. The kit's validator binds DTR intendedUse to CRD DocReason 2.1.0 but resolves its code system under CRD 2.2.1, so no intendedUse coding can pass (sessions 7jUEvG6rySX and bThRsP1UxVK on 2026-11-15).",
+   "defect": "PAS-01"
   },
   {
    "match": "must_support",
