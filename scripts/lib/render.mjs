@@ -111,6 +111,10 @@ function renderKit(root, kitId, kit, defects) {
   out.push(`### ${kit.label}`);
   out.push('');
   out.push(`Kit [${kit.repository.replace('https://github.com/', '')}](${kit.repository}) ${kit.tag} \`${kit.commit.slice(0, 7)}\`, suite \`${kit.suite}\`, guide ${kit.ig}.`);
+  if (kit.patch) {
+    out.push('');
+    out.push(`> **Patched kit: not a result of the official kit.** ${kit.patch.what} Patch: [${kit.patch.branch}](${kit.patch.repository}/tree/${kit.patch.branch}) at \`${kit.patch.commit}\` (image ${kit.patch.image}), the fix proposed in [${kit.patch.defect}](defects/${kit.patch.defect}.md). This run is evidence about that defect only. The official result for this guide and option is the row without "patched kit".`);
+  }
   out.push('');
   if (!runs.length) {
     out.push('No run imported yet.');
@@ -188,11 +192,11 @@ function renderKit(root, kitId, kit, defects) {
   return out;
 }
 
-function overview(root, kits) {
+function overview(root, kits, patched = false) {
   const out = [];
   out.push('| Guide | Suite | Run date | Clear tested | Tests | Pass | Fail | Error | Skip | Not run | Attested by script |');
   out.push('|---|---|---|---|---|---|---|---|---|---|---|');
-  for (const kitId of Object.keys(kits)) {
+  for (const kitId of Object.keys(kits).filter((id) => Boolean(kits[id].patch) === patched)) {
     const kit = kits[kitId];
     const runs = runsFor(root, kitId);
     if (!runs.length) {
@@ -222,7 +226,12 @@ function defectTable(defects) {
 export function renderReadme(root) {
   const kits = readJson(join(root, 'kits.json')).kits;
   const defects = listDefects(root);
-  const body = [START, '', '## Summary', '', ...overview(root, kits), ''];
+  const body = [START, '', '## Summary', '', 'Runs of the unmodified kits at their pinned commits. These are the results.', '', ...overview(root, kits), ''];
+  if (Object.values(kits).some((k) => k.patch)) {
+    body.push('### Evidence runs with a patched kit', '');
+    body.push('Each of these ran a kit with one MetaCare fix for a drafted defect. They show whether that defect is the only cause of the official failures. They are not results of the official kit.', '');
+    body.push(...overview(root, kits, true), '');
+  }
   body.push('## Results by guide', '');
   for (const kitId of Object.keys(kits)) body.push(...renderKit(root, kitId, kits[kitId], defects));
   body.push('## Defects found in test kits and guides', '');
