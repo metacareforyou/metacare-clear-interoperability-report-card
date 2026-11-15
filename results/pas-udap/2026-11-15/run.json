@@ -1,0 +1,16 @@
+{
+ "kit": "pas-udap",
+ "date": "2026-11-15",
+ "generatedAt": "2026-11-15T22:57:48.553Z",
+ "clear": {
+  "repository": "https://github.com/metacareforyou/metacare-clear",
+  "branch": "met-1704-udap-client",
+  "commit": "355fcda",
+  "pullRequests": [
+   84
+  ],
+  "note": "PR #84 at 355fcda (UDAP B2B client)."
+ },
+ "importedAt": "2026-11-15T23:03:22.330Z",
+ "synthetic": true
+}

@@ -12,7 +12,7 @@ fork_branch: https://github.com/metacareforyou/davinci-dtr-test-kit/tree/fix/v22
 spec: spec/davinci_dtr_test_kit/full_ehr_v220_udap_aud_spec.rb
 spec_image: metacare-inferno-dtr:14dde0e
 filed_url:
-found_in: source review
+found_in: results/dtr-udap/2026-11-15
 ---
 
 # DTR-02: v2.2.0 UDAP registration and token checks expect the v2.0.1 endpoints
@@ -71,5 +71,5 @@ Found while testing a provider system with synthetic data only.
 
 ## Notes for MetaCare (not filed)
 
-- Clear has not run the UDAP option yet (MET-1704), so this is confirmed from the kit source and the spec, not from a Clear run. File it together with DTR-01, or after the first UDAP run reproduces it.
+- Reproduced in Clear's first UDAP run (PR #84 at 355fcda, 2026-11-15): 1.04 and 5.01 failed. File it together with DTR-01.
 - Spec checked against the unfixed commit: the three v2.2.0 examples fail there and pass on the branch.

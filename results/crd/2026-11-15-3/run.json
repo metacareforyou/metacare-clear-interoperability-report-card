@@ -1,0 +1,16 @@
+{
+ "kit": "crd",
+ "date": "2026-11-15-3",
+ "generatedAt": "2026-11-15T22:17:12.972Z",
+ "clear": {
+  "repository": "https://github.com/metacareforyou/metacare-clear",
+  "branch": "met-1694-crd-fhir-access",
+  "commit": "3f3727b",
+  "pullRequests": [
+   81
+  ],
+  "note": "Stack: PR #81 at 3f3727b with metacare-home-recovery PRs #990 and #991 (local Keycloak, HAPI and the tenant wall)."
+ },
+ "importedAt": "2026-11-15T23:03:22.142Z",
+ "synthetic": true
+}
