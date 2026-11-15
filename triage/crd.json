@@ -2,6 +2,21 @@
  "about": "Why each CRD test that did not pass did not pass. Rules are matched in order against the test id (and the message when given); the first match wins.",
  "failures": [
   {
+   "match": "crd_v221_client_coverage_info_update$",
+   "cause": "The coverage information update test reads the proposed Appointment targets, which the granted scopes test forbids Clear to grant. The two tests cannot both pass.",
+   "defect": "CRD-02"
+  },
+  {
+   "match": "us_core_instantiate$",
+   "cause": "CapabilityStatement.instantiates is optional in US Core, and the HAPI server behind Clear's FHIR API cannot set it.",
+   "owner": "No one: optional element"
+  },
+  {
+   "match": "medication_request_patient_intent_authoredon_search_test$",
+   "cause": "MedicationRequest search by patient, intent and authoredOn: the kit found no order values in the resources returned. Clear side, not yet analysed.",
+   "clear": "MET-1694"
+  },
+  {
    "match": "provenance_revinclude_search_test$",
    "message": "undefined local variable or method `patient_id'",
    "cause": "The US Core kit raises a NameError when Clear's FHIR API answers the Provenance revinclude search with HTTP 400 (the 400 itself is Clear's).",
@@ -31,6 +46,11 @@
   }
  ],
  "notRun": [
+  {
+   "match": "us_core_v700_.*reference_resolution_test$",
+   "reason": "By design. The payer may read shared Practitioner, Organization, Location and Endpoint records only when the hook request names them (MetaCare decision, 2026-11-15), so the kit cannot resolve every must support reference.",
+   "result": "skip"
+  },
   {
    "match": "us_core_v311_fhir_api|us_core_v610_fhir_api",
    "reason": "US Core 3.1.1 and 6.1.0 FHIR API groups. The run tested Clear's FHIR API at US Core 7.0.0 only."

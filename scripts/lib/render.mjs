@@ -68,6 +68,7 @@ function owner(rule, defects) {
     parts.push(defect ? `[${id}](${defect.file})` : id);
   }
   for (const id of [].concat(rule.clear || [])) parts.push(`Clear ${id}`);
+  if (rule.owner) parts.push(rule.owner);
   return parts.join(', ') || 'Not yet assigned';
 }
 
@@ -89,6 +90,10 @@ function groupBy(items, keyOf) {
     map.get(key).push(item);
   }
   return map;
+}
+
+function runTime(r) {
+  return `${r.summary.generatedAt.slice(0, 16).replace('T', ' ')} UTC`;
 }
 
 function clearTested(run) {
@@ -118,7 +123,7 @@ function renderKit(root, kitId, kit, defects) {
   const triage = triageFor(root, kitId);
   const t = latest.summary.totals;
 
-  out.push(`Latest run: ${latest.date}, Clear ${clearTested(latest.run)}. [Results](${latest.path}/results.json), [summary](${latest.path}/summary.json).`);
+  out.push(`Latest run: ${runTime(latest)}, Clear ${clearTested(latest.run)}. [Results](${latest.path}/results.json), [summary](${latest.path}/summary.json).`);
   if (latest.run.clear.note) out.push(`${latest.run.clear.note}`);
   out.push('');
 
@@ -177,7 +182,7 @@ function renderKit(root, kitId, kit, defects) {
     out.push('');
     for (const r of runs.slice(0, -1).reverse()) {
       const rt = r.summary.totals;
-      out.push(`- ${r.date}: ${rt.pass} pass, ${rt.fail} fail, Clear ${clearTested(r.run)} ([results](${r.path}/results.json))`);
+      out.push(`- ${runTime(r)}: ${rt.pass} pass, ${rt.fail} fail, Clear ${clearTested(r.run)} ([results](${r.path}/results.json))`);
     }
     out.push('');
   }
@@ -198,7 +203,7 @@ function overview(root, kits) {
     const latest = runs[runs.length - 1];
     const t = latest.summary.totals;
     const attested = latest.results.filter((x) => x.kind === 'test' && attestedByScript(x)).length;
-    out.push(`| ${kit.label} | \`${kit.suite}\` | ${latest.date} | ${clearTested(latest.run)} | ${t.tests} | ${t.pass} | ${t.fail} | ${t.error ?? 0} | ${t.skip ?? 0} | ${t.notRun ?? 0} | ${attested} |`);
+    out.push(`| ${kit.label} | \`${kit.suite}\` | ${runTime(latest)} | ${clearTested(latest.run)} | ${t.tests} | ${t.pass} | ${t.fail} | ${t.error ?? 0} | ${t.skip ?? 0} | ${t.notRun ?? 0} | ${attested} |`);
   }
   return out;
 }
