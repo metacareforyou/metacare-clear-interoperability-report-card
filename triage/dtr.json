@@ -1,0 +1,12 @@
+{
+ "about": "Why each DTR test that did not pass did not pass. Rules are matched in order against the test id (and the message when given); the first match wins.",
+ "failures": [
+  { "match": "smart_client_token_request_bsca_verification$", "cause": "The kit checks the client assertion aud against the v2.0.1 suite token endpoint, not the v2.2.0 endpoint it advertises.", "defect": "DTR-01" },
+  { "match": "qp_response_validation$", "cause": "The kit's own $questionnaire-package response fails the kit's validation: no QuestionnaireResponse entry, and for the adaptive package no Bundle type and no entry fullUrl.", "defect": "DTR-03" },
+  { "match": "questionnaire_base_must_support$", "cause": "Two elements (item text and answer option rendering-xhtml) cannot be observed by the kit. The others are not in the questionnaires used in this run; Clear supplies questionnaires that hold them.", "defect": "DTR-05", "clear": "MET-1703" },
+  { "match": "questionnaire_(adaptive|standard)_must_support$", "cause": "The questionnaires used in this run do not hold every must support element (enableWhen, enableWhenExpression). Clear supplies questionnaires that hold them.", "clear": "MET-1703" }
+ ],
+ "notRun": [
+  { "match": "udap", "reason": "UDAP B2B option. This run used SMART Backend Services. Clear's UDAP client is in progress; DTR-02 applies to these tests once they run.", "clear": "MET-1704" }
+ ]
+}

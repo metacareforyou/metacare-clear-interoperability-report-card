@@ -1,0 +1,23 @@
+name: check
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Scrubber tests
+        run: node --test scripts/test
+      - name: No credentials or local addresses
+        run: node scripts/check-secrets.mjs
+      - name: README tables match results, triage and defects
+        run: |
+          node scripts/import-run.mjs --render
+          git diff --exit-code README.md

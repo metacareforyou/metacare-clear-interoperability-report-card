@@ -1,0 +1,32 @@
+{
+ "about": "The ONC Inferno Da Vinci test kits run against MetaCare Clear in the client role, with Inferno playing the payer. Each kit is built from its upstream repository at the pinned commit. This file matches conformance/inferno/kits.json in metacare-clear.",
+ "kits": {
+  "crd": {
+   "label": "CRD 2.2.1",
+   "repository": "https://github.com/inferno-framework/davinci-crd-test-kit",
+   "tag": "v0.15.0",
+   "commit": "86be7f4bf6817960aa204f8ce134cea466bd73d2",
+   "inferno_core": "1.6.0",
+   "suite": "crd_client_v221",
+   "ig": "hl7.fhir.us.davinci-crd#2.2.1"
+  },
+  "dtr": {
+   "label": "DTR 2.2.0",
+   "repository": "https://github.com/inferno-framework/davinci-dtr-test-kit",
+   "tag": "v0.18.1",
+   "commit": "14dde0e5adc9d355c6ebdfe156839adbac20a781",
+   "inferno_core": "1.6.0",
+   "suite": "dtr_full_ehr_v220",
+   "ig": "hl7.fhir.us.davinci-dtr#2.2.0"
+  },
+  "pas": {
+   "label": "PAS 2.2.1",
+   "repository": "https://github.com/inferno-framework/davinci-pas-test-kit",
+   "tag": "v0.16.0",
+   "commit": "1db14e7899d0519138ed9ac72de8ad2c996c10ac",
+   "inferno_core": "1.4.6",
+   "suite": "davinci_pas_client_suite_v221",
+   "ig": "hl7.fhir.us.davinci-pas#2.2.1"
+  }
+ }
+}

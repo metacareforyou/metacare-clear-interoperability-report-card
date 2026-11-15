@@ -1,0 +1,47 @@
+{
+ "about": "Why each PAS test that did not pass did not pass. Rules are matched in order against the test id (and the message when given); the first match wins.",
+ "failures": [
+  {
+   "match": "claim_update_cancel_request_test$",
+   "cause": "The cancel all update did not carry certificationType 3 in Claim.extension.",
+   "clear": "MET-1696"
+  },
+  {
+   "match": "request_bundle_validation|request_validation_|inquire_request_bundle_validation",
+   "cause": "Request Bundle validation errors. The validator messages are not kept in results.json; Clear is working through them.",
+   "clear": "MET-1705"
+  },
+  {
+   "match": "must_support",
+   "cause": "Must support elements not sent. Some are absent on purpose because the synthetic chart has no such data (see the Clear repository's conformance notes).",
+   "clear": "MET-1705"
+  }
+ ],
+ "notRun": [
+  {
+   "match": "udap",
+   "reason": "UDAP B2B option. This run used SMART Backend Services. Clear's UDAP client is in progress.",
+   "clear": "MET-1704"
+  },
+  {
+   "match": "no_auth",
+   "reason": "No authentication option. Not in scope: Clear always authenticates to a payer."
+  },
+  {
+   "match": "_response_must_support_|response_must_support",
+   "reason": "The elements are in payer responses, which come from the kit's own simulated payer, not from Clear."
+  },
+  {
+   "match": "grandparent_excluded",
+   "reason": "No update that referenced an earlier update was sent in this run."
+  },
+  {
+   "match": "registration",
+   "reason": "Registration tests for the UDAP and no authentication options, which this run did not use."
+  },
+  {
+   "match": "attestations",
+   "reason": "Manual attestation group. A person completes it in the Inferno interface; the run script does not."
+  }
+ ]
+}

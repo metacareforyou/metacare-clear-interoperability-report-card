@@ -1,0 +1,16 @@
+{
+ "kit": "crd",
+ "date": "2026-11-15",
+ "generatedAt": "2026-11-15T14:30:33.109Z",
+ "clear": {
+  "repository": "https://github.com/metacareforyou/metacare-clear",
+  "branch": "met-1694-crd-fhir-access",
+  "commit": "09d9e43",
+  "pullRequests": [
+   81
+  ],
+  "note": "Branch head at run time by commit time was 09d9e43; the worktree may have held uncommitted changes. Later commits on the branch (458ca5d, a1c01b1) are not in this run."
+ },
+ "importedAt": "2026-11-15T17:00:43.064Z",
+ "synthetic": true
+}

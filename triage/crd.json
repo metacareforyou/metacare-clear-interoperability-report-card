@@ -1,0 +1,61 @@
+{
+ "about": "Why each CRD test that did not pass did not pass. Rules are matched in order against the test id (and the message when given); the first match wins.",
+ "failures": [
+  {
+   "match": "provenance_revinclude_search_test$",
+   "message": "undefined local variable or method `patient_id'",
+   "cause": "The US Core kit raises a NameError when Clear's FHIR API answers the Provenance revinclude search with HTTP 400 (the 400 itself is Clear's).",
+   "defect": "USCORE-01",
+   "clear": "MET-1694"
+  },
+  {
+   "match": "crd_v221_token_payload$",
+   "cause": "Probable cause: the kit checks the JWT exp when the test runs, several minutes after the hook request, not when the request arrived. The validator messages are not kept in results.json; to be confirmed on the next run.",
+   "defect": "CRD-01"
+  },
+  {
+   "match": "granted_scopes|prefetch_profiles|coverage_info_update",
+   "cause": "Hook request content (granted scopes, prefetch profiles, stored coverage information). Clear side, not yet analysed.",
+   "clear": "MET-1694"
+  },
+  {
+   "match": "us_core_v",
+   "message": "received (400|403|405)",
+   "cause": "Clear's read only FHIR API for the payer refused or rejected a US Core search (HTTP 400, 403 or 405). The run was before the later commits on the same branch.",
+   "clear": "MET-1694"
+  },
+  {
+   "match": "us_core_",
+   "cause": "US Core FHIR API check (capability statement, profile support, references, data absent reason). Clear side, not yet analysed.",
+   "clear": "MET-1694"
+  }
+ ],
+ "notRun": [
+  {
+   "match": "us_core_v311_fhir_api|us_core_v610_fhir_api",
+   "reason": "US Core 3.1.1 and 6.1.0 FHIR API groups. The run tested Clear's FHIR API at US Core 7.0.0 only."
+  },
+  {
+   "match": "crd_v221_client_scenarios",
+   "reason": "Scenario groups (long running hook, unknown content, self pay, multiple payers, user access level). Not run yet.",
+   "clear": "MET-1694"
+  },
+  {
+   "match": "crd_v221_client_cross_hook",
+   "reason": "Cross hook groups. Not run yet.",
+   "clear": "MET-1694"
+  },
+  {
+   "match": "us_core_v700",
+   "reason": "US Core 7.0.0 tests skipped or not run because the synthetic record has no data of that kind, or an earlier search failed."
+  },
+  {
+   "match": "crd_v221_client_attestations",
+   "reason": "Visual inspection and attestation group. A person completes it in the Inferno interface; the run script does not."
+  },
+  {
+   "match": ".",
+   "reason": "Not run in this session."
+  }
+ ]
+}

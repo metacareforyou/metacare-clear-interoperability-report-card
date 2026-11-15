@@ -1,0 +1,11 @@
+{
+  "name": "metacare-clear-interoperability-report-card",
+  "private": true,
+  "type": "module",
+  "description": "Local ONC Inferno Da Vinci CRD, DTR and PAS results for MetaCare Clear, on synthetic data, with drafted test kit defects.",
+  "scripts": {
+    "test": "node --test scripts/test",
+    "check": "node --test scripts/test && node scripts/check-secrets.mjs",
+    "render": "node scripts/import-run.mjs --render"
+  }
+}

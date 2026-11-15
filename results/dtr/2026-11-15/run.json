@@ -1,0 +1,17 @@
+{
+ "kit": "dtr",
+ "date": "2026-11-15",
+ "generatedAt": "2026-11-15T11:36:42.592Z",
+ "clear": {
+  "repository": "https://github.com/metacareforyou/metacare-clear",
+  "branch": "inferno-rerun-1115",
+  "commit": "1b2402a",
+  "pullRequests": [
+   78,
+   79
+  ],
+  "note": "Local integration branch: develop at bd069b9 with PR #78 (MET-1696) and PR #79 (MET-1695) merged locally, plus uncommitted working changes at run time. Not pushed."
+ },
+ "importedAt": "2026-11-15T17:00:42.693Z",
+ "synthetic": true
+}
