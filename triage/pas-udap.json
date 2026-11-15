@@ -1,0 +1,51 @@
+{
+ "about": "Why each PAS test in the UDAP B2B option that did not pass did not pass. Rules are matched in order against the test id (and the message when given); the first match wins.",
+ "failures": [
+  {
+   "match": "udap_client_token_request_cc_verification$",
+   "cause": "The UDAP kit verifies the client assertion's signature with JWT.decode when the test runs, which also checks exp then, so a five minute assertion that was valid when it arrived fails as expired.",
+   "defect": "UDAP-01"
+  },
+  {
+   "match": "claim_update_cancel_request_test$",
+   "cause": "The cancel all update did not carry certificationType 3 in Claim.extension.",
+   "clear": "MET-1696"
+  },
+  {
+   "match": "request_bundle_validation|request_validation_|inquire_request_bundle_validation",
+   "cause": "Request Bundle validation. The kit's validator binds DTR intendedUse to CRD DocReason 2.1.0 but resolves its code system under CRD 2.2.1, so no intendedUse coding can pass (sessions 7jUEvG6rySX and bThRsP1UxVK on 2026-11-15).",
+   "defect": "PAS-01"
+  },
+  {
+   "match": "must_support",
+   "cause": "Must support elements not sent. Some are absent on purpose because the synthetic chart has no such data (see the Clear repository's conformance notes).",
+   "clear": "MET-1705"
+  }
+ ],
+ "notRun": [
+  {
+   "match": "_smart|smart_",
+   "reason": "SMART Backend Services option. This run used UDAP B2B client credentials; the SMART option has its own section."
+  },
+  {
+   "match": "no_auth",
+   "reason": "No authentication option. Not in scope: Clear always authenticates to a payer."
+  },
+  {
+   "match": "_response_must_support_|response_must_support",
+   "reason": "The elements are in payer responses, which come from the kit's own simulated payer, not from Clear."
+  },
+  {
+   "match": "grandparent_excluded",
+   "reason": "No update that referenced an earlier update was sent in this run."
+  },
+  {
+   "match": "registration",
+   "reason": "Registration tests for the other authentication option, which this run did not use."
+  },
+  {
+   "match": "attestations",
+   "reason": "Manual attestation group. A person completes it in the Inferno interface; the run script does not."
+  }
+ ]
+}

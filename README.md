@@ -35,9 +35,11 @@ Totals count every test in the suite, including tests for options a run did not 
 
 | Guide | Suite | Run date | Clear tested | Tests | Pass | Fail | Error | Skip | Not run | Attested by script |
 |---|---|---|---|---|---|---|---|---|---|---|
-| CRD 2.2.1 | `crd_client_v221` | 2026-11-15 21:00 UTC | `met-1694-crd-fhir-access` at `be40fa2`, [#81](https://github.com/metacareforyou/metacare-clear/pull/81) | 1417 | 609 | 3 | 0 | 10 | 795 | 7 |
-| DTR 2.2.0 | `dtr_full_ehr_v220` | 2026-11-15 11:36 UTC | `inferno-rerun-1115` at `1b2402a`, [#78](https://github.com/metacareforyou/metacare-clear/pull/78), [#79](https://github.com/metacareforyou/metacare-clear/pull/79) | 30 | 19 | 6 | 0 | 0 | 5 | 2 |
-| PAS 2.2.1 | `davinci_pas_client_suite_v221` | 2026-11-15 20:37 UTC | `develop` at `5dc674c`, [#78](https://github.com/metacareforyou/metacare-clear/pull/78), [#79](https://github.com/metacareforyou/metacare-clear/pull/79), [#83](https://github.com/metacareforyou/metacare-clear/pull/83), [#80](https://github.com/metacareforyou/metacare-clear/pull/80) | 270 | 71 | 10 | 0 | 8 | 181 | 9 |
+| CRD 2.2.1 | `crd_client_v221` | 2026-11-15 22:17 UTC | `met-1694-crd-fhir-access` at `3f3727b`, [#81](https://github.com/metacareforyou/metacare-clear/pull/81) | 1417 | 615 | 3 | 0 | 4 | 795 | 7 |
+| DTR 2.2.0 (SMART Backend Services) | `dtr_full_ehr_v220` | 2026-11-15 22:41 UTC | `met-1703-dtr-must-support` at `d10ab06`, [#82](https://github.com/metacareforyou/metacare-clear/pull/82) | 30 | 21 | 4 | 0 | 0 | 5 | 3 |
+| DTR 2.2.0 (UDAP B2B client credentials) | `dtr_full_ehr_v220` | 2026-11-15 22:44 UTC | `met-1704-udap-client` at `355fcda`, [#84](https://github.com/metacareforyou/metacare-clear/pull/84) | 30 | 19 | 7 | 0 | 0 | 4 | 2 |
+| PAS 2.2.1 (SMART Backend Services) | `davinci_pas_client_suite_v221` | 2026-11-15 20:37 UTC | `develop` at `5dc674c`, [#78](https://github.com/metacareforyou/metacare-clear/pull/78), [#79](https://github.com/metacareforyou/metacare-clear/pull/79), [#83](https://github.com/metacareforyou/metacare-clear/pull/83), [#80](https://github.com/metacareforyou/metacare-clear/pull/80) | 270 | 71 | 10 | 0 | 8 | 181 | 9 |
+| PAS 2.2.1 (UDAP B2B client credentials) | `davinci_pas_client_suite_v221` | 2026-11-15 22:57 UTC | `met-1704-udap-client` at `355fcda`, [#84](https://github.com/metacareforyou/metacare-clear/pull/84) | 270 | 71 | 11 | 0 | 8 | 180 | 9 |
 
 ## Results by guide
 
@@ -45,8 +47,8 @@ Totals count every test in the suite, including tests for options a run did not 
 
 Kit [inferno-framework/davinci-crd-test-kit](https://github.com/inferno-framework/davinci-crd-test-kit) v0.15.0 `86be7f4`, suite `crd_client_v221`, guide hl7.fhir.us.davinci-crd#2.2.1.
 
-Latest run: 2026-11-15 21:00 UTC, Clear `met-1694-crd-fhir-access` at `be40fa2`, [#81](https://github.com/metacareforyou/metacare-clear/pull/81). [Results](results/crd/2026-11-15-2/results.json), [summary](results/crd/2026-11-15-2/summary.json).
-Stack: PR #81 at be40fa2 with metacare-home-recovery PRs #990 and #991 (local Keycloak, HAPI and the tenant wall), so the payer reads Clear's synthetic records through the tenant's HAPI server.
+Latest run: 2026-11-15 22:17 UTC, Clear `met-1694-crd-fhir-access` at `3f3727b`, [#81](https://github.com/metacareforyou/metacare-clear/pull/81). [Results](results/crd/2026-11-15-3/results.json), [summary](results/crd/2026-11-15-3/summary.json).
+Stack: PR #81 at 3f3727b with metacare-home-recovery PRs #990 and #991 (local Keycloak, HAPI and the tenant wall).
 
 Failures and errors:
 
@@ -54,18 +56,16 @@ Failures and errors:
 |---|---|---|---|
 | The coverage information update test reads the proposed Appointment targets, which the granted scopes test forbids Clear to grant. The two tests cannot both pass. | [CRD-02](defects/CRD-02.md) | fail | 2.3.2.01 |
 | CapabilityStatement.instantiates is optional in US Core, and the HAPI server behind Clear's FHIR API cannot set it. | No one: optional element | fail | 2.3.1.06 |
-| MedicationRequest search by patient, intent and authoredOn: the kit found no order values in the resources returned. Clear side, not yet analysed. | Clear MET-1694 | fail | 2.3.18.03 |
+| Probable cause: the kit checks the JWT exp when the test runs, several minutes after the hook request, not when the request arrived. The validator messages are not kept in results.json; to be confirmed on the next run. | [CRD-01](defects/CRD-01.md) | fail | 1.2.4.4.04 |
 
 Not run, skipped or omitted:
 
 | Reason | Result | Count | Groups |
 |---|---|---|---|
-| By design. The payer may read shared Practitioner, Organization, Location and Endpoint records only when the hook request names them (MetaCare decision, 2026-11-15), so the kit cannot resolve every must support reference. | skip | 6 | 2.3.11, 2.3.12, 2.3.14, 2.3.17, 2.3.18, 2.3.49 |
+| By design. The payer may read shared Practitioner, Organization, Location and Endpoint records only when the hook request names them (MetaCare decision, 2026-11-15), so the kit cannot resolve every must support reference. | skip | 4 | 2.3.11, 2.3.12, 2.3.18, 2.3.49 |
 | US Core 3.1.1 and 6.1.0 FHIR API groups. The run tested Clear's FHIR API at US Core 7.0.0 only. | not run | 729 | 2.1.1, 2.1.2, 2.1.3, 2.1.4, 2.1.5, 2.1.6, 2.1.7, 2.1.8, 2.1.9, 2.1.10, 2.1.11, 2.1.12 and 72 more |
 | Scenario groups (long running hook, unknown content, self pay, multiple payers, user access level). Not run yet. | not run | 12 | 1.3.1, 1.3.2, 1.3.3, 1.3.4, 1.3.5 |
 | Cross hook groups. Not run yet. | not run | 45 | 1.4.1.1, 1.4.1.2, 1.4.1.3, 1.4.1.4, 1.4.2.1, 1.4.2.2 |
-| Cross hook groups. Not run yet. | skip | 1 | 1.4.3 |
-| US Core 7.0.0 tests skipped or not run because the synthetic record has no data of that kind, or an earlier search failed. | skip | 3 | 2.3.7, 2.3.8, 2.3.38 |
 | Visual inspection and attestation group. A person completes it in the Inferno interface; the run script does not. | not run | 9 | 3 |
 
 Released by script: 7 attestation(s) and 6 wait(s) in which Clear was told to send its requests.
@@ -83,14 +83,15 @@ The attestations below were released from Clear's recorded state. They are not o
 
 Earlier runs:
 
+- 2026-11-15 21:00 UTC: 609 pass, 3 fail, Clear `met-1694-crd-fhir-access` at `be40fa2`, [#81](https://github.com/metacareforyou/metacare-clear/pull/81) ([results](results/crd/2026-11-15-2/results.json))
 - 2026-11-15 14:30 UTC: 94 pass, 86 fail, Clear `met-1694-crd-fhir-access` at `09d9e43`, [#81](https://github.com/metacareforyou/metacare-clear/pull/81) ([results](results/crd/2026-11-15/results.json))
 
-### DTR 2.2.0
+### DTR 2.2.0 (SMART Backend Services)
 
 Kit [inferno-framework/davinci-dtr-test-kit](https://github.com/inferno-framework/davinci-dtr-test-kit) v0.18.1 `14dde0e`, suite `dtr_full_ehr_v220`, guide hl7.fhir.us.davinci-dtr#2.2.0.
 
-Latest run: 2026-11-15 11:36 UTC, Clear `inferno-rerun-1115` at `1b2402a`, [#78](https://github.com/metacareforyou/metacare-clear/pull/78), [#79](https://github.com/metacareforyou/metacare-clear/pull/79). [Results](results/dtr/2026-11-15/results.json), [summary](results/dtr/2026-11-15/summary.json).
-Local integration branch: develop at bd069b9 with PR #78 (MET-1696) and PR #79 (MET-1695) merged locally, plus uncommitted working changes at run time. Not pushed.
+Latest run: 2026-11-15 22:41 UTC, Clear `met-1703-dtr-must-support` at `d10ab06`, [#82](https://github.com/metacareforyou/metacare-clear/pull/82). [Results](results/dtr/2026-11-15-2/results.json), [summary](results/dtr/2026-11-15-2/summary.json).
+PR #82 at d10ab06 (DTR must support questionnaires). SMART Backend Services option.
 
 Failures and errors:
 
@@ -99,7 +100,6 @@ Failures and errors:
 | The kit checks the client assertion aud against the v2.0.1 suite token endpoint, not the v2.2.0 endpoint it advertises. | [DTR-01](defects/DTR-01.md) | fail | 4.01 |
 | The kit's own $questionnaire-package response fails the kit's validation: no QuestionnaireResponse entry, and for the adaptive package no Bundle type and no entry fullUrl. | [DTR-03](defects/DTR-03.md) | fail | 2.1.2.02, 2.2.2.02 |
 | Two elements (item text and answer option rendering-xhtml) cannot be observed by the kit. The others are not in the questionnaires used in this run; Clear supplies questionnaires that hold them. | [DTR-05](defects/DTR-05.md), Clear MET-1703 | fail | 3.2.01 |
-| The questionnaires used in this run do not hold every must support element (enableWhen, enableWhenExpression). Clear supplies questionnaires that hold them. | Clear MET-1703 | fail | 3.2.02, 3.2.03 |
 
 Not run, skipped or omitted:
 
@@ -107,7 +107,42 @@ Not run, skipped or omitted:
 |---|---|---|---|
 | UDAP B2B option. This run used SMART Backend Services. Clear's UDAP client is in progress; DTR-02 applies to these tests once they run. | not run | 5 | 1, 5 |
 
-Released by script: 2 attestation(s) and 3 wait(s) in which Clear was told to send its requests.
+Released by script: 3 attestation(s) and 4 wait(s) in which Clear was told to send its requests.
+The attestations below were released from Clear's recorded state. They are not observed conformance, and a person must confirm them in the Inferno interface before results are submitted.
+
+| Test | Title | Result |
+|---|---|---|
+| 2.1.1.02 | Client correctly displays and allows users to interact with the questionnaire(s) | pass |
+| 2.2.1.02 | Client correctly displays and allows users to interact with the questionnaire(s) | pass |
+| 3.1.1.02 | Client correctly displays and allows users to interact with the questionnaire(s) | pass |
+
+Earlier runs:
+
+- 2026-11-15 11:36 UTC: 19 pass, 6 fail, Clear `inferno-rerun-1115` at `1b2402a`, [#78](https://github.com/metacareforyou/metacare-clear/pull/78), [#79](https://github.com/metacareforyou/metacare-clear/pull/79) ([results](results/dtr/2026-11-15/results.json))
+
+### DTR 2.2.0 (UDAP B2B client credentials)
+
+Kit [inferno-framework/davinci-dtr-test-kit](https://github.com/inferno-framework/davinci-dtr-test-kit) v0.18.1 `14dde0e`, suite `dtr_full_ehr_v220`, guide hl7.fhir.us.davinci-dtr#2.2.0.
+
+Latest run: 2026-11-15 22:44 UTC, Clear `met-1704-udap-client` at `355fcda`, [#84](https://github.com/metacareforyou/metacare-clear/pull/84). [Results](results/dtr-udap/2026-11-15/results.json), [summary](results/dtr-udap/2026-11-15/summary.json).
+PR #84 at 355fcda (UDAP B2B client). This branch does not include PR #82.
+
+Failures and errors:
+
+| Cause | Who fixes it | Result | Tests |
+|---|---|---|---|
+| The kit checks the UDAP registration and client assertion aud against the v2.0.1 suite endpoints, not the v2.2.0 endpoints it advertises. | [DTR-02](defects/DTR-02.md) | fail | 1.04, 5.01 |
+| The kit's own $questionnaire-package response fails the kit's validation: no QuestionnaireResponse entry, and for the adaptive package no Bundle type and no entry fullUrl. | [DTR-03](defects/DTR-03.md) | fail | 2.1.2.02, 2.2.2.02 |
+| Two elements (item text and answer option rendering-xhtml) cannot be observed by the kit. The others are not in the questionnaires used in this run; Clear supplies questionnaires that hold them. | [DTR-05](defects/DTR-05.md), Clear MET-1703 | fail | 3.2.01 |
+| The questionnaires used in this run do not hold every must support element. This run's branch (PR #84) does not include PR #82, which supplies questionnaires that hold them. | Clear MET-1703 | fail | 3.2.02, 3.2.03 |
+
+Not run, skipped or omitted:
+
+| Reason | Result | Count | Groups |
+|---|---|---|---|
+| SMART Backend Services option. This run used UDAP B2B client credentials; the SMART option has its own section. | not run | 4 | 1, 4 |
+
+Released by script: 2 attestation(s) and 4 wait(s) in which Clear was told to send its requests.
 The attestations below were released from Clear's recorded state. They are not observed conformance, and a person must confirm them in the Inferno interface before results are submitted.
 
 | Test | Title | Result |
@@ -115,7 +150,7 @@ The attestations below were released from Clear's recorded state. They are not o
 | 2.1.1.02 | Client correctly displays and allows users to interact with the questionnaire(s) | pass |
 | 2.2.1.02 | Client correctly displays and allows users to interact with the questionnaire(s) | pass |
 
-### PAS 2.2.1
+### PAS 2.2.1 (SMART Backend Services)
 
 Kit [inferno-framework/davinci-pas-test-kit](https://github.com/inferno-framework/davinci-pas-test-kit) v0.16.0 `1db14e7`, suite `davinci_pas_client_suite_v221`, guide hl7.fhir.us.davinci-pas#2.2.1.
 
@@ -158,6 +193,46 @@ Earlier runs:
 
 - 2026-11-15 11:58 UTC: 59 pass, 16 fail, Clear `inferno-rerun-1115` at `1b2402a`, [#78](https://github.com/metacareforyou/metacare-clear/pull/78), [#79](https://github.com/metacareforyou/metacare-clear/pull/79) ([results](results/pas/2026-11-15/results.json))
 
+### PAS 2.2.1 (UDAP B2B client credentials)
+
+Kit [inferno-framework/davinci-pas-test-kit](https://github.com/inferno-framework/davinci-pas-test-kit) v0.16.0 `1db14e7`, suite `davinci_pas_client_suite_v221`, guide hl7.fhir.us.davinci-pas#2.2.1.
+
+Latest run: 2026-11-15 22:57 UTC, Clear `met-1704-udap-client` at `355fcda`, [#84](https://github.com/metacareforyou/metacare-clear/pull/84). [Results](results/pas-udap/2026-11-15/results.json), [summary](results/pas-udap/2026-11-15/summary.json).
+PR #84 at 355fcda (UDAP B2B client).
+
+Failures and errors:
+
+| Cause | Who fixes it | Result | Tests |
+|---|---|---|---|
+| The UDAP kit verifies the client assertion's signature with JWT.decode when the test runs, which also checks exp then, so a five minute assertion that was valid when it arrived fails as expired. | [UDAP-01](defects/UDAP-01.md) | fail | 15.01 |
+| Request Bundle validation. The kit's validator binds DTR intendedUse to CRD DocReason 2.1.0 but resolves its code system under CRD 2.2.1, so no intendedUse coding can pass (sessions 7jUEvG6rySX and bThRsP1UxVK on 2026-11-15). | [PAS-01](defects/PAS-01.md) | fail | 7.1.03, 7.2.03, 7.3.2.01, 7.4.3.01, 7.4.3.03, 7.4.3.05, 7.4.3.07, 7.5.03, 7.7.03, 8.1.03 |
+
+Not run, skipped or omitted:
+
+| Reason | Result | Count | Groups |
+|---|---|---|---|
+| SMART Backend Services option. This run used UDAP B2B client credentials; the SMART option has its own section. | not run | 89 | 1, 2, 3.1, 3.2, 3.3.1, 3.3.2, 3.3.3, 3.4.1, 3.4.2, 3.4.3, 3.5, 3.6 and 9 more |
+| No authentication option. Not in scope: Clear always authenticates to a payer. | not run | 85 | 10, 11.1, 11.2, 11.3.1, 11.3.2, 11.3.3, 11.4.1, 11.4.2, 11.4.3, 11.5, 11.6, 11.7 and 7 more |
+| The elements are in payer responses, which come from the kit's own simulated payer, not from Clear. | skip | 7 | 8.2.2, 8.2.4 |
+| No update that referenced an earlier update was sent in this run. | skip | 1 | 7.4.2 |
+| Registration tests for the other authentication option, which this run did not use. | not run | 2 | 1 |
+| Manual attestation group. A person completes it in the Inferno interface; the run script does not. | not run | 4 | 16 |
+
+Released by script: 9 attestation(s) and 13 wait(s) in which Clear was told to send its requests.
+The attestations below were released from Clear's recorded state. They are not observed conformance, and a person must confirm them in the Inferno interface before results are submitted.
+
+| Test | Title | Result |
+|---|---|---|
+| 7.1.02 | PAS client displays the request as "approved" | pass |
+| 7.2.02 | PAS client displays the request as "denied" | pass |
+| 7.3.1.02 | PAS client displays the request as "pended" | pass |
+| 7.3.1.04 | PAS client displays the final decision as "approved" | pass |
+| 7.4.1.05 | PAS client handled the $submit responses without erroring | pass |
+| 7.5.02 | PAS client makes the details of the payer-authorized items available | pass |
+| 7.6.02 | PAS client handles the operation failure appropriately | pass |
+| 7.7.02 | PAS client handles the processing errors appropriately | pass |
+| 8.1.02 | PAS client handled the $submit and $inquire responses without erroring | pass |
+
 ## Defects found in test kits and guides
 
 | Id | Where the defect is | Summary | Status | Fix |
@@ -171,6 +246,7 @@ Earlier runs:
 | [DTR-05](defects/DTR-05.md) | inferno-framework/davinci-dtr-test-kit | Rendering-xhtml must support elements can never be observed, because templates lose primitive extensions | drafted, not filed | proposed in the draft |
 | [HL7-CRD-01](defects/HL7-CRD-01.md) | HL7 Jira, Da Vinci CRD (hl7.fhir.us.davinci-crd 2.2.1), with a note to inferno-framework/davinci-crd-test-kit | CRD 2.2.1 invariant crd-ci-q4 is empty, so fails, for auth-needed with doc-purpose withpa | drafted, not filed | proposed in the draft |
 | [PAS-01](defects/PAS-01.md) | inferno-framework/davinci-pas-test-kit | PAS v2.2.1 request validation binds DTR intendedUse to CRD DocReason 2.1.0 but resolves its codes under CRD 2.2.1, so no coding passes | drafted, not filed | [fix/v221-validator-loads-dtr-220](https://github.com/metacareforyou/davinci-pas-test-kit/tree/fix/v221-validator-loads-dtr-220) |
+| [UDAP-01](defects/UDAP-01.md) | inferno-framework/udap-security-test-kit | UDAP client token request verification fails a valid five minute client assertion as expired, because it checks exp when the test runs | drafted, not filed | [fix/token-assertion-exp-at-request-time](https://github.com/metacareforyou/udap-security-test-kit/tree/fix/token-assertion-exp-at-request-time) |
 | [USCORE-01](defects/USCORE-01.md) | inferno-framework/us-core-test-kit | Provenance revinclude search raises NameError on a 400, because the block names the patient id _patient_id | drafted, not filed | [fix/provenance-revinclude-patient-id](https://github.com/metacareforyou/us-core-test-kit/tree/fix/provenance-revinclude-patient-id) |
 
 <!-- report-card:end -->
@@ -183,6 +259,7 @@ Each defect has a drafted issue in [`defects/`](defects). A draft gives the repo
 - [metacareforyou/davinci-crd-test-kit](https://github.com/metacareforyou/davinci-crd-test-kit)
 - [metacareforyou/davinci-pas-test-kit](https://github.com/metacareforyou/davinci-pas-test-kit)
 - [metacareforyou/us-core-test-kit](https://github.com/metacareforyou/us-core-test-kit)
+- [metacareforyou/udap-security-test-kit](https://github.com/metacareforyou/udap-security-test-kit)
 
 **Nothing is filed upstream until our internal testing is done and MetaCare approves each issue.** The `inferno-issue` skill in [`.claude/skills/inferno-issue`](.claude/skills/inferno-issue/SKILL.md) files an approved draft. It runs as a dry run by default and records the filed link back into the draft and this page.
 
