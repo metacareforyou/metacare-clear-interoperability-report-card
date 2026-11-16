@@ -12,7 +12,7 @@ Clear is the provider side of the Da Vinci prior authorization exchange. It play
 
 - **All data is synthetic.** Every patient, clinician, payer and order in these runs is made up. No patient data is in this repository, and none was used to produce it.
 - **These are local runs, not certification.** We ran the official kits on our own machine, at the pinned versions below. No test lab, ONC, Drummond or MITRE has reviewed them. Nothing here claims certification or conformance beyond the results shown.
-- **Some tests were released by script.** Some Inferno tests wait for a person to attest, for example "the questionnaire was shown and the response saved". In these runs a script released those waits from Clear's recorded state. Each one is labelled "attested by script" below and in `results.json`. They are not observed conformance. A person must confirm them in the Inferno interface before results are submitted anywhere.
+- **Automated results are as shown; attestations are not signed.** The automated test results below are what the kits reported. Some Inferno tests instead ask a person to attest, for example "the questionnaire was shown and the response saved". In these runs a script released every such attestation from Clear's recorded state. None has been confirmed by a person, none is signed, and the kits' visual inspection groups have not been run. MetaCare's audit found that some of them describe features Clear does not have yet; those are known gaps being built. See [Attestations](#attestations) and [attestations.md](attestations.md).
 - **Results are as observed.** A failure stays a failure until a later run passes it. Each failure names who fixes it: Clear (with its MetaCare ticket), or a test kit or guide (with the defect id in this repository).
 
 ## How to read the results
@@ -35,7 +35,7 @@ Totals count every test in the suite, including tests for options a run did not 
 
 Runs of the unmodified kits at their pinned commits. These are the results.
 
-| Guide | Suite | Run date | Clear tested | Tests | Pass | Fail | Error | Skip | Not run | Attested by script |
+| Guide | Suite | Run date | Clear tested | Tests | Pass | Fail | Error | Skip | Not run | Attestations released by script, not confirmed by a person |
 |---|---|---|---|---|---|---|---|---|---|---|
 | CRD 2.2.1 | `crd_client_v221` | 2026-11-15 22:17 UTC | `met-1694-crd-fhir-access` at `3f3727b`, [#81](https://github.com/metacareforyou/metacare-clear/pull/81) | 1417 | 615 | 3 | 0 | 4 | 795 | 7 |
 | DTR 2.2.0 (SMART Backend Services) | `dtr_full_ehr_v220` | 2026-11-15 22:41 UTC | `met-1703-dtr-must-support` at `d10ab06`, [#82](https://github.com/metacareforyou/metacare-clear/pull/82) | 30 | 21 | 4 | 0 | 0 | 5 | 3 |
@@ -47,7 +47,7 @@ Runs of the unmodified kits at their pinned commits. These are the results.
 
 Each of these ran a kit with MetaCare fixes for drafted defects. They show whether that defect is the only cause of the official failures. They are not results of the official kit.
 
-| Guide | Suite | Run date | Clear tested | Tests | Pass | Fail | Error | Skip | Not run | Attested by script |
+| Guide | Suite | Run date | Clear tested | Tests | Pass | Fail | Error | Skip | Not run | Attestations released by script, not confirmed by a person |
 |---|---|---|---|---|---|---|---|---|---|---|
 | PAS 2.2.1 (SMART Backend Services), patched kit | `davinci_pas_client_suite_v221` | 2026-11-16 01:46 UTC | `develop plus PRs #85 and #86` at `163b7f3 + de29173`, [#85](https://github.com/metacareforyou/metacare-clear/pull/85), [#86](https://github.com/metacareforyou/metacare-clear/pull/86) | 270 | 89 | 0 | 0 | 0 | 181 | 9 |
 
@@ -79,17 +79,17 @@ Not run, skipped or omitted:
 | Visual inspection and attestation group. A person completes it in the Inferno interface; the run script does not. | not run | 9 | 3 |
 
 Released by script: 7 attestation(s) and 6 wait(s) in which Clear was told to send its requests.
-The attestations below were released from Clear's recorded state. They are not observed conformance, and a person must confirm them in the Inferno interface before results are submitted.
+The attestations below were released by script from Clear's recorded state; not confirmed by a person. Their "pass" is not observed conformance. The audit verdict says whether Clear supports what the attestation claims; see [Attestations](#attestations).
 
-| Test | Title | Result |
-|---|---|---|
-| 1.1.02 | CRD client registers Inferno's simulated CRD servers | pass |
-| 1.2.1.2.01 | CRD client displays returned decision support details to the user | pass |
-| 1.2.2.2.01 | CRD client displays returned decision support details to the user | pass |
-| 1.2.3.2.01 | CRD client displays returned decision support details to the user | pass |
-| 1.2.4.2.01 | CRD client displays returned decision support details to the user | pass |
-| 1.2.5.2.01 | CRD client displays returned decision support details to the user | pass |
-| 1.2.6.2.01 | CRD client displays returned decision support details to the user | pass |
+| Test | Title | Result (released by script, not confirmed by a person) | Audit verdict | MetaCare tracker id (internal) |
+|---|---|---|---|---|
+| 1.1.02 | CRD client registers Inferno's simulated CRD servers | pass | Supported |  |
+| 1.2.1.2.01 | CRD client displays returned decision support details to the user | pass | Partly | MET-1717 |
+| 1.2.2.2.01 | CRD client displays returned decision support details to the user | pass | Not supported | MET-1717 |
+| 1.2.3.2.01 | CRD client displays returned decision support details to the user | pass | Partly | MET-1717 |
+| 1.2.4.2.01 | CRD client displays returned decision support details to the user | pass | Partly | MET-1717 |
+| 1.2.5.2.01 | CRD client displays returned decision support details to the user | pass | Partly | MET-1717 |
+| 1.2.6.2.01 | CRD client displays returned decision support details to the user | pass | Not supported | MET-1717 |
 
 Earlier runs:
 
@@ -118,13 +118,13 @@ Not run, skipped or omitted:
 | UDAP B2B option. This run used SMART Backend Services. Clear's UDAP client is in progress; DTR-02 applies to these tests once they run. | not run | 5 | 1, 5 |
 
 Released by script: 3 attestation(s) and 4 wait(s) in which Clear was told to send its requests.
-The attestations below were released from Clear's recorded state. They are not observed conformance, and a person must confirm them in the Inferno interface before results are submitted.
+The attestations below were released by script from Clear's recorded state; not confirmed by a person. Their "pass" is not observed conformance. The audit verdict says whether Clear supports what the attestation claims; see [Attestations](#attestations).
 
-| Test | Title | Result |
-|---|---|---|
-| 2.1.1.02 | Client correctly displays and allows users to interact with the questionnaire(s) | pass |
-| 2.2.1.02 | Client correctly displays and allows users to interact with the questionnaire(s) | pass |
-| 3.1.1.02 | Client correctly displays and allows users to interact with the questionnaire(s) | pass |
+| Test | Title | Result (released by script, not confirmed by a person) | Audit verdict | MetaCare tracker id (internal) |
+|---|---|---|---|---|
+| 2.1.1.02 | Client correctly displays and allows users to interact with the questionnaire(s) | pass | Supported |  |
+| 2.2.1.02 | Client correctly displays and allows users to interact with the questionnaire(s) | pass | Supported |  |
+| 3.1.1.02 | Client correctly displays and allows users to interact with the questionnaire(s) | pass | Partly | MET-1724 |
 
 Earlier runs:
 
@@ -153,12 +153,12 @@ Not run, skipped or omitted:
 | SMART Backend Services option. This run used UDAP B2B client credentials; the SMART option has its own section. | not run | 4 | 1, 4 |
 
 Released by script: 2 attestation(s) and 4 wait(s) in which Clear was told to send its requests.
-The attestations below were released from Clear's recorded state. They are not observed conformance, and a person must confirm them in the Inferno interface before results are submitted.
+The attestations below were released by script from Clear's recorded state; not confirmed by a person. Their "pass" is not observed conformance. The audit verdict says whether Clear supports what the attestation claims; see [Attestations](#attestations).
 
-| Test | Title | Result |
-|---|---|---|
-| 2.1.1.02 | Client correctly displays and allows users to interact with the questionnaire(s) | pass |
-| 2.2.1.02 | Client correctly displays and allows users to interact with the questionnaire(s) | pass |
+| Test | Title | Result (released by script, not confirmed by a person) | Audit verdict | MetaCare tracker id (internal) |
+|---|---|---|---|---|
+| 2.1.1.02 | Client correctly displays and allows users to interact with the questionnaire(s) | pass | Supported |  |
+| 2.2.1.02 | Client correctly displays and allows users to interact with the questionnaire(s) | pass | Supported |  |
 
 ### PAS 2.2.1 (SMART Backend Services)
 
@@ -183,19 +183,19 @@ Not run, skipped or omitted:
 | Manual attestation group. A person completes it in the Inferno interface; the run script does not. | not run | 4 | 16 |
 
 Released by script: 9 attestation(s) and 12 wait(s) in which Clear was told to send its requests.
-The attestations below were released from Clear's recorded state. They are not observed conformance, and a person must confirm them in the Inferno interface before results are submitted.
+The attestations below were released by script from Clear's recorded state; not confirmed by a person. Their "pass" is not observed conformance. The audit verdict says whether Clear supports what the attestation claims; see [Attestations](#attestations).
 
-| Test | Title | Result |
-|---|---|---|
-| 3.1.02 | PAS client displays the request as "approved" | pass |
-| 3.2.02 | PAS client displays the request as "denied" | pass |
-| 3.3.1.02 | PAS client displays the request as "pended" | pass |
-| 3.3.1.04 | PAS client displays the final decision as "approved" | pass |
-| 3.4.1.05 | PAS client handled the $submit responses without erroring | pass |
-| 3.5.02 | PAS client makes the details of the payer-authorized items available | pass |
-| 3.6.02 | PAS client handles the operation failure appropriately | pass |
-| 3.7.02 | PAS client handles the processing errors appropriately | pass |
-| 4.1.02 | PAS client handled the $submit and $inquire responses without erroring | pass |
+| Test | Title | Result (released by script, not confirmed by a person) | Audit verdict | MetaCare tracker id (internal) |
+|---|---|---|---|---|
+| 3.1.02 | PAS client displays the request as "approved" | pass | Supported |  |
+| 3.2.02 | PAS client displays the request as "denied" | pass | Supported |  |
+| 3.3.1.02 | PAS client displays the request as "pended" | pass | Supported |  |
+| 3.3.1.04 | PAS client displays the final decision as "approved" | pass | Supported |  |
+| 3.4.1.05 | PAS client handled the $submit responses without erroring | pass | Supported |  |
+| 3.5.02 | PAS client makes the details of the payer-authorized items available | pass | Supported |  |
+| 3.6.02 | PAS client handles the operation failure appropriately | pass | Partly | MET-1725 |
+| 3.7.02 | PAS client handles the processing errors appropriately | pass | Supported |  |
+| 4.1.02 | PAS client handled the $submit and $inquire responses without erroring | pass | Supported |  |
 
 Earlier runs:
 
@@ -221,19 +221,19 @@ Not run, skipped or omitted:
 | Manual attestation group. A person completes it in the Inferno interface; the run script does not. | not run | 4 | 16 |
 
 Released by script: 9 attestation(s) and 12 wait(s) in which Clear was told to send its requests.
-The attestations below were released from Clear's recorded state. They are not observed conformance, and a person must confirm them in the Inferno interface before results are submitted.
+The attestations below were released by script from Clear's recorded state; not confirmed by a person. Their "pass" is not observed conformance. The audit verdict says whether Clear supports what the attestation claims; see [Attestations](#attestations).
 
-| Test | Title | Result |
-|---|---|---|
-| 3.1.02 | PAS client displays the request as "approved" | pass |
-| 3.2.02 | PAS client displays the request as "denied" | pass |
-| 3.3.1.02 | PAS client displays the request as "pended" | pass |
-| 3.3.1.04 | PAS client displays the final decision as "approved" | pass |
-| 3.4.1.05 | PAS client handled the $submit responses without erroring | pass |
-| 3.5.02 | PAS client makes the details of the payer-authorized items available | pass |
-| 3.6.02 | PAS client handles the operation failure appropriately | pass |
-| 3.7.02 | PAS client handles the processing errors appropriately | pass |
-| 4.1.02 | PAS client handled the $submit and $inquire responses without erroring | pass |
+| Test | Title | Result (released by script, not confirmed by a person) | Audit verdict | MetaCare tracker id (internal) |
+|---|---|---|---|---|
+| 3.1.02 | PAS client displays the request as "approved" | pass | Supported |  |
+| 3.2.02 | PAS client displays the request as "denied" | pass | Supported |  |
+| 3.3.1.02 | PAS client displays the request as "pended" | pass | Supported |  |
+| 3.3.1.04 | PAS client displays the final decision as "approved" | pass | Supported |  |
+| 3.4.1.05 | PAS client handled the $submit responses without erroring | pass | Supported |  |
+| 3.5.02 | PAS client makes the details of the payer-authorized items available | pass | Supported |  |
+| 3.6.02 | PAS client handles the operation failure appropriately | pass | Partly | MET-1725 |
+| 3.7.02 | PAS client handles the processing errors appropriately | pass | Supported |  |
+| 4.1.02 | PAS client handled the $submit and $inquire responses without erroring | pass | Supported |  |
 
 Earlier runs:
 
@@ -265,19 +265,84 @@ Not run, skipped or omitted:
 | Manual attestation group. A person completes it in the Inferno interface; the run script does not. | not run | 4 | 16 |
 
 Released by script: 9 attestation(s) and 13 wait(s) in which Clear was told to send its requests.
-The attestations below were released from Clear's recorded state. They are not observed conformance, and a person must confirm them in the Inferno interface before results are submitted.
+The attestations below were released by script from Clear's recorded state; not confirmed by a person. Their "pass" is not observed conformance. The audit verdict says whether Clear supports what the attestation claims; see [Attestations](#attestations).
 
-| Test | Title | Result |
-|---|---|---|
-| 7.1.02 | PAS client displays the request as "approved" | pass |
-| 7.2.02 | PAS client displays the request as "denied" | pass |
-| 7.3.1.02 | PAS client displays the request as "pended" | pass |
-| 7.3.1.04 | PAS client displays the final decision as "approved" | pass |
-| 7.4.1.05 | PAS client handled the $submit responses without erroring | pass |
-| 7.5.02 | PAS client makes the details of the payer-authorized items available | pass |
-| 7.6.02 | PAS client handles the operation failure appropriately | pass |
-| 7.7.02 | PAS client handles the processing errors appropriately | pass |
-| 8.1.02 | PAS client handled the $submit and $inquire responses without erroring | pass |
+| Test | Title | Result (released by script, not confirmed by a person) | Audit verdict | MetaCare tracker id (internal) |
+|---|---|---|---|---|
+| 7.1.02 | PAS client displays the request as "approved" | pass | Supported |  |
+| 7.2.02 | PAS client displays the request as "denied" | pass | Supported |  |
+| 7.3.1.02 | PAS client displays the request as "pended" | pass | Supported |  |
+| 7.3.1.04 | PAS client displays the final decision as "approved" | pass | Supported |  |
+| 7.4.1.05 | PAS client handled the $submit responses without erroring | pass | Supported |  |
+| 7.5.02 | PAS client makes the details of the payer-authorized items available | pass | Supported |  |
+| 7.6.02 | PAS client handles the operation failure appropriately | pass | Partly | MET-1725 |
+| 7.7.02 | PAS client handles the processing errors appropriately | pass | Supported |  |
+| 8.1.02 | PAS client handled the $submit and $inquire responses without erroring | pass | Supported |  |
+
+## Attestations
+
+Every attestation in these runs was released by script from Clear's recorded state; not confirmed by a person. No attestation has been signed, and the kits' own visual inspection and attestation groups have not been run, so each kit's own Inferno report shows its final result as pending.
+
+MetaCare audited each attestation against what Clear does on screen today ([attestations.md](attestations.md)). Supported: Clear does what the attestation says. Partly or Not supported: a known gap that is being built; until it is done, the honest answer to that attestation is No. The tracker id is MetaCare's internal reference for the gap.
+
+### CRD 2.2.1
+
+6 Supported, 10 Partly, 6 Not supported. Test numbers are those of the SMART Backend Services run.
+
+| Test | Attestation | Audit verdict | MetaCare tracker id (internal) |
+|---|---|---|---|
+| 1.1.02 | CRD client registers Inferno's simulated CRD servers | Supported |  |
+| 1.2.1.2.01 | CRD client displays returned decision support details to the user | Partly | MET-1717 |
+| 1.2.2.2.01 | CRD client displays returned decision support details to the user | Not supported | MET-1717 |
+| 1.2.3.2.01 | CRD client displays returned decision support details to the user | Partly | MET-1717 |
+| 1.2.4.2.01 | CRD client displays returned decision support details to the user | Partly | MET-1717 |
+| 1.2.5.2.01 | CRD client displays returned decision support details to the user | Partly | MET-1717 |
+| 1.2.6.2.01 | CRD client displays returned decision support details to the user | Not supported | MET-1717 |
+| 1.4.1.2.01 | CRD client displays returned decision support details to the user | Partly | MET-1717 |
+| 1.3.1.02 | CRD client allows the user to continue working during long-running requests | Partly | MET-1720 |
+| 1.3.2.02 | CRD client processes coverage information returned with unknown content | Supported |  |
+| 1.3.3.01 | CRD client does not invoke hooks when the patient intends to bypass insurance coverage | Not supported | MET-1719 |
+| 1.3.4.01 | CRD client performs a workflow for a patient with multiple payer coverages | Not supported | MET-1718 |
+| 1.3.5.05 | Prefetched data access is scoped to the user | Partly | MET-1723 |
+| 3.01 | CRD client adheres to security and privacy requirements | Partly | MET-1723 |
+| 3.02 | CRD client distinguishes different response cases to users | Supported |  |
+| 3.03 | CRD client does not set additional expectations for data elements | Supported |  |
+| 3.04 | CRD client does not use business identifiers in resource identifiers | Not supported | MET-1722 |
+| 3.05 | CRD client integrates hook invocations transparently into user workflows | Partly | MET-1721 |
+| 3.06 | CRD client invokes hooks on multiple payers in parallel | Not supported | MET-1718 |
+| 3.07 | CRD client omits prefetch keys when data not available | Supported |  |
+| 3.08 | CRD client retains logs of all CRD-related hook invocations | Supported |  |
+| 3.09 | CRD client uses received must support data | Partly | MET-1717 |
+
+### DTR 2.2.0
+
+2 Supported, 1 Partly, 0 Not supported. Test numbers are those of the SMART Backend Services run.
+
+| Test | Attestation | Audit verdict | MetaCare tracker id (internal) |
+|---|---|---|---|
+| 2.1.1.02 | Client correctly displays and allows users to interact with the questionnaire(s) | Supported |  |
+| 2.2.1.02 | Client correctly displays and allows users to interact with the questionnaire(s) | Supported |  |
+| 3.1.1.02 | Client correctly displays and allows users to interact with the questionnaire(s) | Partly | MET-1724 |
+
+### PAS 2.2.1
+
+9 Supported, 2 Partly, 2 Not supported. Test numbers are those of the SMART Backend Services run.
+
+| Test | Attestation | Audit verdict | MetaCare tracker id (internal) |
+|---|---|---|---|
+| 3.1.02 | PAS client displays the request as "approved" | Supported |  |
+| 3.2.02 | PAS client displays the request as "denied" | Supported |  |
+| 3.3.1.02 | PAS client displays the request as "pended" | Supported |  |
+| 3.3.1.04 | PAS client displays the final decision as "approved" | Supported |  |
+| 3.4.1.05 | PAS client handled the $submit responses without erroring | Supported |  |
+| 3.5.02 | PAS client makes the details of the payer-authorized items available | Supported |  |
+| 3.6.02 | PAS client handles the operation failure appropriately | Partly | MET-1725 |
+| 3.7.02 | PAS client handles the processing errors appropriately | Supported |  |
+| 4.1.02 | PAS client handled the $submit and $inquire responses without erroring | Supported |  |
+| 16.01 | PAS client adheres to security and privacy requirements | Partly | MET-1723 |
+| 16.02 | PAS client does not set additional expectations for data elements | Supported |  |
+| 16.03 | PAS client allows but does not require providers to review information before submitting | Not supported | MET-1715 |
+| 16.04 | PAS client can recover from Subscription errors | Not supported | MET-1716 |
 
 ## Defects found in test kits and guides
 

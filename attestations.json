@@ -1,0 +1,277 @@
+{
+ "about": "Audit verdicts for every Inferno attestation, from MetaCare's attestation audit of 2026-11-15 (attestations.md). Keyed by test id with the security option removed, so the SMART and UDAP copies share a verdict. tracker is MetaCare's internal tracker id for the gap.",
+ "kits": {
+  "crd": [
+   {
+    "short_id": "1.1.02",
+    "test": "crd_client_v221-crd_v221_client_hook_invocation-crd_v221_client_registration-crd_v221_client_service_registration_attestation",
+    "title": "CRD client registers Inferno's simulated CRD servers",
+    "verdict": "Supported",
+    "tracker": null
+   },
+   {
+    "short_id": "1.2.1.2.01",
+    "test": "crd_client_v221-crd_v221_client_hook_invocation-crd_v221_client_hooks-crd_v221_client_appointment_book-crd_v221_appointment_book_responses-crd_v221_card_display_attest_test",
+    "title": "CRD client displays returned decision support details to the user",
+    "verdict": "Partly",
+    "tracker": "MET-1717"
+   },
+   {
+    "short_id": "1.2.2.2.01",
+    "test": "crd_client_v221-crd_v221_client_hook_invocation-crd_v221_client_hooks-crd_v221_client_encounter_start-crd_v221_encounter_start_responses-crd_v221_card_display_attest_test",
+    "title": "CRD client displays returned decision support details to the user",
+    "verdict": "Not supported",
+    "tracker": "MET-1717"
+   },
+   {
+    "short_id": "1.2.3.2.01",
+    "test": "crd_client_v221-crd_v221_client_hook_invocation-crd_v221_client_hooks-crd_v221_client_order_select-crd_v221_order_select_responses-crd_v221_card_display_attest_test",
+    "title": "CRD client displays returned decision support details to the user",
+    "verdict": "Partly",
+    "tracker": "MET-1717"
+   },
+   {
+    "short_id": "1.2.4.2.01",
+    "test": "crd_client_v221-crd_v221_client_hook_invocation-crd_v221_client_hooks-crd_v221_client_order_sign-crd_v221_order_sign_responses-crd_v221_card_display_attest_test",
+    "title": "CRD client displays returned decision support details to the user",
+    "verdict": "Partly",
+    "tracker": "MET-1717"
+   },
+   {
+    "short_id": "1.2.5.2.01",
+    "test": "crd_client_v221-crd_v221_client_hook_invocation-crd_v221_client_hooks-crd_v221_client_order_dispatch-crd_v221_order_dispatch_responses-crd_v221_card_display_attest_test",
+    "title": "CRD client displays returned decision support details to the user",
+    "verdict": "Partly",
+    "tracker": "MET-1717"
+   },
+   {
+    "short_id": "1.2.6.2.01",
+    "test": "crd_client_v221-crd_v221_client_hook_invocation-crd_v221_client_hooks-crd_v221_client_encounter_discharge-crd_v221_encounter_discharge_responses-crd_v221_card_display_attest_test",
+    "title": "CRD client displays returned decision support details to the user",
+    "verdict": "Not supported",
+    "tracker": "MET-1717"
+   },
+   {
+    "short_id": "1.4.1.2.01",
+    "test": "crd_client_v221-crd_v221_client_hook_invocation-crd_v221_client_cross_hook-crd_v221_client_cross_hook_interaction-crd_v221_cross_hook_responses-crd_v221_card_display_attest_test",
+    "title": "CRD client displays returned decision support details to the user",
+    "verdict": "Partly",
+    "tracker": "MET-1717"
+   },
+   {
+    "short_id": "1.3.1.02",
+    "test": "crd_client_v221-crd_v221_client_hook_invocation-crd_v221_client_scenarios-crd_v221_client_long_running_hook-crd_v221_client_skip_long_running_attestation_test",
+    "title": "CRD client allows the user to continue working during long-running requests",
+    "verdict": "Partly",
+    "tracker": "MET-1720"
+   },
+   {
+    "short_id": "1.3.2.02",
+    "test": "crd_client_v221-crd_v221_client_hook_invocation-crd_v221_client_scenarios-crd_v221_client_unknown_content_hook-crd_v221_client_unknown_content_attestation_test",
+    "title": "CRD client processes coverage information returned with unknown content",
+    "verdict": "Supported",
+    "tracker": null
+   },
+   {
+    "short_id": "1.3.3.01",
+    "test": "crd_client_v221-crd_v221_client_hook_invocation-crd_v221_client_scenarios-crd_v221_client_self_pay_hook-crd_v221_client_self_pay_workflow",
+    "title": "CRD client does not invoke hooks when the patient intends to bypass insurance coverage",
+    "verdict": "Not supported",
+    "tracker": "MET-1719"
+   },
+   {
+    "short_id": "1.3.4.01",
+    "test": "crd_client_v221-crd_v221_client_hook_invocation-crd_v221_client_scenarios-crd_v221_client_multiple_payers_hook-crd_v221_client_multiple_payers_workflow",
+    "title": "CRD client performs a workflow for a patient with multiple payer coverages",
+    "verdict": "Not supported",
+    "tracker": "MET-1718"
+   },
+   {
+    "short_id": "1.3.5.05",
+    "test": "crd_client_v221-crd_v221_client_hook_invocation-crd_v221_client_scenarios-crd_v221_client_user_access_level-crd_v221_access_level_prefetch_scope",
+    "title": "Prefetched data access is scoped to the user",
+    "verdict": "Partly",
+    "tracker": "MET-1723"
+   },
+   {
+    "short_id": "3.01",
+    "test": "crd_client_v221-crd_v221_client_attestations-crd_v221_security_and_privacy_attestation",
+    "title": "CRD client adheres to security and privacy requirements",
+    "verdict": "Partly",
+    "tracker": "MET-1723"
+   },
+   {
+    "short_id": "3.02",
+    "test": "crd_client_v221-crd_v221_client_attestations-crd_v221_response_case_distinction_attestation",
+    "title": "CRD client distinguishes different response cases to users",
+    "verdict": "Supported",
+    "tracker": null
+   },
+   {
+    "short_id": "3.03",
+    "test": "crd_client_v221-crd_v221_client_attestations-crd_v221_data_element_expectations_attestation",
+    "title": "CRD client does not set additional expectations for data elements",
+    "verdict": "Supported",
+    "tracker": null
+   },
+   {
+    "short_id": "3.04",
+    "test": "crd_client_v221-crd_v221_client_attestations-crd_v221_resource_identifiers_attestation",
+    "title": "CRD client does not use business identifiers in resource identifiers",
+    "verdict": "Not supported",
+    "tracker": "MET-1722"
+   },
+   {
+    "short_id": "3.05",
+    "test": "crd_client_v221-crd_v221_client_attestations-crd_v221_workflow_integration_attestation",
+    "title": "CRD client integrates hook invocations transparently into user workflows",
+    "verdict": "Partly",
+    "tracker": "MET-1721"
+   },
+   {
+    "short_id": "3.06",
+    "test": "crd_client_v221-crd_v221_client_attestations-crd_v221_coverage_based_invocation_attestation",
+    "title": "CRD client invokes hooks on multiple payers in parallel",
+    "verdict": "Not supported",
+    "tracker": "MET-1718"
+   },
+   {
+    "short_id": "3.07",
+    "test": "crd_client_v221-crd_v221_client_attestations-crd_v221_prefetch_key_omission_attestation",
+    "title": "CRD client omits prefetch keys when data not available",
+    "verdict": "Supported",
+    "tracker": null
+   },
+   {
+    "short_id": "3.08",
+    "test": "crd_client_v221-crd_v221_client_attestations-crd_v221_hook_invocation_logging_attestation",
+    "title": "CRD client retains logs of all CRD-related hook invocations",
+    "verdict": "Supported",
+    "tracker": null
+   },
+   {
+    "short_id": "3.09",
+    "test": "crd_client_v221-crd_v221_client_attestations-crd_v221_must_support_use_attestation",
+    "title": "CRD client uses received must support data",
+    "verdict": "Partly",
+    "tracker": "MET-1717"
+   }
+  ],
+  "dtr": [
+   {
+    "short_id": "2.1.1.02",
+    "test": "dtr_full_ehr_v220-dtr_full_ehr_v220_questionnaire_workflows-dtr_full_ehr_v220_workflow_standard-Group01-dtr_full_ehr_v220_ui_display_and_interaction",
+    "title": "Client correctly displays and allows users to interact with the questionnaire(s)",
+    "verdict": "Supported",
+    "tracker": null
+   },
+   {
+    "short_id": "2.2.1.02",
+    "test": "dtr_full_ehr_v220-dtr_full_ehr_v220_questionnaire_workflows-dtr_full_ehr_v220_workflow_adaptive-Group01-dtr_full_ehr_v220_ui_display_and_interaction",
+    "title": "Client correctly displays and allows users to interact with the questionnaire(s)",
+    "verdict": "Supported",
+    "tracker": null
+   },
+   {
+    "short_id": "3.1.1.02",
+    "test": "dtr_full_ehr_v220-dtr_full_ehr_v220_coverage-dtr_full_ehr_v220_additional_qustionnaires_for_ms-Group01-dtr_full_ehr_v220_ui_display_and_interaction",
+    "title": "Client correctly displays and allows users to interact with the questionnaire(s)",
+    "verdict": "Partly",
+    "tracker": "MET-1724"
+   }
+  ],
+  "pas": [
+   {
+    "short_id": "3.1.02",
+    "test": "davinci_pas_client_suite_v221-pas_client_v221_workflows-pas_client_v221_approval_group-pas_client_v221_response_attest",
+    "title": "PAS client displays the request as \"approved\"",
+    "verdict": "Supported",
+    "tracker": null
+   },
+   {
+    "short_id": "3.2.02",
+    "test": "davinci_pas_client_suite_v221-pas_client_v221_workflows-pas_client_v221_denial_group-pas_client_v221_response_attest",
+    "title": "PAS client displays the request as \"denied\"",
+    "verdict": "Supported",
+    "tracker": null
+   },
+   {
+    "short_id": "3.3.1.02",
+    "test": "davinci_pas_client_suite_v221-pas_client_v221_workflows-pas_client_v221_pended_group-Group01-pas_client_v221_pended_response_attest",
+    "title": "PAS client displays the request as \"pended\"",
+    "verdict": "Supported",
+    "tracker": null
+   },
+   {
+    "short_id": "3.3.1.04",
+    "test": "davinci_pas_client_suite_v221-pas_client_v221_workflows-pas_client_v221_pended_group-Group01-pas_client_v221_pended_finalized_response_attest",
+    "title": "PAS client displays the final decision as \"approved\"",
+    "verdict": "Supported",
+    "tracker": null
+   },
+   {
+    "short_id": "3.4.1.05",
+    "test": "davinci_pas_client_suite_v221-pas_client_v221_workflows-pas_client_v221_claim_updates_group-Group01-pas_client_v221_response_attest_updates",
+    "title": "PAS client handled the $submit responses without erroring",
+    "verdict": "Supported",
+    "tracker": null
+   },
+   {
+    "short_id": "3.5.02",
+    "test": "davinci_pas_client_suite_v221-pas_client_v221_workflows-pas_client_v221_modification_group-pas_client_v221_response_attest",
+    "title": "PAS client makes the details of the payer-authorized items available",
+    "verdict": "Supported",
+    "tracker": null
+   },
+   {
+    "short_id": "3.6.02",
+    "test": "davinci_pas_client_suite_v221-pas_client_v221_workflows-pas_client_v221_operation_failure_group-pas_client_v221_response_attest",
+    "title": "PAS client handles the operation failure appropriately",
+    "verdict": "Partly",
+    "tracker": "MET-1725"
+   },
+   {
+    "short_id": "3.7.02",
+    "test": "davinci_pas_client_suite_v221-pas_client_v221_workflows-pas_client_v221_processing_error_group-pas_client_v221_response_attest",
+    "title": "PAS client handles the processing errors appropriately",
+    "verdict": "Supported",
+    "tracker": null
+   },
+   {
+    "short_id": "4.1.02",
+    "test": "davinci_pas_client_suite_v221-pas_client_v221_must_support-pas_client_v221_must_support_receive-pas_client_v221_response_attest_ms_submit_inquire",
+    "title": "PAS client handled the $submit and $inquire responses without erroring",
+    "verdict": "Supported",
+    "tracker": null
+   },
+   {
+    "short_id": "16.01",
+    "test": "davinci_pas_client_suite_v221-pas_client_v221_attestations-pas_client_v221_security_attestation",
+    "title": "PAS client adheres to security and privacy requirements",
+    "verdict": "Partly",
+    "tracker": "MET-1723"
+   },
+   {
+    "short_id": "16.02",
+    "test": "davinci_pas_client_suite_v221-pas_client_v221_attestations-pas_client_v221_data_element_expectations_attestation",
+    "title": "PAS client does not set additional expectations for data elements",
+    "verdict": "Supported",
+    "tracker": null
+   },
+   {
+    "short_id": "16.03",
+    "test": "davinci_pas_client_suite_v221-pas_client_v221_attestations-pas_client_v221_provider_review_attestation",
+    "title": "PAS client allows but does not require providers to review information before submitting",
+    "verdict": "Not supported",
+    "tracker": "MET-1715"
+   },
+   {
+    "short_id": "16.04",
+    "test": "davinci_pas_client_suite_v221-pas_client_v221_attestations-pas_client_v221_subscription_error_recovery_attestation",
+    "title": "PAS client can recover from Subscription errors",
+    "verdict": "Not supported",
+    "tracker": "MET-1716"
+   }
+  ]
+ }
+}
