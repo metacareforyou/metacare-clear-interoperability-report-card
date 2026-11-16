@@ -7,11 +7,11 @@ kit: davinci-crd-test-kit v0.15.0
 kit_commit: 86be7f4bf6817960aa204f8ce134cea466bd73d2
 suite: crd_client_v221
 tests: 1.2.x.4.04 crd_v221_token_payload (each hook's auth group)
-status: drafted, not filed
+status: filed 2026-11-16, approved by Richard Braman
 fork_branch: https://github.com/metacareforyou/davinci-crd-test-kit/tree/fix/token-exp-at-request-time
 spec: spec/davinci_crd_test_kit/client/v2.2.1/auth/token_payload_exp_at_request_time_spec.rb
 spec_image: metacare-inferno-crd:86be7f4
-filed_url:
+filed_url: https://github.com/inferno-framework/davinci-crd-test-kit/issues/159
 found_in: results/crd/2026-11-15
 ---
 

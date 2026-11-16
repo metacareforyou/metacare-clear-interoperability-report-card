@@ -7,11 +7,11 @@ kit: davinci-crd-test-kit v0.15.0
 kit_commit: 86be7f4bf6817960aa204f8ce134cea466bd73d2
 suite: crd_client_v221
 tests: 2.3.2.01 crd_v221_client_coverage_info_update, and 1.2.x.3.07 crd_v221_hook_request_granted_scopes
-status: drafted, not filed
+status: filed 2026-11-16, approved by Richard Braman
 fork_branch: https://github.com/metacareforyou/davinci-crd-test-kit/tree/fix/granted-scopes-allow-coverage-info-targets
 spec: spec/davinci_crd_test_kit/client/v2.2.1/verify_request/hook_request_granted_scopes_coverage_targets_spec.rb
 spec_image: metacare-inferno-crd:86be7f4
-filed_url:
+filed_url: https://github.com/inferno-framework/davinci-crd-test-kit/issues/160
 found_in: results/crd/2026-11-15-2
 ---
 
