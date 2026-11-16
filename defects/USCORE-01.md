@@ -7,11 +7,11 @@ kit: us-core-test-kit v1.1.5 (pulled in by davinci-crd-test-kit v0.15.0); still 
 kit_commit: 73fc69a5f45f9250d5df23aa3b9fbea2bdbba79b
 suite: crd_client_v221 (US Core 7.0.0 FHIR API group); every US Core suite that runs the Provenance revinclude tests
 tests: 2.3.x provenance_revinclude_search_test (32 tests errored in our run)
-status: drafted, not filed
+status: filed 2026-11-16, approved by Richard Braman
 fork_branch: https://github.com/metacareforyou/us-core-test-kit/tree/fix/provenance-revinclude-patient-id
 spec: spec/us_core/provenance_revinclude_search_test_spec.rb
 spec_image: metacare-inferno-crd:86be7f4 (with bundle install)
-filed_url:
+filed_url: https://github.com/inferno-framework/us-core-test-kit/issues/308
 found_in: results/crd/2026-11-15
 ---
 

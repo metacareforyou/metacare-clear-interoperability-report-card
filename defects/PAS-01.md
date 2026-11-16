@@ -8,11 +8,11 @@ kit: davinci-pas-test-kit v0.16.0
 kit_commit: 1db14e7899d0519138ed9ac72de8ad2c996c10ac
 suite: davinci_pas_client_suite_v221
 tests: request Bundle validation, for example 3.1.03 pas_client_v221_request_bundle_validation_test and 3.4.3.01 to 3.4.3.07
-status: drafted, not filed
+status: filed 2026-11-16, approved by Richard Braman
 fork_branch: https://github.com/metacareforyou/davinci-pas-test-kit/tree/fix/v221-suppress-docreason-210-conflict
 spec: spec/davinci_pas_test_kit/cross_suite/docreason_package_conflict_suppression_spec.rb
 spec_image: metacare-inferno-pas:1db14e7
-filed_url:
+filed_url: https://github.com/inferno-framework/davinci-pas-test-kit/issues/116
 found_in: results/pas/2026-11-15-2
 ---
 

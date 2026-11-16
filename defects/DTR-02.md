@@ -7,11 +7,11 @@ kit: davinci-dtr-test-kit v0.18.1
 kit_commit: 14dde0e5adc9d355c6ebdfe156839adbac20a781
 suite: dtr_full_ehr_v220
 tests: 1.03 udap_client_registration_interaction, 1.04 udap_client_registration_cc_verification, 5.01 udap_client_token_request_cc_verification (numbering with the UDAP option)
-status: drafted, not filed
+status: filed 2026-11-16, approved by Richard Braman
 fork_branch: https://github.com/metacareforyou/davinci-dtr-test-kit/tree/fix/v220-udap-aud
 spec: spec/davinci_dtr_test_kit/full_ehr_v220_udap_aud_spec.rb
 spec_image: metacare-inferno-dtr:14dde0e
-filed_url:
+filed_url: https://github.com/inferno-framework/davinci-dtr-test-kit/issues/149
 found_in: results/dtr-udap/2026-11-15
 ---
 

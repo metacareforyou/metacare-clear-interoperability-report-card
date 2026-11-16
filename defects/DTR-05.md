@@ -7,11 +7,11 @@ kit: davinci-dtr-test-kit v0.18.1
 kit_commit: 14dde0e5adc9d355c6ebdfe156839adbac20a781
 suite: dtr_full_ehr_v220
 tests: 3.2.01 dtr_full_ehr_v220_questionnaire_base_must_support
-status: drafted, not filed
+status: filed 2026-11-16, approved by Richard Braman
 fork_branch: none
 spec: none
 spec_image: none
-filed_url:
+filed_url: https://github.com/inferno-framework/davinci-dtr-test-kit/issues/152
 found_in: results/dtr/2026-11-15
 ---
 
