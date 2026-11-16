@@ -1,0 +1,28 @@
+{
+ "kit": "pas-patched",
+ "date": "2026-11-16",
+ "generatedAt": "2026-11-16T01:46:35.627Z",
+ "clear": {
+  "repository": "https://github.com/metacareforyou/metacare-clear",
+  "branch": "develop plus PRs #85 and #86",
+  "commit": "163b7f3 + de29173",
+  "pullRequests": [
+   85,
+   86
+  ],
+  "note": "Same Clear code as the official 2026-11-16 run. Patched kit image metacare-inferno-pas:pas-suppress-all (1418170ff0aa), session dh6oh5HnJv9, validator terminology cache cleared. Not a run of the unmodified kit."
+ },
+ "kitPatch": {
+  "repository": "https://github.com/metacareforyou/davinci-pas-test-kit",
+  "branch": [
+   "fix/v221-suppress-docreason-210-conflict",
+   "fix/v221-suppress-x12-889-886-value-sets"
+  ],
+  "commit": "f91de1a and 89d1779, merged locally on 1db14e7",
+  "image": "metacare-inferno-pas:pas-suppress-all (1418170ff0aa)",
+  "defect": "PAS-01",
+  "what": "The unmodified kit at the pinned commit, plus the PAS-01 suppression and the X12 value set suppression from the retracted PAS-02. The official clean-cache run shows the second one is not needed: it has no skips without it."
+ },
+ "importedAt": "2026-11-16T01:58:53.437Z",
+ "synthetic": true
+}

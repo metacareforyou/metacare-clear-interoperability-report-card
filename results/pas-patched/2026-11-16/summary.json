@@ -1,0 +1,371 @@
+{
+ "ticket": "MET-1688",
+ "kit": "pas",
+ "auth": "smart",
+ "suite": "davinci_pas_client_suite_v221",
+ "kitTag": "v0.16.0",
+ "kitCommit": "1db14e7899d0519138ed9ac72de8ad2c996c10ac",
+ "ig": "hl7.fhir.us.davinci-pas#2.2.1",
+ "infernoCore": "1.4.6",
+ "generatedAt": "2026-11-16T01:46:35.627Z",
+ "synthetic": true,
+ "session": "[redacted]",
+ "totals": {
+  "tests": 270,
+  "pass": 89,
+  "fail": 0,
+  "skip": 0,
+  "omit": 0,
+  "error": 0,
+  "notRun": 181,
+  "requiredFailing": 0
+ },
+ "scriptReleases": [
+  {
+   "test": "davinci_pas_client_suite_v221-pas_client_v221_registration-pas_client_v221_reg_config_smart_display",
+   "how": "released",
+   "detail": "registration confirmed: client id and JWKS supplied"
+  },
+  {
+   "test": "davinci_pas_client_suite_v221-pas_client_v221_subscription_setup_smart-pas_client_v221_subscription_create_test",
+   "how": "Clear sent Subscription create",
+   "detail": "{\"caseId\":\"clear-0842f16075cdddb1205aa361\",\"create\":{\"http\":200,\"state\":\"completed\",\"error\":null},\"subscription\":\"requested\",\"subscriptionId\":\"f73272f1-e8c6-4458-8374-12e4ec574f87\",\"handshake\":null,\"lastChange\":{\"operation\":\"create\",\"outcome\":\"created\",\"at\":\"2026-11-16T01:27:18.686Z\",\"journal\":\"Task/978ec906345a50f44faabdcddd471754e0deeca5-x1\"},\"notificationEndpoint\":\"[local url]\"}"
+  },
+  {
+   "test": "davinci_pas_client_suite_v221-pas_client_v221_workflows_smart-pas_client_v221_approval_group-pas_client_v221_approval_submit_test",
+   "how": "Clear sent $submit",
+   "detail": "{\"http\":200,\"error\":null,\"case\":\"approved\",\"decision\":\"approved A1\",\"pas\":\"decided\",\"overall\":\"approved\",\"reason\":\"Payer decision received.\"}"
+  },
+  {
+   "test": "davinci_pas_client_suite_v221-pas_client_v221_workflows_smart-pas_client_v221_approval_group-pas_client_v221_response_attest",
+   "how": "attested by script true",
+   "detail": "from Clear's recorded state: case approved, decision approved A1, PAS decided (Payer decision received.)"
+  },
+  {
+   "test": "davinci_pas_client_suite_v221-pas_client_v221_workflows_smart-pas_client_v221_denial_group-pas_client_v221_denial_submit_test",
+   "how": "Clear sent $submit",
+   "detail": "{\"http\":200,\"error\":null,\"case\":\"denied\",\"decision\":\"denied A3\",\"pas\":\"decided\",\"overall\":\"denied\",\"reason\":\"Payer decision received.\"}"
+  },
+  {
+   "test": "davinci_pas_client_suite_v221-pas_client_v221_workflows_smart-pas_client_v221_denial_group-pas_client_v221_response_attest",
+   "how": "attested by script true",
+   "detail": "from Clear's recorded state: case denied, decision denied A3, PAS decided (Payer decision received.)"
+  },
+  {
+   "test": "davinci_pas_client_suite_v221-pas_client_v221_workflows_smart-pas_client_v221_modification_group-pas_client_v221_modification_submit_test",
+   "how": "Clear sent $submit",
+   "detail": "{\"http\":200,\"error\":null,\"case\":\"partially-approved\",\"decision\":\"modified A6\",\"pas\":\"decided\",\"overall\":\"partial\",\"reason\":\"Payer decision received.\"}"
+  },
+  {
+   "test": "davinci_pas_client_suite_v221-pas_client_v221_workflows_smart-pas_client_v221_modification_group-pas_client_v221_response_attest",
+   "how": "attested by script true",
+   "detail": "from Clear's recorded state: case partially-approved, decision modified A6, PAS decided (Payer decision received.)"
+  },
+  {
+   "test": "davinci_pas_client_suite_v221-pas_client_v221_workflows_smart-pas_client_v221_operation_failure_group-pas_client_v221_operation_failure_submit_test",
+   "how": "Clear sent $submit",
+   "detail": "{\"http\":200,\"error\":null,\"case\":\"ready-to-submit\",\"decision\":null,\"pas\":\"rejected\",\"overall\":null,\"reason\":\"The payer rejected the request (HTTP 400).\"}"
+  },
+  {
+   "test": "davinci_pas_client_suite_v221-pas_client_v221_workflows_smart-pas_client_v221_operation_failure_group-pas_client_v221_response_attest",
+   "how": "attested by script true",
+   "detail": "from Clear's recorded state: case ready-to-submit, decision null, PAS rejected (The payer rejected the request (HTTP 400).)"
+  },
+  {
+   "test": "davinci_pas_client_suite_v221-pas_client_v221_workflows_smart-pas_client_v221_processing_error_group-pas_client_v221_processing_error_submit_test",
+   "how": "Clear sent $submit",
+   "detail": "{\"http\":200,\"error\":null,\"case\":\"ready-to-submit\",\"decision\":null,\"pas\":\"rejected\",\"overall\":null,\"reason\":\"The payer could not process the request: 04 Authorized Quantity Exceeded. Nothing was decided.\"}"
+  },
+  {
+   "test": "davinci_pas_client_suite_v221-pas_client_v221_workflows_smart-pas_client_v221_processing_error_group-pas_client_v221_response_attest",
+   "how": "attested by script true",
+   "detail": "from Clear's recorded state: case ready-to-submit, decision null, PAS rejected (The payer could not process the request: 04 Authorized Quantity Exceeded. Nothing was decided.)"
+  },
+  {
+   "test": "davinci_pas_client_suite_v221-pas_client_v221_workflows_smart-pas_client_v221_pended_group-Group01-pas_client_v221_pended_submit_test",
+   "how": "Clear sent $submit",
+   "detail": "{\"http\":200,\"error\":null,\"case\":\"pended\",\"decision\":null,\"pas\":\"pended\",\"overall\":\"pended\",\"reason\":\"Received and pended for review. This is not an approval.\"}"
+  },
+  {
+   "test": "davinci_pas_client_suite_v221-pas_client_v221_workflows_smart-pas_client_v221_pended_group-Group01-pas_client_v221_pended_response_attest",
+   "how": "attested by script true",
+   "detail": "from Clear's recorded state: case pended, PAS pended, decision null"
+  },
+  {
+   "test": "davinci_pas_client_suite_v221-pas_client_v221_workflows_smart-pas_client_v221_pended_group-Group01-pas_client_v221_pended_notify_and_attest_finalized_test",
+   "how": "waiting for the kit",
+   "detail": "the kit sends the notification and releases this wait"
+  },
+  {
+   "test": "davinci_pas_client_suite_v221-pas_client_v221_workflows_smart-pas_client_v221_pended_group-Group01-pas_client_v221_pended_finalized_response_attest",
+   "how": "attested by script true",
+   "detail": "from Clear's recorded state: case approved, decision approved A1, recorded from notification"
+  },
+  {
+   "test": "davinci_pas_client_suite_v221-pas_client_v221_workflows_smart-pas_client_v221_claim_updates_group-Group01-pas_client_v221_claim_update_cancel_all_submit_test",
+   "how": "Clear sent the cancellation",
+   "detail": "{\"http\":200,\"error\":null,\"case\":\"cancelled\",\"decision\":null,\"pas\":\"decided\",\"overall\":\"cancelled\",\"reason\":\"Payer answer to the cancellation received.\"}"
+  },
+  {
+   "test": "davinci_pas_client_suite_v221-pas_client_v221_workflows_smart-pas_client_v221_claim_updates_group-Group01-pas_client_v221_response_attest_updates",
+   "how": "attested by script true",
+   "detail": "{\"initial\":{\"http\":200,\"error\":null,\"case\":\"approved\",\"decision\":\"approved A1\",\"pas\":\"decided\",\"overall\":\"approved\",\"reason\":\"Payer decision received.\"},\"addItem\":{\"http\":200,\"error\":null,\"case\":\"approved\",\"decision\":\"approved A1, approved A1\",\"pas\":\"decided\",\"overall\":\"approved\",\"reason\":\"Payer decision received.\"},\"modifyCancel\":{\"http\":200,\"error\":null,\"case\":\"approved\",\"decision\":\"approved A1\",\"pas\":\"decided\",\"overall\":\"approved\",\"reason\":\"Payer decision received.\"},\"cancelAll\":{\"http\":200,\"error\":null,\"case\":\"cancelled\",\"decision\":null,\"pas\":\"decided\",\"overall\":\"cancelled\",\"reason\":\"Payer answer to the cancellation received.\"}}"
+  },
+  {
+   "test": "davinci_pas_client_suite_v221-pas_client_v221_must_support_smart-pas_client_v221_must_support_receive-pas_client_v221_gather_must_support",
+   "how": "released",
+   "detail": "Clear sent 6 $submit and $inquire pairs"
+  },
+  {
+   "test": "davinci_pas_client_suite_v221-pas_client_v221_must_support_smart-pas_client_v221_must_support_receive-pas_client_v221_response_attest_ms_submit_inquire",
+   "how": "attested by script true",
+   "detail": "[{\"caseId\":\"clear-efb478a0a3f68a3c641b9789\",\"submit\":200,\"inquire\":200,\"case\":\"approved\",\"decision\":\"approved A1\",\"pas\":\"decided\",\"overall\":\"approved\",\"reason\":\"Final payer decision recorded per line.\"},{\"scenario\":\"inpatient-admission\",\"caseId\":\"clear-27771929d050f68b934e546c\",\"submit\":200,\"inquire\":200,\"case\":\"approved\",\"decision\":\"approved A1\",\"pas\":\"decided\",\"overall\":\"approved\",\"reason\":\"Final payer decision recorded per line.\"},{\"scenario\":\"accident\",\"caseId\":\"clear-f64103dc030dd3c25d5ce70e\",\"submit\":200,\"inquire\":200,\"case\":\"approved\",\"decision\":\"approved A1\",\"pas\":\"decided\",\"overall\":\"approved\",\"reason\":\"Final payer decision recorded per line.\"},{\"scenario\":\"home-health\",\"caseId\":\"clear-4445c242d427ca3cf6b6864d\",\"submit\":200,\"inquire\":200,\"case\":\"approved\",\"decision\":\"approved A1, approved A1\",\"pas\":\"decided\",\"overall\":\"approved\",\"reason\":\"Final payer decision recorded per line.\",\"update\":200,\"updateInquire\":200},{\"scenario\":\"nursing-home\",\"caseId\":\"clear-c578117c6fd3da8eb5e1dd4a\",\"submit\":200,\"inquire\":200,\"case\":\"partially-approved\",\"decision\":\"modified A6\",\"pas\":\"decided\",\"overall\":\"partial\",\"reason\":\"Final payer decision recorded per line.\"},{\"scenario\":\"priced-line\",\"caseId\":\"clear-d01fe7abb5f95fdbe36919a4\",\"submit\":200,\"inquire\":200,\"case\":\"approved\",\"decision\":\"approved A1, approved A1\",\"pas\":\"decided\",\"overall\":\"approved\",\"reason\":\"Final payer decision recorded per line.\"}]"
+  },
+  {
+   "test": "davinci_pas_client_suite_v221-pas_client_v221_subscription_update_delete_smart-pas_client_v221_subscription_update_delete_interaction-pas_client_v221_subscription_update_delete_test",
+   "how": "Clear sent Subscription update and delete",
+   "detail": "{\"update\":{\"http\":200,\"state\":\"completed\",\"error\":null},\"delete\":{\"http\":200,\"state\":\"completed\",\"error\":null},\"subscription\":\"deleted\",\"subscriptionId\":\"f73272f1-e8c6-4458-8374-12e4ec574f87\",\"handshake\":\"2026-11-16T01:27:19.962Z\",\"lastChange\":{\"operation\":\"delete\",\"outcome\":\"deleted\",\"at\":\"2026-11-16T01:46:31.915Z\",\"httpStatus\":204,\"journal\":\"Task/f93c1d0edadb278fc68498156b19e04d8d54ef70-x1\"},\"notificationEndpoint\":\"[local url]\"}"
+  }
+ ],
+ "clearEvidence": {
+  "subscription": {
+   "caseId": "clear-0842f16075cdddb1205aa361",
+   "create": {
+    "http": 200,
+    "state": "completed",
+    "error": null
+   },
+   "subscription": "requested",
+   "subscriptionId": "f73272f1-e8c6-4458-8374-12e4ec574f87",
+   "handshake": null,
+   "lastChange": {
+    "operation": "create",
+    "outcome": "created",
+    "at": "2026-11-16T01:27:18.686Z",
+    "journal": "Task/978ec906345a50f44faabdcddd471754e0deeca5-x1"
+   },
+   "notificationEndpoint": "[local url]",
+   "afterSetup": {
+    "subscription": "requested",
+    "subscriptionId": "f73272f1-e8c6-4458-8374-12e4ec574f87",
+    "handshake": "2026-11-16T01:27:19.962Z",
+    "lastChange": {
+     "operation": "create",
+     "outcome": "created",
+     "at": "2026-11-16T01:27:18.686Z",
+     "journal": "Task/978ec906345a50f44faabdcddd471754e0deeca5-x1"
+    },
+    "notificationEndpoint": "[local url]"
+   }
+  },
+  "approval": {
+   "caseId": "clear-7dca7c108d3b0e5e3f8f5a14",
+   "http": 200,
+   "error": null,
+   "case": "approved",
+   "decision": "approved A1",
+   "pas": "decided",
+   "overall": "approved",
+   "reason": "Payer decision received."
+  },
+  "denial": {
+   "caseId": "clear-fb18c4d2eddcd428c44435e0",
+   "http": 200,
+   "error": null,
+   "case": "denied",
+   "decision": "denied A3",
+   "pas": "decided",
+   "overall": "denied",
+   "reason": "Payer decision received."
+  },
+  "modification": {
+   "caseId": "clear-9f6074809c94aecec13691d6",
+   "http": 200,
+   "error": null,
+   "case": "partially-approved",
+   "decision": "modified A6",
+   "pas": "decided",
+   "overall": "partial",
+   "reason": "Payer decision received."
+  },
+  "operation_failure": {
+   "caseId": "clear-46562534b413c668d3157992",
+   "http": 200,
+   "error": null,
+   "case": "ready-to-submit",
+   "decision": null,
+   "pas": "rejected",
+   "overall": null,
+   "reason": "The payer rejected the request (HTTP 400)."
+  },
+  "processing_error": {
+   "caseId": "clear-efb478a0a3f68a3c641b9789",
+   "http": 200,
+   "error": null,
+   "case": "ready-to-submit",
+   "decision": null,
+   "pas": "rejected",
+   "overall": null,
+   "reason": "The payer could not process the request: 04 Authorized Quantity Exceeded. Nothing was decided."
+  },
+  "pended": {
+   "caseId": "clear-0842f16075cdddb1205aa361",
+   "submit": {
+    "http": 200,
+    "error": null,
+    "case": "pended",
+    "decision": null,
+    "pas": "pended",
+    "overall": "pended",
+    "reason": "Received and pended for review. This is not an approval."
+   },
+   "pended": {
+    "case": "pended",
+    "decision": null,
+    "pas": "pended",
+    "overall": "pended",
+    "reason": "Received and pended for review. This is not an approval."
+   },
+   "final": {
+    "case": "approved",
+    "decision": "approved A1",
+    "pas": "decided",
+    "overall": "approved",
+    "reason": "Final payer decision received by notification and recorded per line.",
+    "source": "notification"
+   }
+  },
+  "claimUpdates": {
+   "caseId": "clear-46562534b413c668d3157992",
+   "initial": {
+    "http": 200,
+    "error": null,
+    "case": "approved",
+    "decision": "approved A1",
+    "pas": "decided",
+    "overall": "approved",
+    "reason": "Payer decision received."
+   },
+   "addItem": {
+    "http": 200,
+    "error": null,
+    "case": "approved",
+    "decision": "approved A1, approved A1",
+    "pas": "decided",
+    "overall": "approved",
+    "reason": "Payer decision received."
+   },
+   "modifyCancel": {
+    "http": 200,
+    "error": null,
+    "case": "approved",
+    "decision": "approved A1",
+    "pas": "decided",
+    "overall": "approved",
+    "reason": "Payer decision received."
+   },
+   "cancelAll": {
+    "http": 200,
+    "error": null,
+    "case": "cancelled",
+    "decision": null,
+    "pas": "decided",
+    "overall": "cancelled",
+    "reason": "Payer answer to the cancellation received."
+   }
+  },
+  "mustSupport": [
+   {
+    "caseId": "clear-efb478a0a3f68a3c641b9789",
+    "submit": 200,
+    "inquire": 200,
+    "case": "approved",
+    "decision": "approved A1",
+    "pas": "decided",
+    "overall": "approved",
+    "reason": "Final payer decision recorded per line."
+   },
+   {
+    "scenario": "inpatient-admission",
+    "caseId": "clear-27771929d050f68b934e546c",
+    "submit": 200,
+    "inquire": 200,
+    "case": "approved",
+    "decision": "approved A1",
+    "pas": "decided",
+    "overall": "approved",
+    "reason": "Final payer decision recorded per line."
+   },
+   {
+    "scenario": "accident",
+    "caseId": "clear-f64103dc030dd3c25d5ce70e",
+    "submit": 200,
+    "inquire": 200,
+    "case": "approved",
+    "decision": "approved A1",
+    "pas": "decided",
+    "overall": "approved",
+    "reason": "Final payer decision recorded per line."
+   },
+   {
+    "scenario": "home-health",
+    "caseId": "clear-4445c242d427ca3cf6b6864d",
+    "submit": 200,
+    "inquire": 200,
+    "case": "approved",
+    "decision": "approved A1, approved A1",
+    "pas": "decided",
+    "overall": "approved",
+    "reason": "Final payer decision recorded per line.",
+    "update": 200,
+    "updateInquire": 200
+   },
+   {
+    "scenario": "nursing-home",
+    "caseId": "clear-c578117c6fd3da8eb5e1dd4a",
+    "submit": 200,
+    "inquire": 200,
+    "case": "partially-approved",
+    "decision": "modified A6",
+    "pas": "decided",
+    "overall": "partial",
+    "reason": "Final payer decision recorded per line."
+   },
+   {
+    "scenario": "priced-line",
+    "caseId": "clear-d01fe7abb5f95fdbe36919a4",
+    "submit": 200,
+    "inquire": 200,
+    "case": "approved",
+    "decision": "approved A1, approved A1",
+    "pas": "decided",
+    "overall": "approved",
+    "reason": "Final payer decision recorded per line."
+   }
+  ],
+  "subscriptionChanges": {
+   "update": {
+    "http": 200,
+    "state": "completed",
+    "error": null
+   },
+   "delete": {
+    "http": 200,
+    "state": "completed",
+    "error": null
+   },
+   "subscription": "deleted",
+   "subscriptionId": "f73272f1-e8c6-4458-8374-12e4ec574f87",
+   "handshake": "2026-11-16T01:27:19.962Z",
+   "lastChange": {
+    "operation": "delete",
+    "outcome": "deleted",
+    "at": "2026-11-16T01:46:31.915Z",
+    "httpStatus": 204,
+    "journal": "Task/f93c1d0edadb278fc68498156b19e04d8d54ef70-x1"
+   },
+   "notificationEndpoint": "[local url]"
+  }
+ },
+ "stopped": null
+}

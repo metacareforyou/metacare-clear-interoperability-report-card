@@ -2,7 +2,14 @@
 
 Suspected defects that we checked and could not confirm are kept here, so nobody files them by mistake.
 
-None at present.
+## PAS-02: X12 889 and 886 value sets not suppressed (retracted 2026-11-16)
+
+**Suspicion.** The PAS v2.2.1 suites suppress unverifiable membership errors for some X12-only value sets but not for `X12278FollowUpActionCodes` (X12 889) or `X12278ReviewDecisionReasonCode` (X12 886). In session koGjRfOrkbj, 4.1.04 and 4.1.06 skipped with "None of the codings provided are in the value set 'X12 278 Follow Up Action Value Set'".
+
+**What we found.** It was our environment, not the kit. The host validator keeps a terminology cache on disk (`$TMPDIR/default-tx-cache`). 13 of its 27 files held tx.fhir.org error replies ("The cache ... expired: it went 32 minutes without being used"), and every later run replayed them, even after the validator restarted. With that folder moved aside, the unmodified kit passed 4.1.04 and 4.1.06 with no skips (session k6Q6wtOpO6t, 2026-11-16).
+
+The suppression list is as the source shows, but with a working terminology server the kit does not need entries for these value sets. The fork branch `fix/v221-suppress-x12-889-886-value-sets` is kept as a record and is not needed. Nothing was filed.
+
 
 ## Reinstated: DTR intendedUse and the CRD version (PAS-01)
 

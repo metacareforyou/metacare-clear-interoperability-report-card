@@ -1,5 +1,5 @@
 {
- "about": "Why each PAS test that did not pass did not pass. Rules are matched in order against the test id (and the message when given); the first match wins.",
+ "about": "Why each PAS test that did not pass did not pass. Rules are matched in order against the test id (and the message when given); the first match wins. Runs before 2026-11-16 may have been affected by a stale validator terminology cache (see the README environment note); the stored results keep only each test's summary message, so this cannot be confirmed from them.",
  "failures": [
   {
    "match": "claim_update_cancel_request_test$",
@@ -29,11 +29,11 @@
   },
   {
    "match": "_response_must_support_|response_must_support",
-   "reason": "Response must support checks that the kit's simulated payer responses do not exercise. The elements come from the kit's own responses, not from Clear. Under investigation."
+   "reason": "Response must support checks reported nothing to check. These did not recur in the 2026-11-16 run, which cleared the validator's terminology cache and also included Clear PRs #85 and #86. They were probably caused by the stale cache (see the environment note), Clear, or both."
   },
   {
    "match": "grandparent_excluded",
-   "reason": "No update that referenced an earlier update was sent in this run. Under investigation."
+   "reason": "No update that referenced an earlier update was checked. This did not recur in the 2026-11-16 run (cleared cache, Clear PRs #85 and #86)."
   },
   {
    "match": "registration",
