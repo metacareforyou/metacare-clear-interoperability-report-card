@@ -7,11 +7,11 @@ kit: udap-security-test-kit v0.12.2 (pulled in by davinci-pas-test-kit v0.16.0 a
 kit_commit: ba81acba089444f4c0e34a545d599d57ff8f6ab9
 suite: davinci_pas_client_suite_v221, UDAP B2B client credentials option (also any client suite that reuses udap_client_token_request_cc_verification)
 tests: 15.01 udap_client_token_request_cc_verification (PAS UDAP option)
-status: drafted, not filed
+status: filed 2026-11-16, approved by Richard Braman
 fork_branch: https://github.com/metacareforyou/udap-security-test-kit/tree/fix/token-assertion-exp-at-request-time
 spec: spec/udap_security_test_kit/token_assertion_exp_at_request_time_spec.rb
 spec_image: metacare-inferno-pas:1db14e7 (with bundle install)
-filed_url:
+filed_url: https://github.com/inferno-framework/udap-security-test-kit/issues/52
 found_in: results/pas-udap/2026-11-15
 ---
 

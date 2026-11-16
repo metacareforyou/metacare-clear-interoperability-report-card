@@ -7,11 +7,11 @@ kit: davinci-dtr-test-kit v0.18.1
 kit_commit: 14dde0e5adc9d355c6ebdfe156839adbac20a781
 suite: dtr_full_ehr_v220
 tests: 2.1.2.02 and 2.2.2.02 dtr_full_ehr_v220_qp_response_validation
-status: drafted, not filed
+status: filed 2026-11-16, approved by Richard Braman
 fork_branch: https://github.com/metacareforyou/davinci-dtr-test-kit/tree/fix/qpackage-bundle-conformance
 spec: spec/davinci_dtr_test_kit/full_ehr_v220_qpackage_bundle_fixture_spec.rb
 spec_image: metacare-inferno-dtr:14dde0e
-filed_url:
+filed_url: https://github.com/inferno-framework/davinci-dtr-test-kit/issues/150
 found_in: results/dtr/2026-11-15
 ---
 
