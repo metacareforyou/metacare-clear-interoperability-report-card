@@ -61,6 +61,10 @@ A branch with these changes and a spec (`spec/davinci_dtr_test_kit/full_ehr_v220
 
 One point for the maintainers: with a QuestionnaireResponse in the adaptive package, a client may start `$next-question` from it. That is what DTR 2.2.0 intends, but it changes what the adaptive workflow sends today. The branch keeps the response empty (no items), so it adds no answers.
 
+The fix branch is based on the pinned commit named above, not on `main`. We are glad to rebase it onto `main` and open a pull request if that helps.
+
+Our results and the full list of defects we found are in our interoperability report card: https://github.com/metacareforyou/metacare-clear-interoperability-report-card (this one is [DTR-03](https://github.com/metacareforyou/metacare-clear-interoperability-report-card/blob/main/defects/DTR-03.md)).
+
 Found while testing a provider system with synthetic data only.
 <!-- issue:end -->
 
