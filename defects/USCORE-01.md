@@ -58,6 +58,10 @@ Name the block variable `patient_id`.
 
 A branch with the one line change and a spec (`spec/us_core/provenance_revinclude_search_test_spec.rb`) is at https://github.com/metacareforyou/us-core-test-kit/tree/fix/provenance-revinclude-patient-id. The spec answers the revinclude search with a 400 and an OperationOutcome, then checks that the status search is made once and the test passes. It and the existing `spec/us_core/search_test_spec.rb` pass on the branch.
 
+The fix branch is based on the pinned commit named above, not on `main`. We are glad to rebase it onto `main` and open a pull request if that helps.
+
+Our results and the full list of defects we found are in our interoperability report card: https://github.com/metacareforyou/metacare-clear-interoperability-report-card (this one is [USCORE-01](https://github.com/metacareforyou/metacare-clear-interoperability-report-card/blob/main/defects/USCORE-01.md)).
+
 Found while testing a provider system with synthetic data only.
 <!-- issue:end -->
 

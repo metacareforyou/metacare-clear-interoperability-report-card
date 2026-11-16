@@ -77,6 +77,10 @@ A DTR 2.2.0 QuestionnaireResponse in a PAS 2.2.1 request is validated against DT
 
 - **Validator, longer term:** resolve an unversioned extension URL to the definition from the package the profile in use depends on (here DTR 2.2.0), not to whichever version a transitive dependency loaded.
 
+The fix branch is based on the pinned commit named above, not on `main`. We are glad to rebase it onto `main` and open a pull request if that helps.
+
+Our results and the full list of defects we found are in our interoperability report card: https://github.com/metacareforyou/metacare-clear-interoperability-report-card (this one is [PAS-01](https://github.com/metacareforyou/metacare-clear-interoperability-report-card/blob/main/defects/PAS-01.md)).
+
 Found while testing a provider system with synthetic data only.
 <!-- issue:end -->
 

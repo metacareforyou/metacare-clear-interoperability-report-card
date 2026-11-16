@@ -53,6 +53,10 @@ Turn off expiration in `JWT.decode` (`verify_expiration: false`) and check `exp`
 
 A branch with this change for the v2.2.1 suite is at https://github.com/metacareforyou/davinci-crd-test-kit/tree/fix/token-exp-at-request-time. It adds `lib/davinci_crd_test_kit/client/jwt_expiration.rb` and a spec (`spec/davinci_crd_test_kit/client/v2.2.1/auth/token_payload_exp_at_request_time_spec.rb`) that covers a token valid at request time but expired since (passes), a token already expired at request time (fails), and the clock skew allowance. The existing token payload specs still pass. The v2.0.1 test loads no requests, so it is left for the maintainers to decide.
 
+The fix branch is based on the pinned commit named above, not on `main`. We are glad to rebase it onto `main` and open a pull request if that helps.
+
+Our results and the full list of defects we found are in our interoperability report card: https://github.com/metacareforyou/metacare-clear-interoperability-report-card (this one is [CRD-01](https://github.com/metacareforyou/metacare-clear-interoperability-report-card/blob/main/defects/CRD-01.md)).
+
 Found while testing a provider system with synthetic data only.
 <!-- issue:end -->
 

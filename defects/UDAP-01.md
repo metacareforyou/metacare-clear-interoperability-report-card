@@ -56,6 +56,10 @@ A branch with this change and a spec (`spec/udap_security_test_kit/token_asserti
 
 This is the same class of problem as the CRD kit's CDS Hooks token payload check, which also judges `exp` when the test runs.
 
+The fix branch is based on the pinned commit named above, not on `main`. We are glad to rebase it onto `main` and open a pull request if that helps.
+
+Our results and the full list of defects we found are in our interoperability report card: https://github.com/metacareforyou/metacare-clear-interoperability-report-card (this one is [UDAP-01](https://github.com/metacareforyou/metacare-clear-interoperability-report-card/blob/main/defects/UDAP-01.md)).
+
 Found while testing a provider system with synthetic data only.
 <!-- issue:end -->
 

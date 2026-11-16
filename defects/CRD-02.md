@@ -57,6 +57,10 @@ Either:
 
 Option 2 would skip DeviceRequest and Appointment, which are the most common Coverage Information targets, so the test would rarely check anything. We propose option 1. A branch with it and a spec (`spec/davinci_crd_test_kit/client/v2.2.1/verify_request/hook_request_granted_scopes_coverage_targets_spec.rb`) is at https://github.com/metacareforyou/davinci-crd-test-kit/tree/fix/granted-scopes-allow-coverage-info-targets. Granting `Appointment` and the other target types passes there. Any other extra type, for example `Claim`, still fails. The existing request verification and API specs pass on the branch (133 examples, 0 failures).
 
+The fix branch is based on the pinned commit named above, not on `main`. We are glad to rebase it onto `main` and open a pull request if that helps.
+
+Our results and the full list of defects we found are in our interoperability report card: https://github.com/metacareforyou/metacare-clear-interoperability-report-card (this one is [CRD-02](https://github.com/metacareforyou/metacare-clear-interoperability-report-card/blob/main/defects/CRD-02.md)).
+
 Found while testing a provider system with synthetic data only.
 <!-- issue:end -->
 

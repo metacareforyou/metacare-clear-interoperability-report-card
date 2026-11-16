@@ -66,6 +66,10 @@ group from: :dtr_client_payer_auth_udap,
 
 A branch with this change and a spec (`spec/davinci_dtr_test_kit/full_ehr_v220_udap_aud_spec.rb`) is at https://github.com/metacareforyou/davinci-dtr-test-kit/tree/fix/v220-udap-aud. The spec checks the expected registration and token URLs against the suite's UDAP discovery document, and that the v2.0.1 suite is unchanged.
 
+The fix branch is based on the pinned commit named above, not on `main`. We are glad to rebase it onto `main` and open a pull request if that helps.
+
+Our results and the full list of defects we found are in our interoperability report card: https://github.com/metacareforyou/metacare-clear-interoperability-report-card (this one is [DTR-02](https://github.com/metacareforyou/metacare-clear-interoperability-report-card/blob/main/defects/DTR-02.md)).
+
 Found while testing a provider system with synthetic data only.
 <!-- issue:end -->
 
