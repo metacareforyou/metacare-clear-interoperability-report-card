@@ -40,16 +40,16 @@ Runs of the unmodified kits at their pinned commits. These are the results.
 | CRD 2.2.1 | `crd_client_v221` | 2026-11-15 22:17 UTC | `met-1694-crd-fhir-access` at `3f3727b`, [#81](https://github.com/metacareforyou/metacare-clear/pull/81) | 1417 | 615 | 3 | 0 | 4 | 795 | 7 |
 | DTR 2.2.0 (SMART Backend Services) | `dtr_full_ehr_v220` | 2026-11-15 22:41 UTC | `met-1703-dtr-must-support` at `d10ab06`, [#82](https://github.com/metacareforyou/metacare-clear/pull/82) | 30 | 21 | 4 | 0 | 0 | 5 | 3 |
 | DTR 2.2.0 (UDAP B2B client credentials) | `dtr_full_ehr_v220` | 2026-11-15 22:44 UTC | `met-1704-udap-client` at `355fcda`, [#84](https://github.com/metacareforyou/metacare-clear/pull/84) | 30 | 19 | 7 | 0 | 0 | 4 | 2 |
-| PAS 2.2.1 (SMART Backend Services) | `davinci_pas_client_suite_v221` | 2026-11-15 20:37 UTC | `develop` at `5dc674c`, [#78](https://github.com/metacareforyou/metacare-clear/pull/78), [#79](https://github.com/metacareforyou/metacare-clear/pull/79), [#83](https://github.com/metacareforyou/metacare-clear/pull/83), [#80](https://github.com/metacareforyou/metacare-clear/pull/80) | 270 | 71 | 10 | 0 | 8 | 181 | 9 |
+| PAS 2.2.1 (SMART Backend Services) | `davinci_pas_client_suite_v221` | 2026-11-16 01:56 UTC | `develop plus PRs #85 and #86` at `163b7f3 + de29173`, [#85](https://github.com/metacareforyou/metacare-clear/pull/85), [#86](https://github.com/metacareforyou/metacare-clear/pull/86) | 270 | 79 | 10 | 0 | 0 | 181 | 9 |
 | PAS 2.2.1 (UDAP B2B client credentials) | `davinci_pas_client_suite_v221` | 2026-11-15 22:57 UTC | `met-1704-udap-client` at `355fcda`, [#84](https://github.com/metacareforyou/metacare-clear/pull/84) | 270 | 71 | 11 | 0 | 8 | 180 | 9 |
 
 ### Evidence runs with a patched kit
 
-Each of these ran a kit with one MetaCare fix for a drafted defect. They show whether that defect is the only cause of the official failures. They are not results of the official kit.
+Each of these ran a kit with MetaCare fixes for drafted defects. They show whether that defect is the only cause of the official failures. They are not results of the official kit.
 
 | Guide | Suite | Run date | Clear tested | Tests | Pass | Fail | Error | Skip | Not run | Attested by script |
 |---|---|---|---|---|---|---|---|---|---|---|
-| PAS 2.2.1 (SMART Backend Services), patched kit | `davinci_pas_client_suite_v221` | 2026-11-15 23:39 UTC | `develop` at `163b7f3` | 270 | 81 | 0 | 0 | 8 | 181 | 9 |
+| PAS 2.2.1 (SMART Backend Services), patched kit | `davinci_pas_client_suite_v221` | 2026-11-16 01:46 UTC | `develop plus PRs #85 and #86` at `163b7f3 + de29173`, [#85](https://github.com/metacareforyou/metacare-clear/pull/85), [#86](https://github.com/metacareforyou/metacare-clear/pull/86) | 270 | 89 | 0 | 0 | 0 | 181 | 9 |
 
 ## Results by guide
 
@@ -164,8 +164,8 @@ The attestations below were released from Clear's recorded state. They are not o
 
 Kit [inferno-framework/davinci-pas-test-kit](https://github.com/inferno-framework/davinci-pas-test-kit) v0.16.0 `1db14e7`, suite `davinci_pas_client_suite_v221`, guide hl7.fhir.us.davinci-pas#2.2.1.
 
-Latest run: 2026-11-15 20:37 UTC, Clear `develop` at `5dc674c`, [#78](https://github.com/metacareforyou/metacare-clear/pull/78), [#79](https://github.com/metacareforyou/metacare-clear/pull/79), [#83](https://github.com/metacareforyou/metacare-clear/pull/83), [#80](https://github.com/metacareforyou/metacare-clear/pull/80). [Results](results/pas/2026-11-15-2/results.json), [summary](results/pas/2026-11-15-2/summary.json).
-develop at 5dc674c, after PRs #78, #79, #83 and #80 merged. SMART Backend Services option.
+Latest run: 2026-11-16 01:56 UTC, Clear `develop plus PRs #85 and #86` at `163b7f3 + de29173`, [#85](https://github.com/metacareforyou/metacare-clear/pull/85), [#86](https://github.com/metacareforyou/metacare-clear/pull/86). [Results](results/pas/2026-11-16/results.json), [summary](results/pas/2026-11-16/summary.json).
+develop at 163b7f3 with Clear PRs #85 (MET-1709) and #86 (MET-1710, at de29173) applied; both PRs open, not merged yet. Unmodified kit 1db14e7, session k6Q6wtOpO6t, validator terminology cache cleared before the run.
 
 Failures and errors:
 
@@ -179,8 +179,6 @@ Not run, skipped or omitted:
 |---|---|---|---|
 | UDAP B2B option. This run used SMART Backend Services. Clear's UDAP client is in progress. | not run | 90 | 1, 6, 7.1, 7.2, 7.3.1, 7.3.2, 7.3.3, 7.4.1, 7.4.2, 7.4.3, 7.5, 7.6 and 9 more |
 | No authentication option. Not in scope: Clear always authenticates to a payer. | not run | 85 | 10, 11.1, 11.2, 11.3.1, 11.3.2, 11.3.3, 11.4.1, 11.4.2, 11.4.3, 11.5, 11.6, 11.7 and 7 more |
-| Response must support checks that the kit's simulated payer responses do not exercise. The elements come from the kit's own responses, not from Clear. Under investigation. | skip | 7 | 4.2.2, 4.2.4 |
-| No update that referenced an earlier update was sent in this run. Under investigation. | skip | 1 | 3.4.2 |
 | Registration tests for the UDAP and no authentication options, which this run did not use. | not run | 2 | 1 |
 | Manual attestation group. A person completes it in the Inferno interface; the run script does not. | not run | 4 | 16 |
 
@@ -201,16 +199,17 @@ The attestations below were released from Clear's recorded state. They are not o
 
 Earlier runs:
 
+- 2026-11-15 20:37 UTC: 71 pass, 10 fail, Clear `develop` at `5dc674c`, [#78](https://github.com/metacareforyou/metacare-clear/pull/78), [#79](https://github.com/metacareforyou/metacare-clear/pull/79), [#83](https://github.com/metacareforyou/metacare-clear/pull/83), [#80](https://github.com/metacareforyou/metacare-clear/pull/80) ([results](results/pas/2026-11-15-2/results.json))
 - 2026-11-15 11:58 UTC: 59 pass, 16 fail, Clear `inferno-rerun-1115` at `1b2402a`, [#78](https://github.com/metacareforyou/metacare-clear/pull/78), [#79](https://github.com/metacareforyou/metacare-clear/pull/79) ([results](results/pas/2026-11-15/results.json))
 
 ### PAS 2.2.1 (SMART Backend Services), patched kit
 
 Kit [inferno-framework/davinci-pas-test-kit](https://github.com/inferno-framework/davinci-pas-test-kit) v0.16.0 `1db14e7`, suite `davinci_pas_client_suite_v221`, guide hl7.fhir.us.davinci-pas#2.2.1.
 
-> **Patched kit: not a result of the official kit.** The unmodified kit at the pinned commit, plus one validator suppression for PAS-01. Patch: [fix/v221-suppress-docreason-210-conflict](https://github.com/metacareforyou/davinci-pas-test-kit/tree/fix/v221-suppress-docreason-210-conflict) at `f91de1a` (image metacare-inferno-pas:pas01-suppress (84dbe4ed8abe)), the fix proposed in [PAS-01](defects/PAS-01.md). This run is evidence about that defect only. The official result for this guide and option is the row without "patched kit".
+> **Patched kit: not a result of the official kit.** The unmodified kit at the pinned commit, plus the PAS-01 suppression and the X12 value set suppression from the retracted PAS-02. The official clean-cache run shows the second one is not needed: it has no skips without it. Patch: [fix/v221-suppress-docreason-210-conflict](https://github.com/metacareforyou/davinci-pas-test-kit/tree/fix/v221-suppress-docreason-210-conflict) and [fix/v221-suppress-x12-889-886-value-sets](https://github.com/metacareforyou/davinci-pas-test-kit/tree/fix/v221-suppress-x12-889-886-value-sets) at `f91de1a and 89d1779, merged locally on 1db14e7` (image metacare-inferno-pas:pas-suppress-all (1418170ff0aa)), for [PAS-01](defects/PAS-01.md). This run is evidence about that defect only. The official result for this guide and option is the row without "patched kit".
 
-Latest run: 2026-11-15 23:39 UTC, Clear `develop` at `163b7f3`. [Results](results/pas-patched/2026-11-15/results.json), [summary](results/pas-patched/2026-11-15/summary.json).
-PAS on develop 163b7f3, against the PAS kit with MetaCare's fork branch fix/v221-suppress-docreason-210-conflict (f91de1a), image metacare-inferno-pas:pas01-suppress (84dbe4ed8abe), session 3C4bBxxz26y. Not a run of the unmodified kit.
+Latest run: 2026-11-16 01:46 UTC, Clear `develop plus PRs #85 and #86` at `163b7f3 + de29173`, [#85](https://github.com/metacareforyou/metacare-clear/pull/85), [#86](https://github.com/metacareforyou/metacare-clear/pull/86). [Results](results/pas-patched/2026-11-16/results.json), [summary](results/pas-patched/2026-11-16/summary.json).
+Same Clear code as the official 2026-11-16 run. Patched kit image metacare-inferno-pas:pas-suppress-all (1418170ff0aa), session dh6oh5HnJv9, validator terminology cache cleared. Not a run of the unmodified kit.
 
 Not run, skipped or omitted:
 
@@ -218,8 +217,6 @@ Not run, skipped or omitted:
 |---|---|---|---|
 | UDAP B2B option. This run used SMART Backend Services. Clear's UDAP client is in progress. | not run | 90 | 1, 6, 7.1, 7.2, 7.3.1, 7.3.2, 7.3.3, 7.4.1, 7.4.2, 7.4.3, 7.5, 7.6 and 9 more |
 | No authentication option. Not in scope: Clear always authenticates to a payer. | not run | 85 | 10, 11.1, 11.2, 11.3.1, 11.3.2, 11.3.3, 11.4.1, 11.4.2, 11.4.3, 11.5, 11.6, 11.7 and 7 more |
-| Response must support checks that the kit's simulated payer responses do not exercise. The elements come from the kit's own responses, not from Clear. Under investigation. | skip | 7 | 4.2.2, 4.2.4 |
-| No update that referenced an earlier update was sent in this run. Under investigation. | skip | 1 | 3.4.2 |
 | Registration tests for the UDAP and no authentication options, which this run did not use. | not run | 2 | 1 |
 | Manual attestation group. A person completes it in the Inferno interface; the run script does not. | not run | 4 | 16 |
 
@@ -237,6 +234,10 @@ The attestations below were released from Clear's recorded state. They are not o
 | 3.6.02 | PAS client handles the operation failure appropriately | pass |
 | 3.7.02 | PAS client handles the processing errors appropriately | pass |
 | 4.1.02 | PAS client handled the $submit and $inquire responses without erroring | pass |
+
+Earlier runs:
+
+- 2026-11-15 23:39 UTC: 81 pass, 0 fail, Clear `develop` at `163b7f3` ([results](results/pas-patched/2026-11-15/results.json))
 
 ### PAS 2.2.1 (UDAP B2B client credentials)
 
@@ -258,8 +259,8 @@ Not run, skipped or omitted:
 |---|---|---|---|
 | SMART Backend Services option. This run used UDAP B2B client credentials; the SMART option has its own section. | not run | 89 | 1, 2, 3.1, 3.2, 3.3.1, 3.3.2, 3.3.3, 3.4.1, 3.4.2, 3.4.3, 3.5, 3.6 and 9 more |
 | No authentication option. Not in scope: Clear always authenticates to a payer. | not run | 85 | 10, 11.1, 11.2, 11.3.1, 11.3.2, 11.3.3, 11.4.1, 11.4.2, 11.4.3, 11.5, 11.6, 11.7 and 7 more |
-| Response must support checks that the kit's simulated payer responses do not exercise. The elements come from the kit's own responses, not from Clear. Under investigation. | skip | 7 | 8.2.2, 8.2.4 |
-| No update that referenced an earlier update was sent in this run. Under investigation. | skip | 1 | 7.4.2 |
+| Response must support checks reported nothing to check. These did not recur in the 2026-11-16 run, which cleared the validator's terminology cache and also included Clear PRs #85 and #86. They were probably caused by the stale cache (see the environment note), Clear, or both. | skip | 7 | 8.2.2, 8.2.4 |
+| No update that referenced an earlier update was checked. This did not recur in the 2026-11-16 run (cleared cache, Clear PRs #85 and #86). | skip | 1 | 7.4.2 |
 | Registration tests for the other authentication option, which this run did not use. | not run | 2 | 1 |
 | Manual attestation group. A person completes it in the Inferno interface; the run script does not. | not run | 4 | 16 |
 
@@ -291,7 +292,6 @@ The attestations below were released from Clear's recorded state. They are not o
 | [DTR-05](defects/DTR-05.md) | inferno-framework/davinci-dtr-test-kit | Rendering-xhtml must support elements can never be observed, because templates lose primitive extensions | drafted, not filed | proposed in the draft |
 | [HL7-CRD-01](defects/HL7-CRD-01.md) | HL7 Jira, Da Vinci CRD (hl7.fhir.us.davinci-crd 2.2.1), with a note to inferno-framework/davinci-crd-test-kit | CRD 2.2.1 invariant crd-ci-q4 is empty, so fails, for auth-needed with doc-purpose withpa | drafted, not filed | proposed in the draft |
 | [PAS-01](defects/PAS-01.md) | inferno-framework/davinci-pas-test-kit; also HL7 Jira (Da Vinci PAS and CDex package dependencies) | PAS 2.2.1 request validation cannot pass DTR intendedUse, because CDex 2.1.0 pulls DTR 2.1.0 and CRD 2.1.0 in beside CRD 2.2.1 | drafted, not filed | [fix/v221-suppress-docreason-210-conflict](https://github.com/metacareforyou/davinci-pas-test-kit/tree/fix/v221-suppress-docreason-210-conflict) |
-| [PAS-02](defects/PAS-02.md) | inferno-framework/davinci-pas-test-kit | PAS v2.2.1 suites do not suppress the unverifiable X12 889 and 886 value set errors, so must support follow up action codes fail response validation | drafted, not filed | [fix/v221-suppress-x12-889-886-value-sets](https://github.com/metacareforyou/davinci-pas-test-kit/tree/fix/v221-suppress-x12-889-886-value-sets) |
 | [UDAP-01](defects/UDAP-01.md) | inferno-framework/udap-security-test-kit | UDAP client token request verification fails a valid five minute client assertion as expired, because it checks exp when the test runs | drafted, not filed | [fix/token-assertion-exp-at-request-time](https://github.com/metacareforyou/udap-security-test-kit/tree/fix/token-assertion-exp-at-request-time) |
 | [USCORE-01](defects/USCORE-01.md) | inferno-framework/us-core-test-kit | Provenance revinclude search raises NameError on a 400, because the block names the patient id _patient_id | drafted, not filed | [fix/provenance-revinclude-patient-id](https://github.com/metacareforyou/us-core-test-kit/tree/fix/provenance-revinclude-patient-id) |
 
@@ -316,6 +316,12 @@ ONC and Drummond get the same list as the kit maintainers, at the same time:
 1. The table of defects above is the list. Each row links to the full draft.
 2. When a defect is filed upstream, its row links to the filed issue, so the list always shows the current state.
 3. For a submission, we send this repository's link at a tagged commit, so the reviewer sees exactly the list we filed from. We also attach the drafts themselves if the reviewer prefers files.
+
+## Environment note: the validator's terminology cache
+
+The HL7 validator caches terminology server replies on disk (`$TMPDIR/default-tx-cache` for the host validator). It can store tx.fhir.org error replies, for example "The cache ... expired: it went 32 minutes without being used", and replay them in every later run, even after a restart. That turns valid codes into validation failures or skips. Clear that folder before every run.
+
+On 2026-11-16 we found 13 such stored errors. Runs before that date may have been affected. Our stored results keep only each test's summary message, so we cannot confirm which ones. In PAS, eight skips seen on 2026-11-15 did not recur once the cache was cleared (the same run also included Clear PRs #85 and #86).
 
 ## Updating this report card
 
