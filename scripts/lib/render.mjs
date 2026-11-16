@@ -111,10 +111,6 @@ function renderKit(root, kitId, kit, defects) {
   out.push(`### ${kit.label}`);
   out.push('');
   out.push(`Kit [${kit.repository.replace('https://github.com/', '')}](${kit.repository}) ${kit.tag} \`${kit.commit.slice(0, 7)}\`, suite \`${kit.suite}\`, guide ${kit.ig}.`);
-  if (kit.patch) {
-    out.push('');
-    out.push(`> **Patched kit: not a result of the official kit.** ${kit.patch.what} Patch: [${kit.patch.branch}](${kit.patch.repository}/tree/${kit.patch.branch}) at \`${kit.patch.commit}\` (image ${kit.patch.image}), the fix proposed in [${kit.patch.defect}](defects/${kit.patch.defect}.md). This run is evidence about that defect only. The official result for this guide and option is the row without "patched kit".`);
-  }
   out.push('');
   if (!runs.length) {
     out.push('No run imported yet.');
@@ -123,6 +119,12 @@ function renderKit(root, kitId, kit, defects) {
   }
   const latest = runs[runs.length - 1];
   const tests = latest.results.filter((t) => t.kind === 'test');
+  const patch = latest.run.kitPatch || kit.patch;
+  if (patch) {
+    const branches = [].concat(patch.branch).map((b) => `[${b}](${patch.repository}/tree/${b})`).join(' and ');
+    out.push(`> **Patched kit: not a result of the official kit.** ${patch.what} Patch: ${branches} at \`${patch.commit}\` (image ${patch.image}), for ${[].concat(patch.defect).map((d) => `[${d}](defects/${d}.md)`).join(' and ')}. This run is evidence about that defect only. The official result for this guide and option is the row without "patched kit".`);
+    out.push('');
+  }
   const triage = triageFor(root, kitId);
   const t = latest.summary.totals;
 
@@ -229,7 +231,7 @@ export function renderReadme(root) {
   const body = [START, '', '## Summary', '', 'Runs of the unmodified kits at their pinned commits. These are the results.', '', ...overview(root, kits), ''];
   if (Object.values(kits).some((k) => k.patch)) {
     body.push('### Evidence runs with a patched kit', '');
-    body.push('Each of these ran a kit with one MetaCare fix for a drafted defect. They show whether that defect is the only cause of the official failures. They are not results of the official kit.', '');
+    body.push('Each of these ran a kit with MetaCare fixes for drafted defects. They show whether that defect is the only cause of the official failures. They are not results of the official kit.', '');
     body.push(...overview(root, kits, true), '');
   }
   body.push('## Results by guide', '');

@@ -3,6 +3,7 @@
 //
 //   node scripts/import-run.mjs --kit dtr --from <dir with results.json and summary.json> \
 //     --branch <Clear branch> --commit <Clear commit> [--pr 79] [--pr 78] [--note "text"] [--date YYYY-MM-DD]
+//     [--patch '{"repository":...,"branch":...,"commit":...,"image":...,"defect":...,"what":...}']
 //   node scripts/import-run.mjs --render     (regenerate the README from results/ only)
 //
 // The run is copied to results/<kit>/<date>/ (results.json, summary.json, run.json), scrubbed of
@@ -25,6 +26,7 @@ function parseArgs(argv) {
     if (flag === '--render') args.render = true;
     else if (flag === '--replace') args.replace = true;
     else if (flag === '--pr') args.pr.push(Number(argv[++i]));
+    else if (flag === '--patch') args.patch = JSON.parse(argv[++i]);
     else if (flag.startsWith('--')) args[flag.slice(2)] = argv[++i];
     else throw new Error(`Unknown argument ${flag}`);
   }
@@ -66,7 +68,8 @@ function importRun(args) {
       pullRequests: args.pr.filter(Boolean),
       note: args.note || null
     },
-    kitPatch: kit.patch || null,
+    // A patched kit names its patch in kits.json; --patch '<json>' records a different patch for this run.
+    kitPatch: args.patch || kit.patch || null,
     importedAt: new Date().toISOString(),
     synthetic: true
   };
