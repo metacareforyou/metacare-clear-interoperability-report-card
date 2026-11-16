@@ -64,6 +64,10 @@ group from: :dtr_client_payer_auth_smart,
 
 A branch with this change and a spec (`spec/davinci_dtr_test_kit/full_ehr_v220_smart_token_aud_spec.rb`) is at https://github.com/metacareforyou/davinci-dtr-test-kit/tree/fix/v220-smart-token-aud. The spec checks that the v2.2.0 test expects the advertised token endpoint and that the v2.0.1 suite is unchanged. The kit's full spec suite passes on the branch.
 
+The fix branch is based on the pinned commit named above, not on `main`. We are glad to rebase it onto `main` and open a pull request if that helps.
+
+Our results and the full list of defects we found are in our interoperability report card: https://github.com/metacareforyou/metacare-clear-interoperability-report-card (this one is [DTR-01](https://github.com/metacareforyou/metacare-clear-interoperability-report-card/blob/main/defects/DTR-01.md)).
+
 Found while testing a provider system with synthetic data only.
 <!-- issue:end -->
 

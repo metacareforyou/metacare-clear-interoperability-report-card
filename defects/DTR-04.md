@@ -57,6 +57,12 @@ When the package endpoint instantiates its template, replace a `questionnaireAda
 
 A branch with this change is at https://github.com/metacareforyou/davinci-dtr-test-kit/tree/fix/adaptive-extension-value-url. It adds `lib/davinci_dtr_test_kit/cross_suite/v2.2.0/adaptive_service_url.rb`, calls it from `FullEHRV220QuestionnairePackageEndpoint#instantiate_template`, and adds an endpoint spec (`spec/davinci_dtr_test_kit/full_ehr_v220_adaptive_service_url_spec.rb`) that posts a package request and checks the extension in the response. The kit's own checks that treat the Questionnaire as adaptive (`QuestionnaireHelper#adaptive_questionnaire?`) keep working, because they accept any value other than `false`.
 
+The fix branch is based on the pinned commit named above, not on `main`. We are glad to rebase it onto `main` and open a pull request if that helps.
+
+Our results and the full list of defects we found are in our interoperability report card: https://github.com/metacareforyou/metacare-clear-interoperability-report-card (this one is [DTR-04](https://github.com/metacareforyou/metacare-clear-interoperability-report-card/blob/main/defects/DTR-04.md)).
+
+Related work: the open pull requests #146 and #147 add a similar replacement for `questionnaireAdaptive` `valueUrl` in new v2.2.0 templates, and leave `valueBoolean` as it is. They do not change the `dinner_adaptive` fixtures, which still send `valueBoolean`. If those land first, a smaller fix is to give the `dinner_adaptive` fixtures a placeholder `valueUrl` that the new replacement fills in.
+
 Found while testing a provider system with synthetic data only.
 <!-- issue:end -->
 

@@ -74,6 +74,10 @@ Either of these, depending on what the maintainers prefer:
 
 We have not made a fork branch for this one. Option 1 touches both endpoints and the must support analysis, and the choice between the options is the maintainers'. We are glad to make either change on request.
 
+We have not made a fix branch for this one, because the choice between the two options is yours. We are glad to make either change and open a pull request.
+
+Our results and the full list of defects we found are in our interoperability report card: https://github.com/metacareforyou/metacare-clear-interoperability-report-card (this one is [DTR-05](https://github.com/metacareforyou/metacare-clear-interoperability-report-card/blob/main/defects/DTR-05.md)).
+
 Found while testing a provider system with synthetic data only.
 <!-- issue:end -->
 
