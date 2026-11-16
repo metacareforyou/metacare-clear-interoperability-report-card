@@ -101,11 +101,23 @@ function clearTested(run) {
   return `\`${c.branch}\` at \`${c.commit}\`${prs ? `, ${prs}` : ''}`;
 }
 
+const ATTESTATION_LABEL = "released by script from Clear's recorded state; not confirmed by a person";
+const normalizeTestId = (id) => id.replace(/_(smart|udap|no_auth)(?=-|$)/g, '');
+
+function auditFor(root) {
+  const path = join(root, 'attestations.json');
+  return existsSync(path) ? readJson(path).kits : {};
+}
+
+function auditRow(audit, kitId, kit, test) {
+  return (audit[kit.base || kitId] || []).find((row) => row.test === normalizeTestId(test.id));
+}
+
 function attestedByScript(test) {
   return typeof test.attestedBy === 'string' && test.attestedBy.startsWith('attested by script');
 }
 
-function renderKit(root, kitId, kit, defects) {
+function renderKit(root, kitId, kit, defects, audit) {
   const runs = runsFor(root, kitId);
   const out = [];
   out.push(`### ${kit.label}`);
@@ -174,11 +186,14 @@ function renderKit(root, kitId, kit, defects) {
   const released = tests.filter((x) => x.attestedBy && !attestedByScript(x));
   out.push(`Released by script: ${attested.length} attestation(s) and ${released.length} wait(s) in which Clear was told to send its requests.`);
   if (attested.length) {
-    out.push('The attestations below were released from Clear\'s recorded state. They are not observed conformance, and a person must confirm them in the Inferno interface before results are submitted.');
+    out.push(`The attestations below were ${ATTESTATION_LABEL}. Their "pass" is not observed conformance. The audit verdict says whether Clear supports what the attestation claims; see [Attestations](#attestations).`);
     out.push('');
-    out.push('| Test | Title | Result |');
-    out.push('|---|---|---|');
-    for (const x of attested) out.push(`| ${x.short_id} | ${x.title} | ${x.result} |`);
+    out.push('| Test | Title | Result (released by script, not confirmed by a person) | Audit verdict | MetaCare tracker id (internal) |');
+    out.push('|---|---|---|---|---|');
+    for (const x of attested) {
+      const row = auditRow(audit, kitId, kit, x);
+      out.push(`| ${x.short_id} | ${x.title} | ${x.result} | ${row ? row.verdict : 'Not audited'} | ${row?.tracker || ''} |`);
+    }
   }
   out.push('');
 
@@ -196,7 +211,7 @@ function renderKit(root, kitId, kit, defects) {
 
 function overview(root, kits, patched = false) {
   const out = [];
-  out.push('| Guide | Suite | Run date | Clear tested | Tests | Pass | Fail | Error | Skip | Not run | Attested by script |');
+  out.push('| Guide | Suite | Run date | Clear tested | Tests | Pass | Fail | Error | Skip | Not run | Attestations released by script, not confirmed by a person |');
   out.push('|---|---|---|---|---|---|---|---|---|---|---|');
   for (const kitId of Object.keys(kits).filter((id) => Boolean(kits[id].patch) === patched)) {
     const kit = kits[kitId];
@@ -228,6 +243,7 @@ function defectTable(defects) {
 export function renderReadme(root) {
   const kits = readJson(join(root, 'kits.json')).kits;
   const defects = listDefects(root);
+  const audit = auditFor(root);
   const body = [START, '', '## Summary', '', 'Runs of the unmodified kits at their pinned commits. These are the results.', '', ...overview(root, kits), ''];
   if (Object.values(kits).some((k) => k.patch)) {
     body.push('### Evidence runs with a patched kit', '');
@@ -235,7 +251,21 @@ export function renderReadme(root) {
     body.push(...overview(root, kits, true), '');
   }
   body.push('## Results by guide', '');
-  for (const kitId of Object.keys(kits)) body.push(...renderKit(root, kitId, kits[kitId], defects));
+  for (const kitId of Object.keys(kits)) body.push(...renderKit(root, kitId, kits[kitId], defects, audit));
+  body.push('## Attestations', '');
+  body.push(`Every attestation in these runs was ${ATTESTATION_LABEL}. No attestation has been signed, and the kits' own visual inspection and attestation groups have not been run, so each kit's own Inferno report shows its final result as pending.`, '');
+  body.push("MetaCare audited each attestation against what Clear does on screen today ([attestations.md](attestations.md)). Supported: Clear does what the attestation says. Partly or Not supported: a known gap that is being built; until it is done, the honest answer to that attestation is No. The tracker id is MetaCare's internal reference for the gap.", '');
+  for (const kitId of Object.keys(audit)) {
+    const kit = kits[kitId];
+    const rows = audit[kitId];
+    const count = (v) => rows.filter((r) => r.verdict === v).length;
+    body.push(`### ${kit.label.replace(/ \(.*\)$/, '')}`, '');
+    body.push(`${count('Supported')} Supported, ${count('Partly')} Partly, ${count('Not supported')} Not supported. Test numbers are those of the SMART Backend Services run.`, '');
+    body.push('| Test | Attestation | Audit verdict | MetaCare tracker id (internal) |');
+    body.push('|---|---|---|---|');
+    for (const r of rows) body.push(`| ${r.short_id} | ${r.title} | ${r.verdict} | ${r.tracker || ''} |`);
+    body.push('');
+  }
   body.push('## Defects found in test kits and guides', '');
   body.push(...defectTable(defects), '', END);
 
